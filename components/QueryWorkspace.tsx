@@ -132,6 +132,10 @@ function HydratedQueryWorkspace({
 
         <div className="query-grid">
           <ScoreForm
+            applicantGender={query.applicantGender}
+            onApplicantGenderChange={(value) =>
+              update("applicantGender", value)
+            }
             onChange={updateScore}
             onClear={() => update("scores", { ...EMPTY_SCORES })}
             onUseExample={() => update("scores", { ...EXAMPLE_SCORES })}

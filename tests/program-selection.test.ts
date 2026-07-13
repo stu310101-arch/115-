@@ -128,6 +128,55 @@ describe("114 官方校系選取資料", () => {
     });
   });
 
+  it("臺大戲劇保留男、女生分列名額與兩套官方門檻", () => {
+    const theatre = programs.find(
+      (program) => program.programCode === "001082",
+    );
+
+    expect(theatre).toMatchObject({
+      quota: 17,
+      screeningRules: [],
+      evaluationSupport: "supported",
+    });
+    expect(theatre?.screeningVariants).toEqual([
+      expect.objectContaining({
+        applicantGender: "male",
+        label: "男生組",
+        quota: 8,
+        screeningRules: expect.arrayContaining([
+          expect.objectContaining({ order: 3, minScore: 41 }),
+          expect.objectContaining({ order: 4, minScore: 12 }),
+          expect.objectContaining({ order: 5, minScore: 13 }),
+        ]),
+      }),
+      expect.objectContaining({
+        applicantGender: "female",
+        label: "女生組",
+        quota: 9,
+        screeningRules: expect.arrayContaining([
+          expect.objectContaining({ order: 3, minScore: 45 }),
+          expect.objectContaining({ order: 4, minScore: 13 }),
+          expect.objectContaining({ order: 5, minScore: 14 }),
+        ]),
+      }),
+    ]);
+  });
+
+  it("臺大資工 APCS 組明列數學A與實作題特殊門檻", () => {
+    const apcs = programs.find(
+      (program) => program.programCode === "001602",
+    );
+
+    expect(apcs).toMatchObject({
+      evaluationSupport: "unsupported",
+      screeningRules: [],
+      additionalScreeningRules: [
+        { label: "數學A", minScore: 12, rawText: "數學A12" },
+        { label: "APCS 實作題", minScore: 5, rawText: "APCS 實作題5" },
+      ],
+    });
+  });
+
   it("APCS 與術科校系不發布可能錯位的部分學測規則", () => {
     ["004522", "056182"].forEach((programCode) => {
       const program = programs.find(

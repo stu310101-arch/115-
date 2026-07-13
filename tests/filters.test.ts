@@ -183,6 +183,37 @@ describe("filterPrograms", () => {
 });
 
 describe("validatePrograms", () => {
+  it("接受名額加總一致且沒有共用門檻的性別分列規則", () => {
+    const split = program({
+      schoolId: "001",
+      schoolName: "國立臺灣大學",
+      programCode: "001082",
+      programName: "戲劇學系",
+      quota: 17,
+      screeningRules: [],
+      screeningVariants: [
+        {
+          applicantGender: "male",
+          label: "男生組",
+          quota: 8,
+          screeningRules: [
+            { order: 1, label: "國文", subjects: ["國文"], minScore: 12, rawText: "國文12" },
+          ],
+        },
+        {
+          applicantGender: "female",
+          label: "女生組",
+          quota: 9,
+          screeningRules: [
+            { order: 1, label: "國文", subjects: ["國文"], minScore: 13, rawText: "國文13" },
+          ],
+        },
+      ],
+    });
+
+    expect(validatePrograms([split]).valid).toBe(true);
+  });
+
   it("允許資料集保留未校對資料，但明確標示正式篩選會排除", () => {
     const unverified = program({
       schoolId: "777",

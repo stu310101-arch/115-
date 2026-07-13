@@ -7,9 +7,11 @@ import {
   scoreForEnglishListening,
 } from "../lib/subjects.ts";
 import type {
+  AdditionalScreeningRule,
   GroupTag,
   ListeningStandard,
   Program,
+  ProgramScreeningVariant,
   ProgramSource,
   RequirementStandard,
   ScreeningRule,
@@ -112,6 +114,12 @@ type ReviewEntry = {
   detailUrl: string;
 };
 
+type ProgramOverride = {
+  screeningVariants?: ProgramScreeningVariant[];
+  additionalScreeningRules?: AdditionalScreeningRule[];
+  reviewReasons?: string[];
+};
+
 type TargetedCellOcr = {
   programCode: string;
   order: number;
@@ -170,6 +178,10 @@ const cellOcrUrl = new URL(
 );
 const thresholdOverrideUrl = new URL(
   "../data/official_threshold_overrides_114.json",
+  import.meta.url,
+);
+const programOverrideUrl = new URL(
+  "../data/official_program_overrides_114.json",
   import.meta.url,
 );
 const cellDirectoryUrl = new URL(
@@ -713,6 +725,17 @@ async function readThresholdOverrides(): Promise<Map<string, number | null>> {
   }
 }
 
+async function readProgramOverrides(): Promise<Map<string, ProgramOverride>> {
+  const document = await readJson<{
+    academicYear?: number;
+    programs?: Record<string, ProgramOverride>;
+  }>(programOverrideUrl);
+  if (document.academicYear !== 114) {
+    throw new Error("官方校系人工覆核檔 academicYear 必須是 114");
+  }
+  return new Map(Object.entries(document.programs ?? {}));
+}
+
 async function writeJsonAtomically(url: URL, value: unknown): Promise<void> {
   const path = fileURLToPath(url);
   await mkdir(new URL("./", url), { recursive: true });
@@ -863,6 +886,7 @@ async function main(): Promise<void> {
   const geometryBySchool = new Map<string, ImageGeometry | null>();
   const targetedCells = await readTargetedCells();
   const thresholdOverrides = await readThresholdOverrides();
+  const programOverrides = await readProgramOverrides();
   for (const schoolId of sourceBySchool.keys()) {
     ocrBySchool.set(schoolId, await readOcrIndex(schoolId));
     geometryBySchool.set(schoolId, await readImageGeometry(schoolId));
@@ -901,6 +925,7 @@ async function main(): Promise<void> {
     )?.[1];
     const requiresArtExam = artExamCell?.includes("是") ?? false;
     const requiresApcs = catalogProgram.raw?.requiresApcs === true;
+    const programOverride = programOverrides.get(catalogProgram.programCode);
     const threshold = thresholdScoresForProgram(
       catalogProgram.programCode,
       ruleDerivation.rules,
@@ -938,15 +963,18 @@ async function main(): Promise<void> {
           ]),
     ]);
     const reasons =
-      specialScreeningReasons.length > 0
+      programOverride?.reviewReasons ??
+      (specialScreeningReasons.length > 0
         ? specialScreeningReasons
-        : ordinaryReviewReasons;
+        : ordinaryReviewReasons);
+    const screeningVariants = programOverride?.screeningVariants ?? [];
+    const hasScreeningVariants = screeningVariants.length > 0;
     const supported =
       reasons.length === 0 &&
       screeningRules !== null &&
-      (screeningRules.length > 0 || requirementOnly);
+      (screeningRules.length > 0 || requirementOnly || hasScreeningVariants);
     if (screeningRules === null) screeningRules = [];
-    if (specialScreeningReasons.length > 0) {
+    if (specialScreeningReasons.length > 0 || hasScreeningVariants) {
       // 術科／APCS 會插入自己的倍率關卡；只把學測科目依序套到官方
       // 欄位會造成關卡錯位。這些校系仍完整保留供搜尋與連往官方，
       // 但在支援特殊成績型別前，不發布可能誤導的部分 rules[]。
@@ -985,6 +1013,10 @@ async function main(): Promise<void> {
       departmentKeywords: [],
       requirements: requirementDerivation.requirements,
       screeningRules: screeningRules ?? [],
+      ...(hasScreeningVariants ? { screeningVariants } : {}),
+      ...(programOverride?.additionalScreeningRules?.length
+        ? { additionalScreeningRules: programOverride.additionalScreeningRules }
+        : {}),
       source,
       dataStatus: supported ? "complete" : "needs-review",
       evaluationSupport: supported ? "supported" : "unsupported",

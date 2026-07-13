@@ -1034,6 +1034,41 @@ input:focus-visible {
   font-size: 11px;
 }
 
+.applicant-gender-field {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+  color: #44565d;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.applicant-gender-field select {
+  width: 100%;
+  height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  outline: 0;
+  background: #fff;
+  padding: 0 13px;
+  color: var(--ink);
+  font: inherit;
+}
+
+.applicant-gender-field select:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(11, 117, 108, 0.09);
+}
+
+.applicant-gender-field small {
+  color: #738086;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
 .optional-label {
   border-radius: 999px;
   padding: 5px 10px;
@@ -1794,6 +1829,13 @@ input:focus-visible {
   font-family: var(--serif);
   font-size: 19px;
   line-height: 1.35;
+}
+
+.screening-variant-note {
+  margin: 6px 0 0;
+  color: #76541c;
+  font-size: 11px;
+  font-weight: 800;
 }
 
 .program-actions {

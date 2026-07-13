@@ -133,6 +133,11 @@ export function ProgramResultTable({
                   </span>
                 </div>
                 <h3>{evaluation.program.programName}</h3>
+                {evaluation.screeningVariant ? (
+                  <p className="screening-variant-note">
+                    {evaluation.screeningVariant.label}・招生名額 {evaluation.screeningVariant.quota}
+                  </p>
+                ) : null}
               </div>
               <div className="program-actions">
                 {tone === "passed" ? (
@@ -193,6 +198,8 @@ export function UnsupportedProgramTable({
         const requiresSpecialScreening = program.reviewReasons?.some(
           (reason) => reason.startsWith("需特殊檢定"),
         );
+        const requiresGenderSelection =
+          (program.screeningVariants?.length ?? 0) > 0;
 
         return (
           <article
@@ -216,7 +223,11 @@ export function UnsupportedProgramTable({
                 </div>
                 <div className="program-actions">
                   <span className="review-badge">
-                    {requiresSpecialScreening ? "需特殊檢定" : "資料待確認"}
+                    {requiresGenderSelection
+                      ? "需選性別組別"
+                      : requiresSpecialScreening
+                        ? "需特殊檢定"
+                        : "資料待確認"}
                   </span>
                   <SourceLink
                     compact
@@ -230,18 +241,44 @@ export function UnsupportedProgramTable({
 
               <div className="review-reasons">
                 <b>
-                  {requiresSpecialScreening
-                    ? "需特殊檢定，詳情請至官方網站查詢："
-                    : "目前無法安全自動判斷："}
+                  {requiresGenderSelection
+                    ? "官方分列男、女生名額與門檻；請返回上頁選擇招生性別組別："
+                    : requiresSpecialScreening
+                      ? "需特殊檢定，無法只用一般學測成績完整判定："
+                      : "目前無法安全自動判斷："}
                 </b>
-                <ul>
-                  {(program.reviewReasons?.length
-                    ? program.reviewReasons
-                    : ["官方最低級分資料仍待人工確認"]
-                  ).map((reason) => (
-                    <li key={reason}>{reason}</li>
-                  ))}
-                </ul>
+                {requiresGenderSelection ? (
+                  <ul aria-label="官方性別分列篩選門檻">
+                    {program.screeningVariants?.map((variant) => (
+                      <li key={variant.applicantGender}>
+                        {variant.label}：名額 {variant.quota}；
+                        {variant.screeningRules
+                          .map((rule) => `${rule.label} ${rule.minScore}`)
+                          .join("、")}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <>
+                    {program.additionalScreeningRules?.length ? (
+                      <ul aria-label="已錄入的官方最低篩選分數">
+                        {program.additionalScreeningRules.map((rule) => (
+                          <li key={`${rule.label}-${rule.minScore}`}>
+                            {rule.label}：{rule.minScore}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                    <ul>
+                      {(program.reviewReasons?.length
+                        ? program.reviewReasons
+                        : ["官方最低級分資料仍待人工確認"]
+                      ).map((reason) => (
+                        <li key={reason}>{reason}</li>
+                      ))}
+                    </ul>
+                  </>
+                )}
               </div>
             </div>
           </article>

@@ -33,6 +33,20 @@ function restoreFromSession(key: string, value: unknown) {
 }
 
 describe("school query state", () => {
+  it("官方招生性別組別可寫入網址，非法值會安全忽略", () => {
+    const params = queryStateToParams({
+      ...DEFAULT_QUERY_STATE,
+      applicantGender: "female",
+    });
+
+    expect(params.get("gender")).toBe("female");
+    expect(queryStateFromParams(params).applicantGender).toBe("female");
+    expect(
+      queryStateFromParams(new URLSearchParams("gender=unknown"))
+        .applicantGender,
+    ).toBe("");
+  });
+
   it("多個學校分類與自訂學校可完整寫入並讀回網址", () => {
     const params = queryStateToParams({
       ...DEFAULT_QUERY_STATE,

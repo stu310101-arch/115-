@@ -1,7 +1,9 @@
 import {
   SUBJECTS,
+  type ApplicantGender,
   type EvaluationResult,
   type Program,
+  type ProgramScreeningVariant,
   type RequirementResult,
   type RuleResult,
   type ScreeningRule,
@@ -48,15 +50,48 @@ function evaluateRule(rule: ScreeningRule, scores: UserScores): RuleResult {
   };
 }
 
-function usedSubjects(program: Program): Subject[] {
+function usedSubjects(
+  program: Program,
+  screeningRules: readonly ScreeningRule[],
+): Subject[] {
   const used = new Set(
-    program.screeningRules.flatMap((rule) => uniqueRuleSubjects(rule)),
+    screeningRules.flatMap((rule) => uniqueRuleSubjects(rule)),
   );
   for (const requirement of program.requirements ?? []) {
     used.add(requirement.subject);
   }
 
   return SUBJECTS.filter((subject) => used.has(subject));
+}
+
+function screeningVariantFor(
+  program: Program,
+  applicantGender?: ApplicantGender,
+): ProgramScreeningVariant | undefined {
+  return program.screeningVariants?.find(
+    (variant) => variant.applicantGender === applicantGender,
+  );
+}
+
+export function supportsProgramEvaluation(
+  program: Program,
+  applicantGender?: ApplicantGender,
+): boolean {
+  const evaluationSupported =
+    program.evaluationSupport === "supported" ||
+    (program.evaluationSupport === undefined && program.verified);
+  if (!evaluationSupported) return false;
+
+  const hasVariants = (program.screeningVariants?.length ?? 0) > 0;
+  const variant = screeningVariantFor(program, applicantGender);
+  if (hasVariants && !variant) return false;
+
+  const screeningRules = hasVariants
+    ? (variant?.screeningRules ?? [])
+    : program.screeningRules;
+  return (
+    screeningRules.length > 0 || (program.requirements?.length ?? 0) > 0
+  );
 }
 
 function removeRedundantRules(rules: SearchRule[]): SearchRule[] {
@@ -271,23 +306,23 @@ function findNearestBoosts(
 export function evaluateProgram(
   program: Program,
   scores: UserScores,
+  applicantGender?: ApplicantGender,
 ): EvaluationResult {
-  const evaluationSupported =
-    program.evaluationSupport === "supported" ||
-    (program.evaluationSupport === undefined && program.verified);
-  if (
-    !evaluationSupported ||
-    (program.screeningRules.length === 0 &&
-      (program.requirements?.length ?? 0) === 0)
-  ) {
+  const screeningVariant = screeningVariantFor(program, applicantGender);
+  if ((program.screeningVariants?.length ?? 0) > 0 && !screeningVariant) {
+    throw new Error(`校系 ${program.programCode} 需先選擇官方招生性別組別`);
+  }
+  if (!supportsProgramEvaluation(program, applicantGender)) {
     throw new Error(
       `校系 ${program.programCode} 的官方篩選門檻尚待確認，不能自動判斷`,
     );
   }
 
+  const screeningRules = screeningVariant?.screeningRules ?? program.screeningRules;
+
   assertValidUserScores(scores);
 
-  const ruleResults = program.screeningRules.map((rule) =>
+  const ruleResults = screeningRules.map((rule) =>
     evaluateRule(rule, scores),
   );
   const failedRules = ruleResults.filter((result) => !result.passed);
@@ -307,7 +342,7 @@ export function evaluateProgram(
   const failedRequirements = requirementResults.filter(
     (result) => !result.passed,
   );
-  const missingSubjects = usedSubjects(program).filter(
+  const missingSubjects = usedSubjects(program, screeningRules).filter(
     (subject) => !hasSubjectScore(scores, subject),
   );
   const requirementRules: RuleResult[] = failedRequirements.map((result) => ({
@@ -327,6 +362,7 @@ export function evaluateProgram(
   return {
     passed: failedRules.length === 0 && failedRequirements.length === 0,
     program,
+    ...(screeningVariant ? { screeningVariant } : {}),
     ruleResults,
     failedRules,
     requirementResults,

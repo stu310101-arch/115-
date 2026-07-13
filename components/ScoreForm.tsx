@@ -1,6 +1,6 @@
 "use client";
 
-import type { Subject } from "@/lib/types";
+import type { ApplicantGender, Subject } from "@/lib/types";
 
 export const SCORE_SUBJECTS = [
   "國文",
@@ -16,14 +16,18 @@ export type ScoreSubject = (typeof SCORE_SUBJECTS)[number];
 export type ScoreDraft = Record<ScoreSubject, string>;
 
 type ScoreFormProps = {
+  applicantGender: ApplicantGender | "";
   scores: ScoreDraft;
+  onApplicantGenderChange: (value: ApplicantGender | "") => void;
   onChange: (subject: ScoreSubject, value: string) => void;
   onUseExample: () => void;
   onClear: () => void;
 };
 
 export function ScoreForm({
+  applicantGender,
   scores,
+  onApplicantGenderChange,
   onChange,
   onUseExample,
   onClear,
@@ -90,6 +94,25 @@ export function ScoreForm({
           </label>
         ))}
       </div>
+
+      <label className="applicant-gender-field">
+        <span>官方招生性別組別</span>
+        <select
+          aria-label="官方招生性別組別"
+          name="applicantGender"
+          onChange={(event) =>
+            onApplicantGenderChange(event.target.value as ApplicantGender | "")
+          }
+          value={applicantGender}
+        >
+          <option value="">未選擇</option>
+          <option value="male">男生組</option>
+          <option value="female">女生組</option>
+        </select>
+        <small>
+          僅用於官方分列男、女生門檻的校系；未選時不會自動套用任一組標準。
+        </small>
+      </label>
     </section>
   );
 }

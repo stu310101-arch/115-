@@ -25,6 +25,10 @@ export const EVALUATION_SUPPORT_STATUSES = [
 export type EvaluationSupportStatus =
   (typeof EVALUATION_SUPPORT_STATUSES)[number];
 
+export const APPLICANT_GENDERS = ["male", "female"] as const;
+
+export type ApplicantGender = (typeof APPLICANT_GENDERS)[number];
+
 export const REQUIREMENT_STANDARDS = [
   "頂標",
   "前標",
@@ -62,6 +66,20 @@ export type ScreeningRule = {
   rawText: string;
 };
 
+export type ProgramScreeningVariant = {
+  applicantGender: ApplicantGender;
+  label: string;
+  quota: number;
+  screeningRules: ScreeningRule[];
+};
+
+/** A verified threshold that cannot yet be evaluated from ordinary GSAT inputs alone. */
+export type AdditionalScreeningRule = {
+  label: string;
+  minScore: number;
+  rawText: string;
+};
+
 export type ProgramSource = {
   collegeListUrl: string;
   reportHtmlUrl: string;
@@ -81,6 +99,10 @@ export type Program = {
   departmentKeywords: string[];
   requirements?: SubjectRequirement[];
   screeningRules: ScreeningRule[];
+  /** Official rows that share one program code but use gender-specific quotas and thresholds. */
+  screeningVariants?: ProgramScreeningVariant[];
+  /** Verified special thresholds retained for display while automatic evaluation is unsupported. */
+  additionalScreeningRules?: AdditionalScreeningRule[];
   source: ProgramSource;
   /**
    * New official imports always set both fields. They are optional only so the
@@ -127,6 +149,7 @@ export type SubjectBoost = {
 export type EvaluationResult = {
   passed: boolean;
   program: Program;
+  screeningVariant?: ProgramScreeningVariant;
   ruleResults: RuleResult[];
   failedRules: RuleResult[];
   requirementResults: RequirementResult[];

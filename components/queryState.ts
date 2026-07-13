@@ -9,7 +9,7 @@ import {
   isSchoolGroupId,
   type SchoolGroupId,
 } from "../config/schoolGroups";
-import type { GroupTag } from "../lib/types";
+import type { ApplicantGender, GroupTag } from "../lib/types";
 import { SCORE_SUBJECTS, type ScoreDraft } from "./ScoreForm";
 
 export type SiteRoute =
@@ -22,6 +22,7 @@ export type GroupSelection = "all" | GroupTag;
 
 export type AdmissionQueryState = {
   scores: ScoreDraft;
+  applicantGender: ApplicantGender | "";
   groupSelection: GroupSelection;
   schoolGroupIds: SchoolGroupId[];
   customSchoolIds: string[];
@@ -50,16 +51,21 @@ export const EXAMPLE_SCORES: ScoreDraft = {
 
 export const DEFAULT_QUERY_STATE: AdmissionQueryState = {
   scores: { ...EMPTY_SCORES },
+  applicantGender: "",
   groupSelection: "all",
   schoolGroupIds: [],
   customSchoolIds: [],
   programSelections: EMPTY_GROUPED_PROGRAM_SELECTIONS,
 };
 
-const SESSION_KEY = "admission-114-query-v4";
-const LEGACY_SESSION_KEYS = ["admission-114-query-v3"] as const;
+const SESSION_KEY = "admission-114-query-v5";
+const LEGACY_SESSION_KEYS = [
+  { key: "admission-114-query-v4", usesLegacySchoolState: false },
+  { key: "admission-114-query-v3", usesLegacySchoolState: true },
+] as const;
 const SCHOOL_MODE_PARAM = "schoolMode";
 const MULTI_SCHOOL_MODE = "multi";
+const APPLICANT_GENDER_PARAM = "gender";
 const CONFIGURED_BASE_PATH = (process.env.NEXT_PUBLIC_BASE_PATH ?? "")
   .replace(/\/$/, "")
   .replace(/^\/$/, "");
@@ -90,6 +96,10 @@ function safeScore(
 
 function safeGroup(value: unknown): GroupSelection {
   return value === "自然組" || value === "社會組" ? value : "all";
+}
+
+function safeApplicantGender(value: unknown): ApplicantGender | "" {
+  return value === "male" || value === "female" ? value : "";
 }
 
 function safeStringArray(value: unknown): string[] {
@@ -173,6 +183,7 @@ function normalizeStoredState(
       }),
       { ...EMPTY_SCORES },
     ),
+    applicantGender: safeApplicantGender(candidate.applicantGender),
     groupSelection: safeGroup(candidate.groupSelection),
     schoolGroupIds:
       !legacy && storedSchoolGroupIds.length > 0
@@ -216,6 +227,7 @@ export function queryStateFromParams(
       }),
       { ...EMPTY_SCORES },
     ),
+    applicantGender: safeApplicantGender(params.get(APPLICANT_GENDER_PARAM)),
     groupSelection: safeGroup(params.get("group")),
     schoolGroupIds:
       hasMultiSchoolState && schoolGroupIds.length > 0
@@ -238,6 +250,8 @@ export function queryStateToParams(state: AdmissionQueryState): URLSearchParams 
     const value = safeScore(state.scores[subject], subject);
     if (value !== "") params.set(SCORE_PARAMS[subject], value);
   });
+  const applicantGender = safeApplicantGender(state.applicantGender);
+  if (applicantGender) params.set(APPLICANT_GENDER_PARAM, applicantGender);
   if (state.groupSelection !== "all") {
     params.set("group", state.groupSelection);
   }
@@ -269,6 +283,7 @@ export function restoreQueryState(): AdmissionQueryState {
   const params = new URLSearchParams(window.location.search);
   const queryKeys = new Set([
     ...Object.values(SCORE_PARAMS),
+    APPLICANT_GENDER_PARAM,
     "group",
     SCHOOL_MODE_PARAM,
     "schoolGroup",
@@ -288,10 +303,13 @@ export function restoreQueryState(): AdmissionQueryState {
     if (current) {
       return normalizeStoredState(JSON.parse(current)) ?? DEFAULT_QUERY_STATE;
     }
-    for (const key of LEGACY_SESSION_KEYS) {
+    for (const { key, usesLegacySchoolState } of LEGACY_SESSION_KEYS) {
       const legacy = window.sessionStorage.getItem(key);
       if (legacy) {
-        return normalizeStoredState(JSON.parse(legacy), true) ?? DEFAULT_QUERY_STATE;
+        return (
+          normalizeStoredState(JSON.parse(legacy), usesLegacySchoolState) ??
+          DEFAULT_QUERY_STATE
+        );
       }
     }
   } catch {

@@ -95,6 +95,56 @@ function addNumericScoreError(
   }
 }
 
+function validateScreeningRule(
+  rule: unknown,
+  rulePath: string,
+  addError: (field: string, message: string) => void,
+): void {
+  if (!isRecord(rule)) {
+    addError(rulePath, "每筆 screeningRule 必須是物件");
+    return;
+  }
+  if (
+    typeof rule.order !== "number" ||
+    !Number.isInteger(rule.order) ||
+    rule.order < 1
+  ) {
+    addError(`${rulePath}.order`, "order 必須是大於 0 的整數");
+  }
+  if (!isNonEmptyString(rule.label)) {
+    addError(`${rulePath}.label`, "label 必須是非空字串");
+  }
+  if (typeof rule.rawText !== "string") {
+    addError(`${rulePath}.rawText`, "rawText 必須是字串");
+  }
+  if (!Array.isArray(rule.subjects) || rule.subjects.length === 0) {
+    addError(`${rulePath}.subjects`, "subjects 至少要有一個科目");
+    return;
+  }
+
+  const seenSubjects = new Set<unknown>();
+  rule.subjects.forEach((subject, subjectIndex) => {
+    if (typeof subject !== "string" || !VALID_SUBJECTS.has(subject)) {
+      addError(
+        `${rulePath}.subjects[${subjectIndex}]`,
+        `未知科目：${String(subject)}`,
+      );
+    } else if (seenSubjects.has(subject)) {
+      addError(
+        `${rulePath}.subjects[${subjectIndex}]`,
+        `同一規則不可重複計算科目：${subject}`,
+      );
+    }
+    seenSubjects.add(subject);
+  });
+  addNumericScoreError(
+    rule.minScore,
+    rule.subjects.length * 15,
+    addError,
+    `${rulePath}.minScore`,
+  );
+}
+
 /**
  * 驗證完整官方校系資料。待確認門檻不算結構錯誤，且仍須保留讓使用者搜尋；
  * 只有 `evaluationSupport: supported` 的資料可以交給判斷函式。
@@ -260,13 +310,18 @@ export function validatePrograms(input: unknown): ProgramsValidationReport {
       });
     }
 
+    const hasScreeningVariants =
+      Array.isArray(candidate.screeningVariants) &&
+      candidate.screeningVariants.length > 0;
+
     if (!Array.isArray(candidate.screeningRules)) {
       addError("screeningRules", "screeningRules 必須是 rules array");
     } else {
       if (
         isSupported &&
         candidate.screeningRules.length === 0 &&
-        (!Array.isArray(candidate.requirements) || candidate.requirements.length === 0)
+        (!Array.isArray(candidate.requirements) || candidate.requirements.length === 0) &&
+        !hasScreeningVariants
       ) {
         addError(
           "screeningRules",
@@ -274,50 +329,94 @@ export function validatePrograms(input: unknown): ProgramsValidationReport {
         );
       }
       candidate.screeningRules.forEach((rule, ruleIndex) => {
-        const rulePath = `screeningRules[${ruleIndex}]`;
-        if (!isRecord(rule)) {
-          addError(rulePath, "每筆 screeningRule 必須是物件");
-          return;
-        }
-        if (
-          typeof rule.order !== "number" ||
-          !Number.isInteger(rule.order) ||
-          rule.order < 1
-        ) {
-          addError(`${rulePath}.order`, "order 必須是大於 0 的整數");
-        }
-        if (!isNonEmptyString(rule.label)) {
-          addError(`${rulePath}.label`, "label 必須是非空字串");
-        }
-        if (typeof rule.rawText !== "string") {
-          addError(`${rulePath}.rawText`, "rawText 必須是字串");
-        }
-        if (!Array.isArray(rule.subjects) || rule.subjects.length === 0) {
-          addError(`${rulePath}.subjects`, "subjects 至少要有一個科目");
-        } else {
-          const seenSubjects = new Set<unknown>();
-          rule.subjects.forEach((subject, subjectIndex) => {
-            if (typeof subject !== "string" || !VALID_SUBJECTS.has(subject)) {
-              addError(
-                `${rulePath}.subjects[${subjectIndex}]`,
-                `未知科目：${String(subject)}`,
-              );
-            } else if (seenSubjects.has(subject)) {
-              addError(
-                `${rulePath}.subjects[${subjectIndex}]`,
-                `同一規則不可重複計算科目：${subject}`,
-              );
-            }
-            seenSubjects.add(subject);
-          });
-          addNumericScoreError(
-            rule.minScore,
-            rule.subjects.length * 15,
-            addError,
-            `${rulePath}.minScore`,
-          );
-        }
+        validateScreeningRule(
+          rule,
+          `screeningRules[${ruleIndex}]`,
+          addError,
+        );
       });
+    }
+
+    if (candidate.screeningVariants !== undefined) {
+      if (!Array.isArray(candidate.screeningVariants)) {
+        addError("screeningVariants", "screeningVariants 必須是陣列");
+      } else {
+        const seenGenders = new Set<unknown>();
+        let variantQuota = 0;
+        candidate.screeningVariants.forEach((variant, variantIndex) => {
+          const path = `screeningVariants[${variantIndex}]`;
+          if (!isRecord(variant)) {
+            addError(path, "每筆性別分列規則必須是物件");
+            return;
+          }
+          if (variant.applicantGender !== "male" && variant.applicantGender !== "female") {
+            addError(`${path}.applicantGender`, "只能是 male 或 female");
+          } else if (seenGenders.has(variant.applicantGender)) {
+            addError(`${path}.applicantGender`, "同一性別組別不可重複");
+          }
+          seenGenders.add(variant.applicantGender);
+          if (!isNonEmptyString(variant.label)) {
+            addError(`${path}.label`, "label 必須是非空字串");
+          }
+          if (
+            typeof variant.quota !== "number" ||
+            !Number.isInteger(variant.quota) ||
+            variant.quota < 0
+          ) {
+            addError(`${path}.quota`, "quota 必須是非負整數");
+          } else {
+            variantQuota += variant.quota;
+          }
+          if (!Array.isArray(variant.screeningRules) || variant.screeningRules.length === 0) {
+            addError(`${path}.screeningRules`, "每個性別組別至少要有一筆可信篩選規則");
+          } else {
+            variant.screeningRules.forEach((rule, ruleIndex) => {
+              validateScreeningRule(
+                rule,
+                `${path}.screeningRules[${ruleIndex}]`,
+                addError,
+              );
+            });
+          }
+        });
+        if (
+          candidate.screeningVariants.length > 0 &&
+          Array.isArray(candidate.screeningRules) &&
+          candidate.screeningRules.length > 0
+        ) {
+          addError("screeningRules", "有性別分列規則時不得保留共用篩選規則");
+        }
+        if (typeof candidate.quota === "number" && variantQuota !== candidate.quota) {
+          addError("screeningVariants", "各性別組別名額加總必須等於校系招生名額");
+        }
+      }
+    }
+
+    if (candidate.additionalScreeningRules !== undefined) {
+      if (!Array.isArray(candidate.additionalScreeningRules)) {
+        addError("additionalScreeningRules", "additionalScreeningRules 必須是陣列");
+      } else {
+        candidate.additionalScreeningRules.forEach((rule, ruleIndex) => {
+          const path = `additionalScreeningRules[${ruleIndex}]`;
+          if (!isRecord(rule)) {
+            addError(path, "每筆特殊篩選規則必須是物件");
+            return;
+          }
+          if (!isNonEmptyString(rule.label)) {
+            addError(`${path}.label`, "label 必須是非空字串");
+          }
+          if (
+            typeof rule.minScore !== "number" ||
+            !Number.isFinite(rule.minScore) ||
+            rule.minScore < 0
+          ) {
+            addError(`${path}.minScore`, "minScore 必須是非負數字");
+          }
+          if (typeof rule.rawText !== "string") {
+            addError(`${path}.rawText`, "rawText 必須是字串");
+          }
+        });
+      }
     }
 
     if (candidate.requirements !== undefined) {

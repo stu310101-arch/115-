@@ -2,7 +2,10 @@
 
 import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { SCHOOL_GROUPS } from "@/config/schoolGroups";
-import { evaluateProgram } from "@/lib/admission";
+import {
+  evaluateProgram,
+  supportsProgramEvaluation,
+} from "@/lib/admission";
 import { filterPrograms, type ProgramFilterCriteria } from "@/lib/filters";
 import type { EvaluationResult, Program, UserScores } from "@/lib/types";
 import { PageNavigation, RouteLink, SubpageHeader } from "./PageNavigation";
@@ -108,14 +111,6 @@ function compareProgramRecords(left: Program, right: Program): number {
   );
 }
 
-function supportsEvaluation(program: Program): boolean {
-  return (
-    (program.screeningRules.length > 0 || (program.requirements?.length ?? 0) > 0) &&
-    (program.evaluationSupport === "supported" ||
-      (program.evaluationSupport === undefined && program.verified))
-  );
-}
-
 const subscribeToHydration = () => () => {};
 
 export function ResultsWorkspace(props: ResultsWorkspaceProps) {
@@ -148,12 +143,17 @@ function HydratedResultsWorkspace({ programs }: ResultsWorkspaceProps) {
     };
     const matched = filterPrograms(programs, criteria);
     const userScores = toUserScores(query);
-    const supported = matched.filter(supportsEvaluation);
+    const applicantGender = query.applicantGender || undefined;
+    const supported = matched.filter((program) =>
+      supportsProgramEvaluation(program, applicantGender),
+    );
     const needsOfficialReview = matched
-      .filter((program) => !supportsEvaluation(program))
+      .filter(
+        (program) => !supportsProgramEvaluation(program, applicantGender),
+      )
       .sort(compareProgramRecords);
     const evaluated = supported.map((program) =>
-      evaluateProgram(program, userScores),
+      evaluateProgram(program, userScores, applicantGender),
     );
     const passed = evaluated.filter((result) => result.passed).sort(comparePrograms);
     const near = evaluated.filter((result) => !result.passed).sort(compareNear);

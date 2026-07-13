@@ -570,54 +570,117 @@
         "rawText": "社會均標"
       }
     ],
-    "screeningRules": [
+    "screeningRules": [],
+    "screeningVariants": [
       {
-        "order": 1,
-        "label": "社會",
-        "subjects": [
-          "社會"
-        ],
-        "minScore": 10,
-        "rawText": "社會10"
+        "applicantGender": "male",
+        "label": "男生組",
+        "quota": 8,
+        "screeningRules": [
+          {
+            "order": 1,
+            "label": "社會",
+            "subjects": [
+              "社會"
+            ],
+            "minScore": 10,
+            "rawText": "社會10"
+          },
+          {
+            "order": 2,
+            "label": "數B",
+            "subjects": [
+              "數B"
+            ],
+            "minScore": 6,
+            "rawText": "數B6"
+          },
+          {
+            "order": 3,
+            "label": "國文＋英文＋數B＋社會",
+            "subjects": [
+              "國文",
+              "英文",
+              "數B",
+              "社會"
+            ],
+            "minScore": 41,
+            "rawText": "國文＋英文＋數B＋社會41"
+          },
+          {
+            "order": 4,
+            "label": "國文",
+            "subjects": [
+              "國文"
+            ],
+            "minScore": 12,
+            "rawText": "國文12"
+          },
+          {
+            "order": 5,
+            "label": "英文",
+            "subjects": [
+              "英文"
+            ],
+            "minScore": 13,
+            "rawText": "英文13"
+          }
+        ]
       },
       {
-        "order": 2,
-        "label": "數B",
-        "subjects": [
-          "數B"
-        ],
-        "minScore": 6,
-        "rawText": "數B6"
-      },
-      {
-        "order": 3,
-        "label": "國文＋英文＋數B＋社會",
-        "subjects": [
-          "國文",
-          "英文",
-          "數B",
-          "社會"
-        ],
-        "minScore": 45,
-        "rawText": "國文＋英文＋數B＋社會45"
-      },
-      {
-        "order": 4,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 13,
-        "rawText": "國文13"
-      },
-      {
-        "order": 5,
-        "label": "英文",
-        "subjects": [
-          "英文"
-        ],
-        "minScore": 14,
-        "rawText": "英文14"
+        "applicantGender": "female",
+        "label": "女生組",
+        "quota": 9,
+        "screeningRules": [
+          {
+            "order": 1,
+            "label": "社會",
+            "subjects": [
+              "社會"
+            ],
+            "minScore": 10,
+            "rawText": "社會10"
+          },
+          {
+            "order": 2,
+            "label": "數B",
+            "subjects": [
+              "數B"
+            ],
+            "minScore": 6,
+            "rawText": "數B6"
+          },
+          {
+            "order": 3,
+            "label": "國文＋英文＋數B＋社會",
+            "subjects": [
+              "國文",
+              "英文",
+              "數B",
+              "社會"
+            ],
+            "minScore": 45,
+            "rawText": "國文＋英文＋數B＋社會45"
+          },
+          {
+            "order": 4,
+            "label": "國文",
+            "subjects": [
+              "國文"
+            ],
+            "minScore": 13,
+            "rawText": "國文13"
+          },
+          {
+            "order": 5,
+            "label": "英文",
+            "subjects": [
+              "英文"
+            ],
+            "minScore": 14,
+            "rawText": "英文14"
+          }
+        ]
       }
     ],
     "source": {
@@ -4057,6 +4120,18 @@
       }
     ],
     "screeningRules": [],
+    "additionalScreeningRules": [
+      {
+        "label": "數學A",
+        "minScore": 12,
+        "rawText": "數學A12"
+      },
+      {
+        "label": "APCS 實作題",
+        "minScore": 5,
+        "rawText": "APCS 實作題5"
+      }
+    ],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/001.htm",

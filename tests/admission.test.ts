@@ -78,6 +78,35 @@ describe("evaluateProgram", () => {
     });
   });
 
+  it("性別分列校系只套用對應組別的名額與門檻", () => {
+    const target = program([], {
+      screeningVariants: [
+        {
+          applicantGender: "male",
+          label: "男生組",
+          quota: 8,
+          screeningRules: [rule(1, ["國文", "英文"], 25)],
+        },
+        {
+          applicantGender: "female",
+          label: "女生組",
+          quota: 9,
+          screeningRules: [rule(1, ["國文", "英文"], 27)],
+        },
+      ],
+    });
+    const scores = { 國文: 12, 英文: 13 };
+
+    const male = evaluateProgram(target, scores, "male");
+    const female = evaluateProgram(target, scores, "female");
+
+    expect(male.passed).toBe(true);
+    expect(male.screeningVariant).toMatchObject({ label: "男生組", quota: 8 });
+    expect(female.passed).toBe(false);
+    expect(female.screeningVariant).toMatchObject({ label: "女生組", quota: 9 });
+    expect(() => evaluateProgram(target, scores)).toThrow("性別組別");
+  });
+
   it("加總組合科目後判斷門檻", () => {
     const result = evaluateProgram(
       program([rule(1, ["英文", "數A", "自然"], 37)]),
