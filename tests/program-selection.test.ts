@@ -274,6 +274,71 @@ describe("114 官方校系選取資料", () => {
     expect(music?.reviewReasons?.join("；")).toContain("19 種主修樂器名額加總");
     expect(music?.reviewReasons?.join("；")).toContain("名額與術科最低分不同");
   });
+
+  it("完整保留東吳與政大 3 筆特殊篩選門檻", () => {
+    const expectedApcsRules = {
+      "005222": [
+        ["APCS 觀念題＋實作題", 4],
+        ["英文＋數學B", 12],
+      ],
+      "006422": [
+        ["數學A＋自然", 20],
+        ["APCS 實作題", 3],
+      ],
+    } as const;
+
+    Object.entries(expectedApcsRules).forEach(([programCode, rules]) => {
+      const program = programs.find(
+        (candidate) => candidate.programCode === programCode,
+      );
+      expect(program).toMatchObject({
+        programCode,
+        evaluationSupport: "unsupported",
+        screeningRules: [],
+      });
+      expect(
+        program?.additionalScreeningRules?.map(({ label, minScore }) => [
+          label,
+          minScore,
+        ]),
+      ).toEqual(rules);
+    });
+
+    const music = programs.find(
+      (program) => program.programCode === "005242",
+    );
+    expect(music).toMatchObject({
+      programCode: "005242",
+      quota: 48,
+      evaluationSupport: "unsupported",
+      screeningRules: [],
+    });
+    expect(
+      music?.additionalScreeningRules?.map(({ label, minScore }) => [
+        label,
+        minScore,
+      ]),
+    ).toEqual([
+      ["鋼琴主修（10 名）", 80],
+      ["聲樂主修（5 名）", 83],
+      ["小提琴主修（7 名）", 82.07],
+      ["中提琴主修（3 名）", 83.73],
+      ["大提琴主修（5 名）", 82],
+      ["低音提琴主修（1 名）", 82.79],
+      ["長號主修（1 名）", 84.33],
+      ["小號主修（1 名）", 86.22],
+      ["法國號主修（2 名）", 84],
+      ["上低音號主修（1 名）", 86.89],
+      ["低音號主修（1 名）", 87.56],
+      ["薩克斯管主修（1 名）", 87],
+      ["長笛主修（2 名）", 85],
+      ["單簧管（豎笛）主修（2 名）", 84.22],
+      ["雙簧管主修（1 名）", 86.78],
+      ["低音管主修（1 名）", 85.22],
+      ["擊樂主修（2 名）", 85.2],
+      ["理論作曲主修（2 名）", 82.6],
+    ]);
+  });
 });
 
 describe("programSelection", () => {

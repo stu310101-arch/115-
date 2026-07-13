@@ -111,6 +111,65 @@
       "reviewReasons": [
         "需特殊檢定（術科），詳情請至官方網站查詢"
       ]
+    },
+    "005222": {
+      "additionalScreeningRules": [
+        {
+          "label": "APCS 觀念題＋實作題",
+          "minScore": 4,
+          "rawText": "APCS 觀念題＋實作題4"
+        },
+        {
+          "label": "英文＋數學B",
+          "minScore": 12,
+          "rawText": "英文＋數學B12"
+        }
+      ],
+      "reviewReasons": [
+        "需特殊檢定（APCS），詳情請至官方網站查詢"
+      ]
+    },
+    "005242": {
+      "additionalScreeningRules": [
+        { "label": "鋼琴主修（10 名）", "minScore": 80, "rawText": "鋼琴10名；主修80" },
+        { "label": "聲樂主修（5 名）", "minScore": 83, "rawText": "聲樂5名；主修83" },
+        { "label": "小提琴主修（7 名）", "minScore": 82.07, "rawText": "小提琴7名；主修82.07" },
+        { "label": "中提琴主修（3 名）", "minScore": 83.73, "rawText": "中提琴3名；主修83.73" },
+        { "label": "大提琴主修（5 名）", "minScore": 82, "rawText": "大提琴5名；主修82" },
+        { "label": "低音提琴主修（1 名）", "minScore": 82.79, "rawText": "低音提琴1名；主修82.79" },
+        { "label": "長號主修（1 名）", "minScore": 84.33, "rawText": "長號1名；主修84.33" },
+        { "label": "小號主修（1 名）", "minScore": 86.22, "rawText": "小號1名；主修86.22" },
+        { "label": "法國號主修（2 名）", "minScore": 84, "rawText": "法國號2名；主修84" },
+        { "label": "上低音號主修（1 名）", "minScore": 86.89, "rawText": "上低音號1名；主修86.89" },
+        { "label": "低音號主修（1 名）", "minScore": 87.56, "rawText": "低音號1名；主修87.56" },
+        { "label": "薩克斯管主修（1 名）", "minScore": 87, "rawText": "薩克斯管1名；主修87" },
+        { "label": "長笛主修（2 名）", "minScore": 85, "rawText": "長笛2名；主修85" },
+        { "label": "單簧管（豎笛）主修（2 名）", "minScore": 84.22, "rawText": "單簧管（豎笛）2名；主修84.22" },
+        { "label": "雙簧管主修（1 名）", "minScore": 86.78, "rawText": "雙簧管1名；主修86.78" },
+        { "label": "低音管主修（1 名）", "minScore": 85.22, "rawText": "低音管1名；主修85.22" },
+        { "label": "擊樂主修（2 名）", "minScore": 85.2, "rawText": "擊樂2名；主修85.2" },
+        { "label": "理論作曲主修（2 名）", "minScore": 82.6, "rawText": "理論作曲2名；主修82.6" }
+      ],
+      "reviewReasons": [
+        "需特殊檢定（術科），詳情請至官方網站查詢"
+      ]
+    },
+    "006422": {
+      "additionalScreeningRules": [
+        {
+          "label": "數學A＋自然",
+          "minScore": 20,
+          "rawText": "數學A＋自然20"
+        },
+        {
+          "label": "APCS 實作題",
+          "minScore": 3,
+          "rawText": "APCS 實作題3"
+        }
+      ],
+      "reviewReasons": [
+        "需特殊檢定（APCS），詳情請至官方網站查詢"
+      ]
     }
   }
 }
