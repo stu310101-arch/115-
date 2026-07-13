@@ -30,6 +30,12 @@ export type ProgramOption = Readonly<{
   groupTags: readonly GroupTag[];
 }>;
 
+export type DepartmentOption = Readonly<{
+  departmentName: string;
+  /** 同一學群內所有同名校系的 6 碼代碼；UI 只顯示一次科系名稱。 */
+  programCodes: readonly string[];
+}>;
+
 export const EMPTY_PROGRAM_SELECTION: ProgramSelection = {
   mode: "none",
   codes: [],
@@ -52,6 +58,29 @@ export function toProgramOptions(
       groupTags,
     }),
   );
+}
+
+export function toDepartmentOptions(
+  programs: readonly ProgramOption[],
+  group: GroupTag,
+): DepartmentOption[] {
+  const codesByName = new Map<string, string[]>();
+
+  programs.forEach((program) => {
+    if (!program.groupTags.includes(group)) return;
+    const codes = codesByName.get(program.programName) ?? [];
+    codes.push(program.programCode);
+    codesByName.set(program.programName, codes);
+  });
+
+  return [...codesByName.entries()]
+    .map(([departmentName, programCodes]) => ({
+      departmentName,
+      programCodes,
+    }))
+    .sort((left, right) =>
+      left.departmentName.localeCompare(right.departmentName, "zh-Hant"),
+    );
 }
 
 export function isProgramSelected(
@@ -114,6 +143,59 @@ export function toggleProgramSelection(
   return codes.size === 0
     ? EMPTY_PROGRAM_SELECTION
     : { mode: "include", codes: [...codes] };
+}
+
+export function areProgramCodesSelected(
+  selection: ProgramSelection,
+  programCodes: readonly string[],
+): boolean {
+  return (
+    programCodes.length > 0 &&
+    programCodes.every((code) => isProgramSelected(selection, code))
+  );
+}
+
+/** 一次勾選／取消某個科系名稱所涵蓋的所有校系代碼。 */
+export function toggleProgramCodes(
+  selection: ProgramSelection,
+  programCodes: readonly string[],
+): ProgramSelection {
+  const targetCodes = [...new Set(programCodes)];
+  if (targetCodes.length === 0) return selection;
+
+  const storedCodes = new Set(selection.codes);
+  const shouldDeselect = areProgramCodesSelected(selection, targetCodes);
+
+  if (shouldDeselect) {
+    if (selection.mode === "all" || selection.mode === "exclude") {
+      targetCodes.forEach((code) => storedCodes.add(code));
+      return { mode: "exclude", codes: [...storedCodes] };
+    }
+    targetCodes.forEach((code) => storedCodes.delete(code));
+    return storedCodes.size === 0
+      ? EMPTY_PROGRAM_SELECTION
+      : { mode: "include", codes: [...storedCodes] };
+  }
+
+  if (selection.mode === "all") return selection;
+  if (selection.mode === "exclude") {
+    targetCodes.forEach((code) => storedCodes.delete(code));
+    return storedCodes.size === 0
+      ? { mode: "all", codes: [] }
+      : { mode: "exclude", codes: [...storedCodes] };
+  }
+
+  targetCodes.forEach((code) => storedCodes.add(code));
+  return { mode: "include", codes: [...storedCodes] };
+}
+
+export function selectedDepartmentCount(
+  selection: ProgramSelection,
+  departments: readonly DepartmentOption[],
+): number {
+  return departments.filter((department) =>
+    areProgramCodesSelected(selection, department.programCodes),
+  ).length;
 }
 
 export function matchesProgramSelection(

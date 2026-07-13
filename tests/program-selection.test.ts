@@ -2,9 +2,12 @@ import { describe, expect, it } from "vitest";
 import programsJson from "../data/programs_114.json";
 import {
   isProgramSelected,
+  selectedDepartmentCount,
   selectedUniqueProgramCodes,
   selectedProgramCount,
+  toDepartmentOptions,
   toProgramOptions,
+  toggleProgramCodes,
   toggleProgramSelection,
 } from "../lib/programSelection";
 import { filterPrograms } from "../lib/filters";
@@ -62,6 +65,41 @@ describe("114 官方校系選取資料", () => {
     expect(bothGroups).toHaveLength(2168);
     expect(new Set(bothGroups).size).toBe(2168);
   });
+
+  it("科系選單只列去重後的科系名稱，不重複顯示學校", () => {
+    const options = toProgramOptions(programs);
+    const naturalDepartments = toDepartmentOptions(options, "自然組");
+    const socialDepartments = toDepartmentOptions(options, "社會組");
+    const computerScience = naturalDepartments.find(
+      (department) => department.departmentName === "資訊工程學系",
+    );
+
+    expect(naturalDepartments).toHaveLength(853);
+    expect(socialDepartments).toHaveLength(934);
+    expect(computerScience?.programCodes).toHaveLength(30);
+    expect(
+      naturalDepartments.every(
+        (department) => !("schoolName" in department),
+      ),
+    ).toBe(true);
+  });
+
+  it("中正大學數學系數 A 官方最低篩選級分固定為 11", () => {
+    const mathematics = programs.find(
+      (program) => program.programCode === "041052",
+    );
+    const mathARule = mathematics?.screeningRules.find(
+      (rule) => rule.label === "數A",
+    );
+
+    expect(mathematics?.schoolName).toBe("國立中正大學");
+    expect(mathARule).toMatchObject({
+      order: 3,
+      subjects: ["數A"],
+      minScore: 11,
+      rawText: "數A11",
+    });
+  });
 });
 
 describe("programSelection", () => {
@@ -89,6 +127,56 @@ describe("programSelection", () => {
     expect(exceptOne).toEqual({ mode: "exclude", codes: ["099202"] });
     expect(selectedProgramCount(exceptOne, codes)).toBe(2);
     expect(isProgramSelected(exceptOne, "099202")).toBe(false);
+  });
+
+  it("勾選一個科系名稱會選取該組所有學校的同名校系", () => {
+    const naturalDepartments = toDepartmentOptions(
+      toProgramOptions(programs),
+      "自然組",
+    );
+    const computerScience = naturalDepartments.find(
+      (department) => department.departmentName === "資訊工程學系",
+    );
+    if (!computerScience) throw new Error("測試資料缺少資訊工程學系");
+
+    const selection = toggleProgramCodes(
+      { mode: "none", codes: [] },
+      computerScience.programCodes,
+    );
+    expect(selection.mode).toBe("include");
+    expect(selection.codes).toHaveLength(30);
+    expect(selectedDepartmentCount(selection, naturalDepartments)).toBe(1);
+
+    const selectedPrograms = filterPrograms(programs, {
+      groupedProgramSelections: {
+        自然組: selection,
+        社會組: { mode: "none", codes: [] },
+      },
+    });
+    expect(selectedPrograms).toHaveLength(30);
+    expect(
+      selectedPrograms.every(
+        (program) => program.programName === "資訊工程學系",
+      ),
+    ).toBe(true);
+
+    expect(
+      toggleProgramCodes(selection, computerScience.programCodes),
+    ).toEqual({ mode: "none", codes: [] });
+
+    const excluded = toggleProgramCodes(
+      { mode: "all", codes: [] },
+      computerScience.programCodes,
+    );
+    expect(excluded.mode).toBe("exclude");
+    expect(excluded.codes).toHaveLength(30);
+
+    const completedFromPartial = toggleProgramCodes(
+      { mode: "include", codes: [computerScience.programCodes[0]] },
+      computerScience.programCodes,
+    );
+    expect(completedFromPartial.mode).toBe("include");
+    expect(completedFromPartial.codes).toHaveLength(30);
   });
 
   it("結果篩選精確使用校系代碼", () => {

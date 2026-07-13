@@ -3,10 +3,12 @@
 import { useMemo, useState } from "react";
 import { SCHOOL_SELECTION_OPTIONS } from "@/config/schoolGroups";
 import {
+  areProgramCodesSelected,
   EMPTY_PROGRAM_SELECTION,
-  isProgramSelected,
+  selectedDepartmentCount,
   selectedProgramCount,
-  toggleProgramSelection,
+  toDepartmentOptions,
+  toggleProgramCodes,
   type ProgramOption,
   type GroupedProgramSelections,
   type ProgramSelection,
@@ -92,54 +94,61 @@ export function FilterPanel({
       groupSelection === "all" ? [] : programsByGroup[groupSelection],
     [groupSelection, programsByGroup],
   );
+  const departmentsByGroup = useMemo(
+    () => ({
+      自然組: toDepartmentOptions(programOptions, "自然組"),
+      社會組: toDepartmentOptions(programOptions, "社會組"),
+    }),
+    [programOptions],
+  );
+  const groupDepartments = useMemo(
+    () =>
+      groupSelection === "all" ? [] : departmentsByGroup[groupSelection],
+    [departmentsByGroup, groupSelection],
+  );
   const programSelection =
     groupSelection === "all"
       ? EMPTY_PROGRAM_SELECTION
       : programSelections[groupSelection];
   const selectedByGroup = {
-    自然組: selectedProgramCount(
+    自然組: selectedDepartmentCount(
       programSelections.自然組,
-      programsByGroup.自然組.map((program) => program.programCode),
+      departmentsByGroup.自然組,
     ),
-    社會組: selectedProgramCount(
+    社會組: selectedDepartmentCount(
       programSelections.社會組,
-      programsByGroup.社會組.map((program) => program.programCode),
+      departmentsByGroup.社會組,
     ),
   };
 
-  const filteredPrograms = useMemo(() => {
+  const filteredDepartments = useMemo(() => {
     const query = normalizeSearch(programSearch);
-    if (!query) return groupPrograms;
-    return groupPrograms.filter((program) =>
-      [
-        program.programCode,
-        program.schoolId,
-        program.schoolName,
-        program.programName,
-      ].some((value) => normalizeSearch(value).includes(query)),
+    if (!query) return groupDepartments;
+    return groupDepartments.filter((department) =>
+      normalizeSearch(department.departmentName).includes(query),
     );
-  }, [groupPrograms, programSearch]);
+  }, [groupDepartments, programSearch]);
 
   const availableProgramCodes = useMemo(
     () => groupPrograms.map((program) => program.programCode),
     [groupPrograms],
   );
-  const selectedCount = selectedProgramCount(
+  const selectedCount = selectedDepartmentCount(
     programSelection,
-    availableProgramCodes,
+    groupDepartments,
   );
   const totalProgramPages = Math.max(
     1,
-    Math.ceil(filteredPrograms.length / PROGRAM_PAGE_SIZE),
+    Math.ceil(filteredDepartments.length / PROGRAM_PAGE_SIZE),
   );
   const visibleProgramPage = Math.min(programPage, totalProgramPages - 1);
-  const visiblePrograms = filteredPrograms.slice(
+  const visibleDepartments = filteredDepartments.slice(
     visibleProgramPage * PROGRAM_PAGE_SIZE,
     (visibleProgramPage + 1) * PROGRAM_PAGE_SIZE,
   );
 
-  function toggleProgram(programCode: string) {
-    const next = toggleProgramSelection(programSelection, programCode);
+  function toggleDepartment(programCodes: readonly string[]) {
+    const next = toggleProgramCodes(programSelection, programCodes);
     const nextCount = selectedProgramCount(next, availableProgramCodes);
     if (nextCount === 0) {
       onProgramSelectionChange(groupSelection as GroupTag, EMPTY_PROGRAM_SELECTION);
@@ -155,7 +164,7 @@ export function FilterPanel({
 
   const programStart = visibleProgramPage * PROGRAM_PAGE_SIZE + 1;
   const programEnd = Math.min(
-    filteredPrograms.length,
+    filteredDepartments.length,
     programStart + PROGRAM_PAGE_SIZE - 1,
   );
 
@@ -192,8 +201,8 @@ export function FilterPanel({
             >
               <b>{value}</b>
               <small>
-                {selectedByGroup[value] === programsByGroup[value].length
-                  ? `已全選 ${programsByGroup[value].length}`
+                {selectedByGroup[value] === departmentsByGroup[value].length
+                  ? `已全選 ${departmentsByGroup[value].length}`
                   : `已選 ${selectedByGroup[value]}`}
               </small>
             </button>
@@ -278,7 +287,7 @@ export function FilterPanel({
             <span>
               {groupSelection === "all"
                 ? "先選自然組或社會組"
-                : `${groupSelection}共 ${groupPrograms.length} 筆，已選 ${selectedCount} 筆`}
+                : `${groupSelection}共 ${groupDepartments.length} 個科系，已選 ${selectedCount} 個`}
             </span>
           </div>
           {groupSelection !== "all" ? (
@@ -289,14 +298,14 @@ export function FilterPanel({
               onClick={() =>
                 onProgramSelectionChange(
                   groupSelection,
-                  selectedCount === groupPrograms.length
+                  selectedCount === groupDepartments.length
                     ? EMPTY_PROGRAM_SELECTION
                     : { mode: "all", codes: [] },
                 )
               }
               type="button"
             >
-              {selectedCount === groupPrograms.length ? "全部取消" : "全選"}
+              {selectedCount === groupDepartments.length ? "全部取消" : "全選"}
             </button>
           ) : null}
         </div>
@@ -304,7 +313,7 @@ export function FilterPanel({
         {groupSelection === "all" ? (
           <div className="program-picker-empty">
             <b>請先選擇自然組或社會組</b>
-            <p>選擇後會列出該組全部校系，預設不勾選任何科系。</p>
+            <p>選擇後會列出該組全部科系名稱，預設不勾選任何科系。</p>
           </div>
         ) : (
           <>
@@ -316,37 +325,35 @@ export function FilterPanel({
                   setProgramSearch(event.target.value);
                   setProgramPage(0);
                 }}
-                placeholder="輸入校名、科系名稱或 6 碼校系代碼"
+                placeholder="輸入科系名稱或關鍵字"
                 type="search"
                 value={programSearch}
               />
             </label>
 
             <div className="program-list-summary" aria-live="polite">
-              {filteredPrograms.length === 0
+              {filteredDepartments.length === 0
                 ? "找不到符合關鍵字的科系"
-                : `找到 ${filteredPrograms.length} 筆・顯示 ${programStart}–${programEnd} 筆`}
+                : `找到 ${filteredDepartments.length} 個科系・顯示 ${programStart}–${programEnd} 個`}
             </div>
 
-            {visiblePrograms.length > 0 ? (
+            {visibleDepartments.length > 0 ? (
               <div className="program-checklist" aria-label={`${groupSelection}科系列表`}>
-                {visiblePrograms.map((program) => (
-                  <label className="program-check" key={program.programCode}>
+                {visibleDepartments.map((department) => (
+                  <label className="program-check" key={department.departmentName}>
                     <input
-                      checked={isProgramSelected(
+                      checked={areProgramCodesSelected(
                         programSelection,
-                        program.programCode,
+                        department.programCodes,
                       )}
-                      onChange={() => toggleProgram(program.programCode)}
+                      onChange={() =>
+                        toggleDepartment(department.programCodes)
+                      }
                       type="checkbox"
                     />
-                    <span className="program-check-copy">
-                      <span>
-                        <b>{program.schoolName}</b>
-                        <small>{program.programCode}</small>
-                      </span>
-                      <strong>{program.programName}</strong>
-                    </span>
+                    <strong className="department-check-name">
+                      {department.departmentName}
+                    </strong>
                   </label>
                 ))}
               </div>
