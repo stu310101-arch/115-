@@ -230,18 +230,49 @@ describe("114 官方校系選取資料", () => {
     specialPrograms.forEach((program) => {
       expect(program.evaluationSupport).toBe("unsupported");
       expect(program.screeningRules).toEqual([]);
-      expect(program.reviewReasons).toHaveLength(1);
-      expect(program.reviewReasons).toEqual(
-        expect.arrayContaining([
-          expect.stringMatching(
-            /^需特殊檢定（(?:APCS|術科)），詳情請至官方網站查詢$/u,
-          ),
-        ]),
+      expect(program.reviewReasons?.[0]).toMatch(
+        /^需特殊檢定（(?:APCS|術科)），詳情請至官方網站查詢$/u,
       );
     });
     expectedApcsPrograms.forEach((program) => {
       expect(specialPrograms).toContain(program);
     });
+  });
+
+  it("完整保留臺師大 8 筆特殊門檻與音樂系分流名額說明", () => {
+    const expectedRules = {
+      "002282": [["英文", 8], ["數學A", 10], ["APCS 觀念題＋實作題", 7]],
+      "002472": [["國文＋英文", 34], ["素描＋彩繪技法＋創意表現", 213]],
+      "002482": [["國文＋英文", 28], ["彩繪技法", 72], ["素描", 75]],
+      "002492": [["國文＋英文", 26], ["彩繪技法", 69], ["素描", 69], ["水墨書畫", 79.8]],
+      "002502": [["體育百分等級", 75.36], ["國文＋英文", 30]],
+      "002512": [["體育百分等級", 75.3], ["國文＋英文", 37]],
+      "002522": [["體育百分等級", 82.7], ["國文＋英文", 43]],
+    } as const;
+
+    Object.entries(expectedRules).forEach(([programCode, rules]) => {
+      const program = programs.find(
+        (candidate) => candidate.programCode === programCode,
+      );
+      expect(program).toMatchObject({
+        programCode,
+        evaluationSupport: "unsupported",
+        screeningRules: [],
+      });
+      expect(
+        program?.additionalScreeningRules?.map(({ label, minScore }) => [
+          label,
+          minScore,
+        ]),
+      ).toEqual(rules);
+    });
+
+    const music = programs.find(
+      (program) => program.programCode === "002452",
+    );
+    expect(music).toMatchObject({ quota: 64, evaluationSupport: "unsupported" });
+    expect(music?.reviewReasons?.join("；")).toContain("19 種主修樂器名額加總");
+    expect(music?.reviewReasons?.join("；")).toContain("名額與術科最低分不同");
   });
 });
 

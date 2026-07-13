@@ -6822,6 +6822,11 @@
     "reviewReasons": [
       "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
+    "additionalScreeningRules": [
+      { "label": "英文", "minScore": 8, "rawText": "英文8" },
+      { "label": "數學A", "minScore": 10, "rawText": "數學A10" },
+      { "label": "APCS 觀念題＋實作題", "minScore": 7, "rawText": "APCS 觀念題＋實作題7" }
+    ],
     "verified": false
   },
   {
@@ -7889,7 +7894,8 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "需特殊檢定（術科），詳情請至官方網站查詢"
+      "需特殊檢定（術科），詳情請至官方網站查詢",
+      "招生名額 64 名為鋼琴、聲樂、小提琴、中提琴等 19 種主修樂器名額加總；各主修樂器的名額與術科最低分不同，須依官方資料逐項確認"
     ],
     "verified": false
   },
@@ -7964,6 +7970,10 @@
     "reviewReasons": [
       "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
+    "additionalScreeningRules": [
+      { "label": "國文＋英文", "minScore": 34, "rawText": "國文＋英文34" },
+      { "label": "素描＋彩繪技法＋創意表現", "minScore": 213, "rawText": "素描＋彩繪技法＋創意表現213" }
+    ],
     "verified": false
   },
   {
@@ -7997,6 +8007,11 @@
     "reviewReasons": [
       "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
+    "additionalScreeningRules": [
+      { "label": "國文＋英文", "minScore": 28, "rawText": "國文＋英文28" },
+      { "label": "彩繪技法", "minScore": 72, "rawText": "彩繪技法72" },
+      { "label": "素描", "minScore": 75, "rawText": "素描75" }
+    ],
     "verified": false
   },
   {
@@ -8029,6 +8044,12 @@
     "evaluationSupport": "unsupported",
     "reviewReasons": [
       "需特殊檢定（術科），詳情請至官方網站查詢"
+    ],
+    "additionalScreeningRules": [
+      { "label": "國文＋英文", "minScore": 26, "rawText": "國文＋英文26" },
+      { "label": "彩繪技法", "minScore": 69, "rawText": "彩繪技法69" },
+      { "label": "素描", "minScore": 69, "rawText": "素描69" },
+      { "label": "水墨書畫", "minScore": 79.8, "rawText": "水墨書畫79.8" }
     ],
     "verified": false
   },
@@ -8082,6 +8103,10 @@
     "reviewReasons": [
       "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
+    "additionalScreeningRules": [
+      { "label": "體育百分等級", "minScore": 75.36, "rawText": "體育百分等級75.36" },
+      { "label": "國文＋英文", "minScore": 30, "rawText": "國文＋英文30" }
+    ],
     "verified": false
   },
   {
@@ -8134,6 +8159,10 @@
     "reviewReasons": [
       "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
+    "additionalScreeningRules": [
+      { "label": "體育百分等級", "minScore": 75.3, "rawText": "體育百分等級75.3" },
+      { "label": "國文＋英文", "minScore": 37, "rawText": "國文＋英文37" }
+    ],
     "verified": false
   },
   {
@@ -8185,6 +8214,10 @@
     "evaluationSupport": "unsupported",
     "reviewReasons": [
       "需特殊檢定（術科），詳情請至官方網站查詢"
+    ],
+    "additionalScreeningRules": [
+      { "label": "體育百分等級", "minScore": 82.7, "rawText": "體育百分等級82.7" },
+      { "label": "國文＋英文", "minScore": 43, "rawText": "國文＋英文43" }
     ],
     "verified": false
   },

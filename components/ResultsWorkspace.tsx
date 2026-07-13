@@ -207,7 +207,7 @@ function HydratedResultsWorkspace({ programs }: ResultsWorkspaceProps) {
               符合條件 {evaluation.matched.length} 筆；可安全自動判斷{" "}
               {evaluation.supported.length} 筆，其中可能通過{" "}
               {evaluation.passed.length} 筆。另有{" "}
-              {evaluation.needsOfficialReview.length} 筆請查看官方資料。
+              {evaluation.needsOfficialReview.length} 筆無法完整判定，請查看官方資料。
             </p>
           </div>
           <RouteLink className="back-to-query" route="query" search={querySearch}>
@@ -308,9 +308,9 @@ function HydratedResultsWorkspace({ programs }: ResultsWorkspaceProps) {
             <div>
               <span className="result-icon" aria-hidden="true">!</span>
               <div>
-                <h2>資料待確認／查看官方</h2>
+                <h2>無法完整判定／查看官方</h2>
                 <p>
-                  這些校系可被搜尋，但門檻尚無法安全自動判斷；每頁顯示 20 筆。
+                  這些校系可被搜尋，但含尚未完整建模的特殊或待確認門檻；每頁顯示 20 筆。
                 </p>
               </div>
             </div>

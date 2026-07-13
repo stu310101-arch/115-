@@ -1872,6 +1872,12 @@ input:focus-visible {
   color: #76541c;
 }
 
+.review-badge.incomplete {
+  background: #a54b2f;
+  box-shadow: 0 4px 12px rgba(165, 75, 47, 0.2);
+  color: #fff;
+}
+
 .review-reasons {
   margin-top: 15px;
   border-top: 1px solid var(--line);

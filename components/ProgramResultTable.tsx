@@ -222,11 +222,13 @@ export function UnsupportedProgramTable({
                   <h3>{program.programName}</h3>
                 </div>
                 <div className="program-actions">
-                  <span className="review-badge">
+                  <span
+                    className={`review-badge${requiresSpecialScreening ? " incomplete" : ""}`}
+                  >
                     {requiresGenderSelection
                       ? "需選性別組別"
                       : requiresSpecialScreening
-                        ? "需特殊檢定"
+                        ? "無法完整判定"
                         : "資料待確認"}
                   </span>
                   <SourceLink
