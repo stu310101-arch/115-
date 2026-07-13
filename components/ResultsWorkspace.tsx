@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
-import { SCHOOL_GROUPS, type SchoolGroupId } from "@/config/schoolGroups";
+import { SCHOOL_GROUPS } from "@/config/schoolGroups";
 import { evaluateProgram } from "@/lib/admission";
 import { filterPrograms, type ProgramFilterCriteria } from "@/lib/filters";
 import type { EvaluationResult, Program, UserScores } from "@/lib/types";
@@ -142,14 +142,8 @@ function HydratedResultsWorkspace({ programs }: ResultsWorkspaceProps) {
 
   const evaluation = useMemo(() => {
     const criteria: ProgramFilterCriteria = {
-      schoolGroupIds:
-        query.schoolSelection === "top" ||
-        query.schoolSelection === "central" ||
-        query.schoolSelection === "regional"
-          ? [query.schoolSelection as SchoolGroupId]
-          : undefined,
-      customSchoolIds:
-        query.schoolSelection === "custom" ? query.customSchoolIds : undefined,
+      schoolGroupIds: query.schoolGroupIds,
+      customSchoolIds: query.customSchoolIds,
       groupedProgramSelections: query.programSelections,
     };
     const matched = filterPrograms(programs, criteria);

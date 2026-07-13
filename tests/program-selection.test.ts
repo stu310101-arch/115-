@@ -25,6 +25,7 @@ describe("114 官方校系選取資料", () => {
   it("完整保留 2,168 個唯一 6 碼校系代碼與兩組清單", () => {
     const options = toProgramOptions(programs);
     const codes = new Set(options.map((program) => program.programCode));
+    const schools = new Set(options.map((program) => program.schoolId));
     const natural = options.filter((program) =>
       program.groupTags.includes("自然組"),
     );
@@ -34,6 +35,7 @@ describe("114 官方校系選取資料", () => {
 
     expect(options).toHaveLength(2168);
     expect(codes.size).toBe(2168);
+    expect(schools.size).toBe(66);
     expect([...codes].every((code) => /^\d{6}$/.test(code))).toBe(true);
     expect(natural).toHaveLength(1280);
     expect(social).toHaveLength(1287);
@@ -98,6 +100,98 @@ describe("114 官方校系選取資料", () => {
       subjects: ["數A"],
       minScore: 11,
       rawText: "數A11",
+    });
+  });
+
+  it("全表複驗發現的 12 個官方門檻均已校正", () => {
+    const correctedRuleScores = [
+      ["001112", 1, 11],
+      ["002222", 2, 11],
+      ["003132", 2, 11],
+      ["004242", 2, 11],
+      ["006392", 1, 11],
+      ["007012", 2, 11],
+      ["011262", 1, 53],
+      ["011292", 2, 52],
+      ["013132", 2, 51],
+      ["013442", 2, 58],
+      ["027182", 3, 11],
+      ["109012", 1, 57],
+    ] as const;
+
+    correctedRuleScores.forEach(([programCode, order, minScore]) => {
+      const program = programs.find(
+        (candidate) => candidate.programCode === programCode,
+      );
+      expect(program?.screeningRules.find((rule) => rule.order === order))
+        .toMatchObject({ order, minScore });
+    });
+  });
+
+  it("APCS 與術科校系不發布可能錯位的部分學測規則", () => {
+    ["004522", "056182"].forEach((programCode) => {
+      const program = programs.find(
+        (candidate) => candidate.programCode === programCode,
+      );
+      expect(program).toMatchObject({
+        programCode,
+        evaluationSupport: "unsupported",
+        screeningRules: [],
+      });
+      expect(program?.source.reportImageUrl).toMatch(/^https:\/\//u);
+      expect(program?.reviewReasons).toEqual([
+        expect.stringMatching(
+          /^需特殊檢定（(?:APCS|術科)），詳情請至官方網站查詢$/u,
+        ),
+      ]);
+    });
+  });
+
+  it("全數 APCS 與術科校系均標示需特殊檢定並停止自動判斷", () => {
+    const apcsProgramsWithoutApcsInName = [
+      "013092",
+      "016252",
+      "033152",
+      "058102",
+      "101132",
+      "150172",
+      "153112",
+    ];
+    const expectedApcsPrograms = programs.filter(
+      (program) =>
+        /APCS/iu.test(program.programName) ||
+        apcsProgramsWithoutApcsInName.includes(program.programCode),
+    );
+    const specialPrograms = programs.filter((program) =>
+      program.reviewReasons?.some((reason) =>
+        reason.startsWith("需特殊檢定"),
+      ),
+    );
+    const apcsPrograms = specialPrograms.filter((program) =>
+      program.reviewReasons?.some((reason) => reason.includes("（APCS）")),
+    );
+    const artPrograms = specialPrograms.filter((program) =>
+      program.reviewReasons?.some((reason) => reason.includes("（術科）")),
+    );
+
+    expect(expectedApcsPrograms).toHaveLength(60);
+    expect(specialPrograms).toHaveLength(130);
+    expect(apcsPrograms).toHaveLength(60);
+    expect(artPrograms).toHaveLength(70);
+    specialPrograms.forEach((program) => {
+      expect(program.evaluationSupport).toBe("unsupported");
+      expect(program.screeningRules).toEqual([]);
+      expect(program.reviewReasons).toHaveLength(1);
+      expect(program.reviewReasons).toEqual(
+        expect.arrayContaining([
+          expect.stringMatching(
+            /^需特殊檢定（(?:APCS|術科)），詳情請至官方網站查詢$/u,
+          ),
+        ]),
+      );
+    });
+    expectedApcsPrograms.forEach((program) => {
+      expect(specialPrograms).toContain(program);
     });
   });
 });

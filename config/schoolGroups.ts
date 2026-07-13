@@ -7,6 +7,7 @@
 export const SCHOOL_GROUP_IDS = {
   TOP: "top",
   CENTRAL: "central",
+  TEACHER: "teacher",
   REGIONAL: "regional",
 } as const;
 
@@ -44,6 +45,18 @@ export const SCHOOL_GROUPS: readonly SchoolGroup[] = [
     ],
   },
   {
+    id: SCHOOL_GROUP_IDS.TEACHER,
+    label: "師範體系",
+    schoolIds: ["002", "022", "023", "031", "032"],
+    schoolNames: [
+      "國立臺灣師範大學",
+      "國立高雄師範大學",
+      "國立彰化師範大學",
+      "國立臺中教育大學",
+      "國立臺北教育大學",
+    ],
+  },
+  {
     id: SCHOOL_GROUP_IDS.REGIONAL,
     label: "地名大學",
     schoolIds: ["099", "101", "100", "150", "038", "036", "033", "034"],
@@ -66,33 +79,6 @@ export const SCHOOL_GROUP_OPTIONS: readonly Readonly<{
   label: string;
 }>[] = SCHOOL_GROUPS.map(({ id, label }) => ({ id, label }));
 
-export const SCHOOL_SELECTION_IDS = {
-  ALL: "all",
-  CUSTOM: "custom",
-} as const;
-
-export type SchoolSelectionOption =
-  | Readonly<{ id: "all"; label: "全部學校"; kind: "all" }>
-  | Readonly<{
-      id: SchoolGroupId;
-      label: string;
-      kind: "group";
-      groupId: SchoolGroupId;
-    }>
-  | Readonly<{ id: "custom"; label: "自訂複選學校"; kind: "custom" }>;
-
-/** 首頁完整選項；UI 可依 kind 決定是否顯示自訂學校複選器。 */
-export const SCHOOL_SELECTION_OPTIONS: readonly SchoolSelectionOption[] = [
-  { id: SCHOOL_SELECTION_IDS.ALL, label: "全部學校", kind: "all" },
-  ...SCHOOL_GROUP_OPTIONS.map(({ id, label }) => ({
-    id,
-    label,
-    kind: "group" as const,
-    groupId: id,
-  })),
-  {
-    id: SCHOOL_SELECTION_IDS.CUSTOM,
-    label: "自訂複選學校",
-    kind: "custom",
-  },
-];
+export function isSchoolGroupId(value: unknown): value is SchoolGroupId {
+  return SCHOOL_GROUP_OPTIONS.some((option) => option.id === value);
+}

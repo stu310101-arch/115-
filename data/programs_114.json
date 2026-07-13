@@ -802,8 +802,8 @@
         "subjects": [
           "數A"
         ],
-        "minScore": 1,
-        "rawText": "數A1"
+        "minScore": 11,
+        "rawText": "數A11"
       },
       {
         "order": 2,
@@ -4056,17 +4056,7 @@
         "rawText": "自然前標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 12,
-        "rawText": "數A12"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/001.htm",
@@ -4076,7 +4066,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -6389,8 +6379,8 @@
         "subjects": [
           "數A"
         ],
-        "minScore": 1,
-        "rawText": "數A1"
+        "minScore": 11,
+        "rawText": "數A11"
       }
     ],
     "source": {
@@ -6745,26 +6735,7 @@
         "rawText": "數學A前標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文",
-        "subjects": [
-          "英文"
-        ],
-        "minScore": 8,
-        "rawText": "英文8"
-      },
-      {
-        "order": 2,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 10,
-        "rawText": "數A10"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/002.htm",
@@ -6774,7 +6745,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -7843,7 +7814,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -7906,19 +7877,7 @@
     ],
     "departmentKeywords": [],
     "requirements": [],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文＋社會",
-        "subjects": [
-          "國文",
-          "英文",
-          "社會"
-        ],
-        "minScore": 34,
-        "rawText": "國文＋英文＋社會34"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/002.htm",
@@ -7928,7 +7887,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -7951,19 +7910,7 @@
         "rawText": "英文後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文＋社會",
-        "subjects": [
-          "國文",
-          "英文",
-          "社會"
-        ],
-        "minScore": 28,
-        "rawText": "國文＋英文＋社會28"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/002.htm",
@@ -7973,7 +7920,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -7996,19 +7943,7 @@
         "rawText": "英文後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文＋社會",
-        "subjects": [
-          "國文",
-          "英文",
-          "社會"
-        ],
-        "minScore": 26,
-        "rawText": "國文＋英文＋社會26"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/002.htm",
@@ -8018,7 +7953,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -8060,20 +7995,7 @@
         "rawText": "自然後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文＋社會＋自然",
-        "subjects": [
-          "國文",
-          "英文",
-          "社會",
-          "自然"
-        ],
-        "minScore": 36,
-        "rawText": "國文＋英文＋社會＋自然36"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/002.htm",
@@ -8083,7 +8005,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -8125,20 +8047,7 @@
         "rawText": "自然後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文＋社會＋自然",
-        "subjects": [
-          "國文",
-          "英文",
-          "社會",
-          "自然"
-        ],
-        "minScore": 53,
-        "rawText": "國文＋英文＋社會＋自然53"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/002.htm",
@@ -8148,7 +8057,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -8190,20 +8099,7 @@
         "rawText": "自然後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文＋社會＋自然",
-        "subjects": [
-          "國文",
-          "英文",
-          "社會",
-          "自然"
-        ],
-        "minScore": 7,
-        "rawText": "國文＋英文＋社會＋自然7"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/002.htm",
@@ -8213,7 +8109,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -8716,27 +8612,7 @@
         "rawText": "自然均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文＋自然",
-        "subjects": [
-          "英文",
-          "自然"
-        ],
-        "minScore": 23,
-        "rawText": "英文＋自然23"
-      },
-      {
-        "order": 2,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 6,
-        "rawText": "數A6"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/003.htm",
@@ -8746,7 +8622,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -9099,8 +8975,8 @@
         "subjects": [
           "數A"
         ],
-        "minScore": 1,
-        "rawText": "數A1"
+        "minScore": 11,
+        "rawText": "數A11"
       },
       {
         "order": 3,
@@ -9954,38 +9830,7 @@
         "rawText": "數學A均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 7,
-        "rawText": "數A7"
-      },
-      {
-        "order": 2,
-        "label": "英文＋自然",
-        "subjects": [
-          "英文",
-          "自然"
-        ],
-        "minScore": 25,
-        "rawText": "英文＋自然25"
-      },
-      {
-        "order": 3,
-        "label": "英文＋數A＋自然",
-        "subjects": [
-          "英文",
-          "數A",
-          "自然"
-        ],
-        "minScore": 34,
-        "rawText": "英文＋數A＋自然34"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/003.htm",
@@ -9995,7 +9840,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -13292,8 +13137,8 @@
         "subjects": [
           "數A"
         ],
-        "minScore": 1,
-        "rawText": "數A1"
+        "minScore": 11,
+        "rawText": "數A11"
       },
       {
         "order": 3,
@@ -13348,18 +13193,7 @@
         "rawText": "數學A前標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文＋數A",
-        "subjects": [
-          "英文",
-          "數A"
-        ],
-        "minScore": 21,
-        "rawText": "英文＋數A21"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/004.htm",
@@ -13369,7 +13203,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -15174,36 +15008,7 @@
         "rawText": "自然前標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 10,
-        "rawText": "國文10"
-      },
-      {
-        "order": 2,
-        "label": "英文＋數A",
-        "subjects": [
-          "英文",
-          "數A"
-        ],
-        "minScore": 5,
-        "rawText": "英文＋數A5"
-      },
-      {
-        "order": 3,
-        "label": "自然",
-        "subjects": [
-          "自然"
-        ],
-        "minScore": 1,
-        "rawText": "自然1"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/004.htm",
@@ -15213,7 +15018,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -16772,18 +16577,7 @@
         "rawText": "數學B後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文＋數B",
-        "subjects": [
-          "英文",
-          "數B"
-        ],
-        "minScore": 4,
-        "rawText": "英文＋數B4"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/005.htm",
@@ -16793,7 +16587,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -16880,7 +16674,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -19593,8 +19387,8 @@
         "subjects": [
           "數A"
         ],
-        "minScore": 1,
-        "rawText": "數A1"
+        "minScore": 11,
+        "rawText": "數A11"
       },
       {
         "order": 2,
@@ -19788,18 +19582,7 @@
         "rawText": "自然均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "數A＋自然",
-        "subjects": [
-          "數A",
-          "自然"
-        ],
-        "minScore": 20,
-        "rawText": "數A＋自然20"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/006.htm",
@@ -19809,7 +19592,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -20097,8 +19880,8 @@
         "subjects": [
           "數A"
         ],
-        "minScore": 1,
-        "rawText": "數A1"
+        "minScore": 11,
+        "rawText": "數A11"
       },
       {
         "order": 3,
@@ -20961,18 +20744,7 @@
         "rawText": "數學B後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文",
-        "subjects": [
-          "國文",
-          "英文"
-        ],
-        "minScore": 4,
-        "rawText": "國文＋英文4"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/007.htm",
@@ -20982,7 +20754,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -23910,8 +23682,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -24731,19 +24502,7 @@
         "rawText": "數學A後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文＋數A＋自然",
-        "subjects": [
-          "英文",
-          "數A",
-          "自然"
-        ],
-        "minScore": 4,
-        "rawText": "英文＋數A＋自然4"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/009.htm",
@@ -24753,7 +24512,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -25908,8 +25667,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -25980,17 +25738,7 @@
         "rawText": "國文後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 10,
-        "rawText": "國文10"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/009.htm",
@@ -26000,7 +25748,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -27668,8 +27416,8 @@
           "數A",
           "自然"
         ],
-        "minScore": 33,
-        "rawText": "國文＋英文＋數A＋自然33"
+        "minScore": 53,
+        "rawText": "國文＋英文＋數A＋自然53"
       }
     ],
     "source": {
@@ -27855,8 +27603,8 @@
           "數A",
           "自然"
         ],
-        "minScore": 32,
-        "rawText": "國文＋英文＋數A＋自然32"
+        "minScore": 52,
+        "rawText": "國文＋英文＋數A＋自然52"
       }
     ],
     "source": {
@@ -28396,17 +28144,7 @@
         "rawText": "數學A前標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 4,
-        "rawText": "數A4"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/011.htm",
@@ -28416,7 +28154,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -29298,8 +29036,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -29325,8 +29062,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -30889,17 +30625,7 @@
         "rawText": "自然均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 9,
-        "rawText": "數A9"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/013.htm",
@@ -30909,7 +30635,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -30938,26 +30664,19 @@
         "rawText": "自然均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 9,
-        "rawText": "數A9"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/013.htm",
       "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/pict/013.png",
       "programDetailUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_013092.htm?v=1.0"
     },
-    "dataStatus": "complete",
-    "evaluationSupport": "supported",
-    "verified": true
+    "dataStatus": "needs-review",
+    "evaluationSupport": "unsupported",
+    "reviewReasons": [
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
+    ],
+    "verified": false
   },
   {
     "year": 114,
@@ -31221,8 +30940,8 @@
           "數A",
           "自然"
         ],
-        "minScore": 31,
-        "rawText": "國文＋英文＋數A＋自然31"
+        "minScore": 51,
+        "rawText": "國文＋英文＋數A＋自然51"
       }
     ],
     "source": {
@@ -33113,8 +32832,8 @@
           "數A",
           "自然"
         ],
-        "minScore": 38,
-        "rawText": "國文＋英文＋數A＋自然38"
+        "minScore": 58,
+        "rawText": "國文＋英文＋數A＋自然58"
       },
       {
         "order": 3,
@@ -36428,17 +36147,7 @@
         "rawText": "數學A後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文",
-        "subjects": [
-          "英文"
-        ],
-        "minScore": 3,
-        "rawText": "英文3"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/014.htm",
@@ -36448,7 +36157,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -36478,17 +36187,7 @@
         "rawText": "數學B後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文",
-        "subjects": [
-          "英文"
-        ],
-        "minScore": 3,
-        "rawText": "英文3"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/014.htm",
@@ -36498,7 +36197,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -36528,17 +36227,7 @@
         "rawText": "數學B後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 8,
-        "rawText": "國文8"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/014.htm",
@@ -36548,7 +36237,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -36571,17 +36260,7 @@
         "rawText": "數學B後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "數B",
-        "subjects": [
-          "數B"
-        ],
-        "minScore": 4,
-        "rawText": "數B4"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/014.htm",
@@ -36591,7 +36270,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -37871,28 +37550,7 @@
         "rawText": "數學A後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 4,
-        "rawText": "數A4"
-      },
-      {
-        "order": 2,
-        "label": "國文＋英文＋數A",
-        "subjects": [
-          "國文",
-          "英文",
-          "數A"
-        ],
-        "minScore": 4,
-        "rawText": "國文＋英文＋數A4"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/015.htm",
@@ -37902,7 +37560,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -40449,26 +40107,7 @@
         "rawText": "自然均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 9,
-        "rawText": "數A9"
-      },
-      {
-        "order": 2,
-        "label": "英文",
-        "subjects": [
-          "英文"
-        ],
-        "minScore": 11,
-        "rawText": "英文11"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/016.htm",
@@ -40478,7 +40117,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -40815,8 +40454,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績",
-      "OCR 無法確認篩選順序2最低級分"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -40857,44 +40495,19 @@
         "rawText": "自然前標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 4,
-        "rawText": "數A4"
-      },
-      {
-        "order": 2,
-        "label": "英文",
-        "subjects": [
-          "英文"
-        ],
-        "minScore": 9,
-        "rawText": "英文9"
-      },
-      {
-        "order": 3,
-        "label": "自然",
-        "subjects": [
-          "自然"
-        ],
-        "minScore": 12,
-        "rawText": "自然12"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/016.htm",
       "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/pict/016.png",
       "programDetailUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_016252.htm?v=1.0"
     },
-    "dataStatus": "complete",
-    "evaluationSupport": "supported",
-    "verified": true
+    "dataStatus": "needs-review",
+    "evaluationSupport": "unsupported",
+    "reviewReasons": [
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
+    ],
+    "verified": false
   },
   {
     "year": 114,
@@ -44240,8 +43853,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -45207,18 +44819,7 @@
         "rawText": "英文底標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文",
-        "subjects": [
-          "國文",
-          "英文"
-        ],
-        "minScore": 2,
-        "rawText": "國文＋英文2"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/018.htm",
@@ -45228,7 +44829,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -45333,17 +44934,7 @@
         "rawText": "數學B底標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "數B",
-        "subjects": [
-          "數B"
-        ],
-        "minScore": 2,
-        "rawText": "數B2"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/018.htm",
@@ -45353,7 +44944,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -45470,17 +45061,7 @@
         "rawText": "數學B底標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 2,
-        "rawText": "國文2"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/018.htm",
@@ -45490,7 +45071,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -47329,18 +46910,7 @@
         "rawText": "數學A後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文＋數A",
-        "subjects": [
-          "英文",
-          "數A"
-        ],
-        "minScore": 6,
-        "rawText": "英文＋數A6"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/020.htm",
@@ -47350,7 +46920,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -47583,19 +47153,7 @@
         "rawText": "數學A後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文＋數A＋自然",
-        "subjects": [
-          "英文",
-          "數A",
-          "自然"
-        ],
-        "minScore": 4,
-        "rawText": "英文＋數A＋自然4"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/020.htm",
@@ -47605,7 +47163,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -48749,27 +48307,7 @@
         "rawText": "數學B後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 8,
-        "rawText": "國文8"
-      },
-      {
-        "order": 2,
-        "label": "英文＋數B",
-        "subjects": [
-          "英文",
-          "數B"
-        ],
-        "minScore": 4,
-        "rawText": "英文＋數B4"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/020.htm",
@@ -48779,7 +48317,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -49213,8 +48751,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -49276,8 +48813,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "OCR 無法確認篩選順序1最低級分"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -50275,17 +49811,7 @@
         "rawText": "數學A均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 9,
-        "rawText": "數A9"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/021.htm",
@@ -50295,7 +49821,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -51834,19 +51360,7 @@
         "rawText": "數學A後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文＋數A",
-        "subjects": [
-          "國文",
-          "英文",
-          "數A"
-        ],
-        "minScore": 10,
-        "rawText": "國文＋英文＋數A10"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/022.htm",
@@ -51856,7 +51370,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -51925,8 +51439,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -51943,18 +51456,7 @@
     ],
     "departmentKeywords": [],
     "requirements": [],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文",
-        "subjects": [
-          "國文",
-          "英文"
-        ],
-        "minScore": 30,
-        "rawText": "國文＋英文30"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/022.htm",
@@ -51964,7 +51466,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -51981,18 +51483,7 @@
     ],
     "departmentKeywords": [],
     "requirements": [],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文",
-        "subjects": [
-          "國文",
-          "英文"
-        ],
-        "minScore": 18,
-        "rawText": "國文＋英文18"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/022.htm",
@@ -52002,7 +51493,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -52025,19 +51516,7 @@
         "rawText": "國文均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文＋數B",
-        "subjects": [
-          "國文",
-          "英文",
-          "數B"
-        ],
-        "minScore": 13,
-        "rawText": "國文＋英文＋數B13"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/022.htm",
@@ -52047,7 +51526,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -52975,18 +52454,7 @@
         "rawText": "數學A均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文＋數A",
-        "subjects": [
-          "英文",
-          "數A"
-        ],
-        "minScore": 7,
-        "rawText": "英文＋數A7"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/023.htm",
@@ -52996,7 +52464,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -53704,19 +53172,7 @@
     ],
     "departmentKeywords": [],
     "requirements": [],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文＋社會",
-        "subjects": [
-          "國文",
-          "英文",
-          "社會"
-        ],
-        "minScore": 22,
-        "rawText": "國文＋英文＋社會22"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/023.htm",
@@ -53726,7 +53182,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -53749,19 +53205,7 @@
         "rawText": "英文前標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文＋社會",
-        "subjects": [
-          "國文",
-          "英文",
-          "社會"
-        ],
-        "minScore": 0,
-        "rawText": "國文＋英文＋社會—（官方未啟動倍率篩選）"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/023.htm",
@@ -53771,7 +53215,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -53829,27 +53273,7 @@
         "rawText": "英聽B級"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文",
-        "subjects": [
-          "國文",
-          "英文"
-        ],
-        "minScore": 12,
-        "rawText": "國文＋英文12"
-      },
-      {
-        "order": 2,
-        "label": "英文",
-        "subjects": [
-          "英文"
-        ],
-        "minScore": 5,
-        "rawText": "英文5"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/023.htm",
@@ -53859,7 +53283,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -55057,18 +54481,7 @@
         "rawText": "數學A後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文＋數A",
-        "subjects": [
-          "英文",
-          "數A"
-        ],
-        "minScore": 4,
-        "rawText": "英文＋數A4"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/026.htm",
@@ -55078,7 +54491,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -55945,19 +55358,7 @@
         "rawText": "自然均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文＋數A＋自然",
-        "subjects": [
-          "英文",
-          "數A",
-          "自然"
-        ],
-        "minScore": 7,
-        "rawText": "英文＋數A＋自然7"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/027.htm",
@@ -55967,7 +55368,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -56263,8 +55664,8 @@
         "subjects": [
           "數A"
         ],
-        "minScore": 1,
-        "rawText": "數A1"
+        "minScore": 11,
+        "rawText": "數A11"
       }
     ],
     "source": {
@@ -57808,8 +57209,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -57836,8 +57236,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -60307,8 +59706,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -60331,17 +59729,7 @@
         "rawText": "國文後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 9,
-        "rawText": "國文9"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/031.htm",
@@ -60351,7 +59739,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -60374,17 +59762,7 @@
         "rawText": "國文後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 10,
-        "rawText": "國文10"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/031.htm",
@@ -60394,7 +59772,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -61651,18 +61029,7 @@
         "rawText": "數學A均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文＋數A",
-        "subjects": [
-          "英文",
-          "數A"
-        ],
-        "minScore": 18,
-        "rawText": "英文＋數A18"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/032.htm",
@@ -61672,7 +61039,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -62017,18 +61384,7 @@
         "rawText": "數學B均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文＋數B",
-        "subjects": [
-          "英文",
-          "數B"
-        ],
-        "minScore": 15,
-        "rawText": "英文＋數B15"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/032.htm",
@@ -62038,7 +61394,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -62133,20 +61489,7 @@
         "rawText": "社會均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文＋數B＋社會",
-        "subjects": [
-          "國文",
-          "英文",
-          "數B",
-          "社會"
-        ],
-        "minScore": 4,
-        "rawText": "國文＋英文＋數B＋社會4"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/032.htm",
@@ -62156,7 +61499,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -62172,19 +61515,7 @@
     ],
     "departmentKeywords": [],
     "requirements": [],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文＋數B",
-        "subjects": [
-          "國文",
-          "英文",
-          "數B"
-        ],
-        "minScore": 23,
-        "rawText": "國文＋英文＋數B23"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/032.htm",
@@ -62194,7 +61525,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -62217,28 +61548,7 @@
         "rawText": "英文均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文＋數B",
-        "subjects": [
-          "國文",
-          "英文",
-          "數B"
-        ],
-        "minScore": 20,
-        "rawText": "國文＋英文＋數B20"
-      },
-      {
-        "order": 2,
-        "label": "英文",
-        "subjects": [
-          "英文"
-        ],
-        "minScore": 8,
-        "rawText": "英文8"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/032.htm",
@@ -62248,7 +61558,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -62265,29 +61575,7 @@
     ],
     "departmentKeywords": [],
     "requirements": [],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "自然",
-        "subjects": [
-          "自然"
-        ],
-        "minScore": 0,
-        "rawText": "自然—（官方未啟動倍率篩選）"
-      },
-      {
-        "order": 2,
-        "label": "國文＋英文＋數B＋自然",
-        "subjects": [
-          "國文",
-          "英文",
-          "數B",
-          "自然"
-        ],
-        "minScore": 20,
-        "rawText": "國文＋英文＋數B＋自然20"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/032.htm",
@@ -62297,7 +61585,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -62957,8 +62245,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績",
-      "OCR 無法確認篩選順序1最低級分"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -62981,36 +62268,19 @@
         "rawText": "數學A均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 5,
-        "rawText": "數A5"
-      },
-      {
-        "order": 2,
-        "label": "英文＋數A",
-        "subjects": [
-          "英文",
-          "數A"
-        ],
-        "minScore": 6,
-        "rawText": "英文＋數A6"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/033.htm",
       "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/pict/033.png",
       "programDetailUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_033152.htm?v=1.0"
     },
-    "dataStatus": "complete",
-    "evaluationSupport": "supported",
-    "verified": true
+    "dataStatus": "needs-review",
+    "evaluationSupport": "unsupported",
+    "reviewReasons": [
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
+    ],
+    "verified": false
   },
   {
     "year": 114,
@@ -63363,18 +62633,7 @@
     ],
     "departmentKeywords": [],
     "requirements": [],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文",
-        "subjects": [
-          "國文",
-          "英文"
-        ],
-        "minScore": 7,
-        "rawText": "國文＋英文7"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/033.htm",
@@ -63384,7 +62643,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -63435,18 +62694,7 @@
     ],
     "departmentKeywords": [],
     "requirements": [],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文",
-        "subjects": [
-          "國文",
-          "英文"
-        ],
-        "minScore": 10,
-        "rawText": "國文＋英文10"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/033.htm",
@@ -63456,7 +62704,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -63472,19 +62720,7 @@
     ],
     "departmentKeywords": [],
     "requirements": [],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文＋數B",
-        "subjects": [
-          "國文",
-          "英文",
-          "數B"
-        ],
-        "minScore": 17,
-        "rawText": "國文＋英文＋數B17"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/033.htm",
@@ -63494,7 +62730,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -63816,17 +63052,7 @@
         "rawText": "數學A均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 6,
-        "rawText": "數A6"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/034.htm",
@@ -63836,7 +63062,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -65860,26 +65086,7 @@
     ],
     "departmentKeywords": [],
     "requirements": [],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "社會",
-        "subjects": [
-          "社會"
-        ],
-        "minScore": 0,
-        "rawText": "社會—（官方未啟動倍率篩選）"
-      },
-      {
-        "order": 2,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 4,
-        "rawText": "國文4"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/034.htm",
@@ -65889,7 +65096,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -65955,8 +65162,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "OCR 無法確認篩選順序1最低級分"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -66795,27 +66001,7 @@
         "rawText": "數學A均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文＋數A",
-        "subjects": [
-          "英文",
-          "數A"
-        ],
-        "minScore": 15,
-        "rawText": "英文＋數A15"
-      },
-      {
-        "order": 2,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 6,
-        "rawText": "數A6"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/035.htm",
@@ -66825,7 +66011,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -67055,8 +66241,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -67079,26 +66264,7 @@
         "rawText": "國文均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 10,
-        "rawText": "國文10"
-      },
-      {
-        "order": 2,
-        "label": "英文",
-        "subjects": [
-          "英文"
-        ],
-        "minScore": 6,
-        "rawText": "英文6"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/035.htm",
@@ -67108,7 +66274,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -67125,18 +66291,7 @@
     ],
     "departmentKeywords": [],
     "requirements": [],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文",
-        "subjects": [
-          "國文",
-          "英文"
-        ],
-        "minScore": 9,
-        "rawText": "國文＋英文9"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/035.htm",
@@ -67146,7 +66301,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -68698,8 +67853,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -68757,26 +67911,7 @@
         "rawText": "國文後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 9,
-        "rawText": "國文9"
-      },
-      {
-        "order": 2,
-        "label": "英文",
-        "subjects": [
-          "英文"
-        ],
-        "minScore": 3,
-        "rawText": "英文3"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/036.htm",
@@ -68786,7 +67921,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -69630,17 +68765,7 @@
     ],
     "departmentKeywords": [],
     "requirements": [],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 7,
-        "rawText": "國文7"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/038.htm",
@@ -69650,7 +68775,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -69701,17 +68826,7 @@
     ],
     "departmentKeywords": [],
     "requirements": [],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 3,
-        "rawText": "國文3"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/038.htm",
@@ -69721,7 +68836,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -69940,19 +69055,7 @@
         "rawText": "數學B底標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文＋自然",
-        "subjects": [
-          "國文",
-          "英文",
-          "自然"
-        ],
-        "minScore": 21,
-        "rawText": "國文＋英文＋自然21"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/039.htm",
@@ -69962,7 +69065,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -70962,17 +70065,7 @@
         "rawText": "英文後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文",
-        "subjects": [
-          "英文"
-        ],
-        "minScore": 2,
-        "rawText": "英文2"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/040.htm",
@@ -70982,7 +70075,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -71260,17 +70353,7 @@
         "rawText": "英文後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 4,
-        "rawText": "數A4"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/040.htm",
@@ -71280,7 +70363,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -71426,18 +70509,7 @@
     ],
     "departmentKeywords": [],
     "requirements": [],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文",
-        "subjects": [
-          "國文",
-          "英文"
-        ],
-        "minScore": 6,
-        "rawText": "國文＋英文6"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/040.htm",
@@ -71447,7 +70519,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -71471,26 +70543,7 @@
         "rawText": "國文後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文",
-        "subjects": [
-          "英文"
-        ],
-        "minScore": 2,
-        "rawText": "英文2"
-      },
-      {
-        "order": 2,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 9,
-        "rawText": "國文9"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/040.htm",
@@ -71500,7 +70553,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -73151,26 +72204,7 @@
         "rawText": "自然均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 6,
-        "rawText": "數A6"
-      },
-      {
-        "order": 2,
-        "label": "英文",
-        "subjects": [
-          "英文"
-        ],
-        "minScore": 11,
-        "rawText": "英文11"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/041.htm",
@@ -73180,7 +72214,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -74296,17 +73330,7 @@
         "rawText": "數學A底標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 0,
-        "rawText": "數A—（官方未啟動倍率篩選）"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/042.htm",
@@ -74316,7 +73340,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -74517,17 +73541,7 @@
         "rawText": "數學A底標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 3,
-        "rawText": "數A3"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/042.htm",
@@ -74537,7 +73551,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -77470,8 +76484,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -77689,17 +76702,7 @@
         "rawText": "數學A後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 4,
-        "rawText": "數A4"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/045.htm",
@@ -77709,7 +76712,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -81383,17 +80386,7 @@
         "rawText": "國文底標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 4,
-        "rawText": "國文4"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/046.htm",
@@ -81403,7 +80396,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -84522,17 +83515,7 @@
         "rawText": "自然底標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "自然",
-        "subjects": [
-          "自然"
-        ],
-        "minScore": 2,
-        "rawText": "自然2"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/050.htm",
@@ -84542,7 +83525,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -85991,8 +84974,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -88730,17 +87712,7 @@
     ],
     "departmentKeywords": [],
     "requirements": [],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 4,
-        "rawText": "國文4"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/051.htm",
@@ -88750,7 +87722,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -88766,17 +87738,7 @@
     ],
     "departmentKeywords": [],
     "requirements": [],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 4,
-        "rawText": "國文4"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/051.htm",
@@ -88786,7 +87748,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -89097,8 +88059,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -89125,8 +88086,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -89153,8 +88113,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -89181,8 +88140,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -89209,8 +88167,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -89237,8 +88194,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -89265,8 +88221,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -89293,8 +88248,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -89321,8 +88275,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -89349,8 +88302,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "OCR 無法確認篩選順序1最低級分"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -89395,7 +88347,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -89421,8 +88373,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -89467,7 +88418,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -89503,18 +88454,7 @@
         "rawText": "英聽C級"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文",
-        "subjects": [
-          "國文",
-          "英文"
-        ],
-        "minScore": 1,
-        "rawText": "國文＋英文1"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/056.htm",
@@ -89524,7 +88464,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -89554,18 +88494,7 @@
         "rawText": "英文均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文",
-        "subjects": [
-          "國文",
-          "英文"
-        ],
-        "minScore": 20,
-        "rawText": "國文＋英文20"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/056.htm",
@@ -89575,7 +88504,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -89614,8 +88543,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "OCR 無法確認篩選順序1最低級分"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -90108,27 +89036,19 @@
         "rawText": "英文均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文＋數B",
-        "subjects": [
-          "英文",
-          "數B"
-        ],
-        "minScore": 6,
-        "rawText": "英文＋數B6"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/058.htm",
       "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/pict/058.png",
       "programDetailUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_058102.htm?v=1.0"
     },
-    "dataStatus": "complete",
-    "evaluationSupport": "supported",
-    "verified": true
+    "dataStatus": "needs-review",
+    "evaluationSupport": "unsupported",
+    "reviewReasons": [
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
+    ],
+    "verified": false
   },
   {
     "year": 114,
@@ -90629,18 +89549,7 @@
         "rawText": "數學A均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文＋數A",
-        "subjects": [
-          "英文",
-          "數A"
-        ],
-        "minScore": 12,
-        "rawText": "英文＋數A12"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/058.htm",
@@ -90650,7 +89559,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -93694,8 +92603,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -97568,18 +96476,7 @@
         "rawText": "數學A均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文＋數A",
-        "subjects": [
-          "英文",
-          "數A"
-        ],
-        "minScore": 17,
-        "rawText": "英文＋數A17"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/099.htm",
@@ -97589,7 +96486,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -99355,18 +98252,7 @@
         "rawText": "數學A均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文＋數A",
-        "subjects": [
-          "英文",
-          "數A"
-        ],
-        "minScore": 11,
-        "rawText": "英文＋數A11"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/100.htm",
@@ -99376,7 +98262,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -99945,8 +98831,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績",
-      "官方未採學測倍率或檢定，可能使用術科或其他篩選資料"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -100004,17 +98889,7 @@
         "rawText": "國文後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 9,
-        "rawText": "國文9"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/100.htm",
@@ -100024,7 +98899,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有術科倍率篩選，需輸入官方術科成績"
+      "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -100828,27 +99703,19 @@
         "rawText": "數學B均標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文",
-        "subjects": [
-          "國文",
-          "英文"
-        ],
-        "minScore": 7,
-        "rawText": "國文＋英文7"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/101.htm",
       "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/pict/101.png",
       "programDetailUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_101132.htm?v=1.0"
     },
-    "dataStatus": "complete",
-    "evaluationSupport": "supported",
-    "verified": true
+    "dataStatus": "needs-review",
+    "evaluationSupport": "unsupported",
+    "reviewReasons": [
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
+    ],
+    "verified": false
   },
   {
     "year": 114,
@@ -102714,8 +101581,8 @@
           "數A",
           "自然"
         ],
-        "minScore": 37,
-        "rawText": "國文＋英文＋數A＋自然37"
+        "minScore": 57,
+        "rawText": "國文＋英文＋數A＋自然57"
       },
       {
         "order": 2,
@@ -104485,17 +103352,7 @@
         "rawText": "國文底標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 0,
-        "rawText": "國文—（官方未啟動倍率篩選）"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/110.htm",
@@ -104505,7 +103362,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -104914,17 +103771,7 @@
         "rawText": "英文底標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文",
-        "subjects": [
-          "英文"
-        ],
-        "minScore": 0,
-        "rawText": "英文—（官方未啟動倍率篩選）"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/110.htm",
@@ -104934,7 +103781,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -107636,17 +106483,7 @@
         "rawText": "英文底標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文",
-        "subjects": [
-          "英文"
-        ],
-        "minScore": 2,
-        "rawText": "英文2"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/134.htm",
@@ -107656,7 +106493,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -109178,26 +108015,7 @@
         "rawText": "數學A後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文",
-        "subjects": [
-          "英文"
-        ],
-        "minScore": 5,
-        "rawText": "英文5"
-      },
-      {
-        "order": 2,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 4,
-        "rawText": "數A4"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/150.htm",
@@ -109207,7 +108025,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -109230,35 +108048,19 @@
         "rawText": "數學A後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "英文",
-        "subjects": [
-          "英文"
-        ],
-        "minScore": 4,
-        "rawText": "英文4"
-      },
-      {
-        "order": 2,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 8,
-        "rawText": "數A8"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/150.htm",
       "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/pict/150.png",
       "programDetailUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_150172.htm?v=1.0"
     },
-    "dataStatus": "complete",
-    "evaluationSupport": "supported",
-    "verified": true
+    "dataStatus": "needs-review",
+    "evaluationSupport": "unsupported",
+    "reviewReasons": [
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
+    ],
+    "verified": false
   },
   {
     "year": 114,
@@ -109937,19 +108739,7 @@
         "rawText": "國文後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文＋英文＋數B",
-        "subjects": [
-          "國文",
-          "英文",
-          "數B"
-        ],
-        "minScore": 4,
-        "rawText": "國文＋英文＋數B4"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/151.htm",
@@ -109959,7 +108749,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -110196,7 +108986,7 @@
   {
     "year": 114,
     "schoolId": "152",
-    "schoolName": "馬偕醫學大學",
+    "schoolName": "馬偕醫學院",
     "programCode": "152012",
     "programName": "醫學系",
     "quota": 20,
@@ -110278,7 +109068,7 @@
   {
     "year": 114,
     "schoolId": "152",
-    "schoolName": "馬偕醫學大學",
+    "schoolName": "馬偕醫學院",
     "programCode": "152022",
     "programName": "護理學系",
     "quota": 44,
@@ -110339,7 +109129,7 @@
   {
     "year": 114,
     "schoolId": "152",
-    "schoolName": "馬偕醫學大學",
+    "schoolName": "馬偕醫學院",
     "programCode": "152032",
     "programName": "聽力暨語言治療學系聽力組",
     "quota": 21,
@@ -110394,7 +109184,7 @@
   {
     "year": 114,
     "schoolId": "152",
-    "schoolName": "馬偕醫學大學",
+    "schoolName": "馬偕醫學院",
     "programCode": "152042",
     "programName": "聽力暨語言治療學系語言組",
     "quota": 24,
@@ -110456,7 +109246,7 @@
   {
     "year": 114,
     "schoolId": "152",
-    "schoolName": "馬偕醫學大學",
+    "schoolName": "馬偕醫學院",
     "programCode": "152052",
     "programName": "視光學系",
     "quota": 21,
@@ -110505,7 +109295,7 @@
   {
     "year": 114,
     "schoolId": "152",
-    "schoolName": "馬偕醫學大學",
+    "schoolName": "馬偕醫學院",
     "programCode": "152062",
     "programName": "醫學檢驗暨再生醫學學系",
     "quota": 23,
@@ -110554,7 +109344,7 @@
   {
     "year": 114,
     "schoolId": "152",
-    "schoolName": "馬偕醫學大學",
+    "schoolName": "馬偕醫學院",
     "programCode": "152072",
     "programName": "醫學系(薪傳組)",
     "quota": 1,
@@ -110636,7 +109426,7 @@
   {
     "year": 114,
     "schoolId": "152",
-    "schoolName": "馬偕醫學大學",
+    "schoolName": "馬偕醫學院",
     "programCode": "152082",
     "programName": "護理學系(薪傳組)",
     "quota": 2,
@@ -110691,7 +109481,7 @@
   {
     "year": 114,
     "schoolId": "152",
-    "schoolName": "馬偕醫學大學",
+    "schoolName": "馬偕醫學院",
     "programCode": "152092",
     "programName": "聽力暨語言治療學系聽力組(薪傳組)",
     "quota": 1,
@@ -110740,7 +109530,7 @@
   {
     "year": 114,
     "schoolId": "152",
-    "schoolName": "馬偕醫學大學",
+    "schoolName": "馬偕醫學院",
     "programCode": "152102",
     "programName": "視光學系(薪傳組)",
     "quota": 1,
@@ -110789,7 +109579,7 @@
   {
     "year": 114,
     "schoolId": "152",
-    "schoolName": "馬偕醫學大學",
+    "schoolName": "馬偕醫學院",
     "programCode": "152112",
     "programName": "醫學檢驗暨再生醫學學系(薪傳組)",
     "quota": 1,
@@ -110838,7 +109628,7 @@
   {
     "year": 114,
     "schoolId": "152",
-    "schoolName": "馬偕醫學大學",
+    "schoolName": "馬偕醫學院",
     "programCode": "152122",
     "programName": "聽力暨語言治療學系聽力組(青年儲蓄帳戶組)",
     "quota": 1,
@@ -111067,17 +109857,7 @@
         "rawText": "自然後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 8,
-        "rawText": "國文8"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/153.htm",
@@ -111087,7 +109867,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -111302,26 +110082,7 @@
         "rawText": "數學A後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 3,
-        "rawText": "國文3"
-      },
-      {
-        "order": 2,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 6,
-        "rawText": "數A6"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/153.htm",
@@ -111331,7 +110092,7 @@
     "dataStatus": "needs-review",
     "evaluationSupport": "unsupported",
     "reviewReasons": [
-      "另有 APCS 成績篩選，需輸入官方 APCS 成績"
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "verified": false
   },
@@ -111354,35 +110115,19 @@
         "rawText": "數學A後標"
       }
     ],
-    "screeningRules": [
-      {
-        "order": 1,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 10,
-        "rawText": "國文10"
-      },
-      {
-        "order": 2,
-        "label": "數A",
-        "subjects": [
-          "數A"
-        ],
-        "minScore": 6,
-        "rawText": "數A6"
-      }
-    ],
+    "screeningRules": [],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/153.htm",
       "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/pict/153.png",
       "programDetailUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_153112.htm?v=1.0"
     },
-    "dataStatus": "complete",
-    "evaluationSupport": "supported",
-    "verified": true
+    "dataStatus": "needs-review",
+    "evaluationSupport": "unsupported",
+    "reviewReasons": [
+      "需特殊檢定（APCS），詳情請至官方網站查詢"
+    ],
+    "verified": false
   },
   {
     "year": 114,

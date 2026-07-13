@@ -48,6 +48,7 @@ test("server-renders the finished homepage and complete data status", async () =
 test("server-renders every requested site page", async () => {
   const cases = [
     ["/how-it-works", /HOW IT WORKS|網站怎麼判斷/],
+    ["/other-admissions", /找不到的學校，不一定是資料漏抓/],
     ["/query", /資料讀取中，請稍後/],
     ["/results", /資料讀取中，請稍後/],
   ];

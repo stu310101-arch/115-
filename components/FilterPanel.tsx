@@ -1,7 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { SCHOOL_SELECTION_OPTIONS } from "@/config/schoolGroups";
+import {
+  SCHOOL_GROUP_OPTIONS,
+  type SchoolGroupId,
+} from "@/config/schoolGroups";
 import {
   areProgramCodesSelected,
   EMPTY_PROGRAM_SELECTION,
@@ -15,6 +18,7 @@ import {
 } from "@/lib/programSelection";
 import type { GroupTag } from "@/lib/types";
 import type { GroupSelection } from "./queryState";
+import { RouteLink } from "./PageNavigation";
 
 export type SchoolSourceOption = {
   schoolId: string;
@@ -24,8 +28,8 @@ export type SchoolSourceOption = {
 type FilterPanelProps = {
   groupSelection: GroupSelection;
   onGroupSelectionChange: (value: Exclude<GroupSelection, "all">) => void;
-  schoolSelection: string;
-  onSchoolSelectionChange: (value: string) => void;
+  schoolGroupIds: readonly SchoolGroupId[];
+  onSchoolGroupIdsChange: (value: SchoolGroupId[]) => void;
   customSchoolIds: readonly string[];
   onCustomSchoolIdsChange: (value: string[]) => void;
   programSelections: GroupedProgramSelections;
@@ -38,6 +42,9 @@ type FilterPanelProps = {
 };
 
 const PROGRAM_PAGE_SIZE = 12;
+const SCHOOL_SEARCH_ALIASES: Readonly<Record<string, readonly string[]>> = {
+  "152": ["馬偕醫學大學"],
+};
 
 function toggleValue<T extends string>(values: readonly T[], value: T): T[] {
   return values.includes(value)
@@ -55,8 +62,8 @@ function normalizeSearch(value: string): string {
 export function FilterPanel({
   groupSelection,
   onGroupSelectionChange,
-  schoolSelection,
-  onSchoolSelectionChange,
+  schoolGroupIds,
+  onSchoolGroupIdsChange,
   customSchoolIds,
   onCustomSchoolIdsChange,
   programSelections,
@@ -65,16 +72,22 @@ export function FilterPanel({
   schoolSources,
 }: FilterPanelProps) {
   const [schoolSearch, setSchoolSearch] = useState("");
+  const [showCustomSchools, setShowCustomSchools] = useState(
+    customSchoolIds.length > 0,
+  );
   const [programSearch, setProgramSearch] = useState("");
   const [programPage, setProgramPage] = useState(0);
 
   const filteredSchools = useMemo(() => {
-    const query = schoolSearch.trim().toLocaleLowerCase("zh-Hant");
+    const query = normalizeSearch(schoolSearch);
     if (!query) return schoolSources;
     return schoolSources.filter(
       (school) =>
         school.schoolId.includes(query) ||
-        school.schoolName.toLocaleLowerCase("zh-Hant").includes(query),
+        normalizeSearch(school.schoolName).includes(query) ||
+        (SCHOOL_SEARCH_ALIASES[school.schoolId] ?? []).some((alias) =>
+          normalizeSearch(alias).includes(query),
+        ),
     );
   }, [schoolSearch, schoolSources]);
 
@@ -137,6 +150,8 @@ export function FilterPanel({
     programSelection,
     groupDepartments,
   );
+  const allSchoolsSelected =
+    schoolGroupIds.length === 0 && customSchoolIds.length === 0;
   const totalProgramPages = Math.max(
     1,
     Math.ceil(filteredDepartments.length / PROGRAM_PAGE_SIZE),
@@ -216,26 +231,66 @@ export function FilterPanel({
       <div className="filter-block">
         <div className="filter-label-row">
           <h3>學校範圍</h3>
-          <span>可選填</span>
+          <span>可複選</span>
         </div>
-        <div className="choice-grid school-choice-grid" role="radiogroup" aria-label="學校範圍">
-          {SCHOOL_SELECTION_OPTIONS.map((option) => (
+        <div
+          aria-label="學校範圍（可複選）"
+          className="choice-grid school-choice-grid"
+          role="group"
+        >
+          <button
+            aria-pressed={allSchoolsSelected}
+            className={`choice-button ${allSchoolsSelected ? "selected" : ""}`}
+            onClick={() => {
+              onSchoolGroupIdsChange([]);
+              onCustomSchoolIdsChange([]);
+            }}
+            type="button"
+          >
+            <span className="choice-dot" aria-hidden="true" />
+            全部學校
+          </button>
+          {SCHOOL_GROUP_OPTIONS.map((option) => (
             <button
-              aria-checked={schoolSelection === option.id}
-              className={`choice-button ${schoolSelection === option.id ? "selected" : ""}`}
+              aria-pressed={schoolGroupIds.includes(option.id)}
+              className={`choice-button ${
+                schoolGroupIds.includes(option.id) ? "selected" : ""
+              }`}
               key={option.id}
-              onClick={() => onSchoolSelectionChange(option.id)}
-              role="radio"
+              onClick={() =>
+                onSchoolGroupIdsChange(toggleValue(schoolGroupIds, option.id))
+              }
               type="button"
             >
               <span className="choice-dot" aria-hidden="true" />
               {option.label}
             </button>
           ))}
+          <button
+            aria-controls="custom-school-panel"
+            aria-expanded={showCustomSchools}
+            className={`choice-button ${
+              customSchoolIds.length > 0 ? "selected" : ""
+            } ${showCustomSchools ? "expanded" : ""}`}
+            onClick={() => setShowCustomSchools((current) => !current)}
+            type="button"
+          >
+            <span className="choice-dot" aria-hidden="true" />
+            自訂複選學校
+            {customSchoolIds.length > 0 ? `（${customSchoolIds.length}）` : ""}
+          </button>
         </div>
+        <p className="microcopy">
+          已選分類與自訂學校會取聯集，例如可同時查看「四個頂大＋中字輩」。
+          師範體系包含臺師大、高師大、彰師大、臺中教育與臺北教育。
+        </p>
+        <p className="microcopy separate-admission-note">
+          本站限甄選委員會 114 申請入學 66 校總表；國防醫學院（現名國防醫學大學）、中央警察大學與科技校院等採其他招生管道，不會混入本回測。
+          <RouteLink route="other-admissions">查看其他招生管道與官方連結 →</RouteLink>
+        </p>
 
-        {schoolSelection === "custom" ? (
-          <div className="custom-school-panel">
+        {showCustomSchools ? (
+          <div className="custom-school-panel" id="custom-school-panel">
             <label className="search-field">
               <span className="sr-only">搜尋學校</span>
               <input
@@ -257,7 +312,11 @@ export function FilterPanel({
                 </button>
               ) : null}
             </div>
-            <div className="school-checklist" aria-label="自選學校清單">
+            <div
+              aria-label="自選學校清單"
+              className="school-checklist"
+              role="group"
+            >
               {filteredSchools.map((school) => (
                 <label className="school-check" key={school.schoolId}>
                   <input

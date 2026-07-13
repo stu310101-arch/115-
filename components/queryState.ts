@@ -5,16 +5,25 @@ import {
   type ProgramSelection,
   type ProgramSelectionMode,
 } from "../lib/programSelection";
+import {
+  isSchoolGroupId,
+  type SchoolGroupId,
+} from "../config/schoolGroups";
 import type { GroupTag } from "../lib/types";
 import { SCORE_SUBJECTS, type ScoreDraft } from "./ScoreForm";
 
-export type SiteRoute = "home" | "how-it-works" | "query" | "results";
+export type SiteRoute =
+  | "home"
+  | "how-it-works"
+  | "other-admissions"
+  | "query"
+  | "results";
 export type GroupSelection = "all" | GroupTag;
 
 export type AdmissionQueryState = {
   scores: ScoreDraft;
   groupSelection: GroupSelection;
-  schoolSelection: string;
+  schoolGroupIds: SchoolGroupId[];
   customSchoolIds: string[];
   programSelections: GroupedProgramSelections;
 };
@@ -42,12 +51,15 @@ export const EXAMPLE_SCORES: ScoreDraft = {
 export const DEFAULT_QUERY_STATE: AdmissionQueryState = {
   scores: { ...EMPTY_SCORES },
   groupSelection: "all",
-  schoolSelection: "all",
+  schoolGroupIds: [],
   customSchoolIds: [],
   programSelections: EMPTY_GROUPED_PROGRAM_SELECTIONS,
 };
 
-const SESSION_KEY = "admission-114-query-v3";
+const SESSION_KEY = "admission-114-query-v4";
+const LEGACY_SESSION_KEYS = ["admission-114-query-v3"] as const;
+const SCHOOL_MODE_PARAM = "schoolMode";
+const MULTI_SCHOOL_MODE = "multi";
 const SCORE_PARAMS = {
   國文: "ch",
   英文: "en",
@@ -93,6 +105,14 @@ function safeProgramCodes(value: unknown): string[] {
   return safeStringArray(value).filter((code) => /^\d{6}$/.test(code));
 }
 
+function safeSchoolIds(value: unknown): string[] {
+  return safeStringArray(value).filter((schoolId) => /^\d{3}$/.test(schoolId));
+}
+
+function safeSchoolGroupIds(value: unknown): SchoolGroupId[] {
+  return safeStringArray(value).filter(isSchoolGroupId);
+}
+
 function safeProgramSelection(value: unknown): ProgramSelection {
   if (!value || typeof value !== "object") {
     return { mode: "none", codes: [] };
@@ -127,10 +147,20 @@ function safeGroupedProgramSelections(
   };
 }
 
-function normalizeStoredState(value: unknown): AdmissionQueryState | null {
+function normalizeStoredState(
+  value: unknown,
+  legacy = false,
+): AdmissionQueryState | null {
   if (!value || typeof value !== "object") return null;
-  const candidate = value as Partial<AdmissionQueryState>;
+  const candidate = value as Partial<AdmissionQueryState> & {
+    schoolSelection?: unknown;
+  };
   const storedScores = candidate.scores ?? ({} as ScoreDraft);
+  const storedSchoolGroupIds = safeSchoolGroupIds(candidate.schoolGroupIds);
+  const legacySchoolGroupIds = isSchoolGroupId(candidate.schoolSelection)
+    ? [candidate.schoolSelection]
+    : [];
+  const customSchoolIds = safeSchoolIds(candidate.customSchoolIds);
 
   return {
     scores: SCORE_SUBJECTS.reduce<ScoreDraft>(
@@ -141,11 +171,14 @@ function normalizeStoredState(value: unknown): AdmissionQueryState | null {
       { ...EMPTY_SCORES },
     ),
     groupSelection: safeGroup(candidate.groupSelection),
-    schoolSelection:
-      typeof candidate.schoolSelection === "string"
-        ? candidate.schoolSelection
-        : "all",
-    customSchoolIds: safeStringArray(candidate.customSchoolIds),
+    schoolGroupIds:
+      !legacy && storedSchoolGroupIds.length > 0
+        ? storedSchoolGroupIds
+        : legacySchoolGroupIds,
+    customSchoolIds:
+      !legacy || candidate.schoolSelection === "custom"
+        ? customSchoolIds
+        : [],
     programSelections: safeGroupedProgramSelections(candidate.programSelections),
   };
 }
@@ -153,6 +186,14 @@ function normalizeStoredState(value: unknown): AdmissionQueryState | null {
 export function queryStateFromParams(
   params: URLSearchParams,
 ): AdmissionQueryState {
+  const schoolGroupIds = safeSchoolGroupIds(params.getAll("schoolGroup"));
+  const legacySchoolGroup = params.get("school");
+  const hasMultiSchoolState =
+    params.get(SCHOOL_MODE_PARAM) === MULTI_SCHOOL_MODE ||
+    params.has("schoolGroup");
+  const customSchoolIds = safeSchoolIds(
+    params.get("schoolIds")?.split(",") ?? [],
+  );
   const programSelections: GroupedProgramSelections = {
     自然組: safeProgramSelection({
       mode: params.get(PROGRAM_SELECTION_PARAMS.自然組.mode),
@@ -173,9 +214,16 @@ export function queryStateFromParams(
       { ...EMPTY_SCORES },
     ),
     groupSelection: safeGroup(params.get("group")),
-    schoolSelection: params.get("school") || "all",
+    schoolGroupIds:
+      hasMultiSchoolState && schoolGroupIds.length > 0
+        ? schoolGroupIds
+        : isSchoolGroupId(legacySchoolGroup)
+          ? [legacySchoolGroup]
+          : [],
     customSchoolIds:
-      params.get("schoolIds")?.split(",").filter(Boolean) ?? [],
+      hasMultiSchoolState || legacySchoolGroup === "custom"
+        ? customSchoolIds
+        : [],
     programSelections,
   };
 }
@@ -190,11 +238,16 @@ export function queryStateToParams(state: AdmissionQueryState): URLSearchParams 
   if (state.groupSelection !== "all") {
     params.set("group", state.groupSelection);
   }
-  if (state.schoolSelection !== "all") {
-    params.set("school", state.schoolSelection);
+  const schoolGroupIds = safeSchoolGroupIds(state.schoolGroupIds);
+  const customSchoolIds = safeSchoolIds(state.customSchoolIds);
+  if (schoolGroupIds.length > 0 || customSchoolIds.length > 0) {
+    params.set(SCHOOL_MODE_PARAM, MULTI_SCHOOL_MODE);
   }
-  if (state.customSchoolIds.length > 0) {
-    params.set("schoolIds", state.customSchoolIds.join(","));
+  schoolGroupIds.forEach((schoolGroupId) => {
+    params.append("schoolGroup", schoolGroupId);
+  });
+  if (customSchoolIds.length > 0) {
+    params.set("schoolIds", customSchoolIds.join(","));
   }
   (["自然組", "社會組"] as const).forEach((group) => {
     const selection = state.programSelections[group];
@@ -214,6 +267,8 @@ export function restoreQueryState(): AdmissionQueryState {
   const queryKeys = new Set([
     ...Object.values(SCORE_PARAMS),
     "group",
+    SCHOOL_MODE_PARAM,
+    "schoolGroup",
     "school",
     "schoolIds",
     "naturalMode",
@@ -226,9 +281,15 @@ export function restoreQueryState(): AdmissionQueryState {
   }
 
   try {
-    const raw = window.sessionStorage.getItem(SESSION_KEY);
-    if (raw) {
-      return normalizeStoredState(JSON.parse(raw)) ?? DEFAULT_QUERY_STATE;
+    const current = window.sessionStorage.getItem(SESSION_KEY);
+    if (current) {
+      return normalizeStoredState(JSON.parse(current)) ?? DEFAULT_QUERY_STATE;
+    }
+    for (const key of LEGACY_SESSION_KEYS) {
+      const legacy = window.sessionStorage.getItem(key);
+      if (legacy) {
+        return normalizeStoredState(JSON.parse(legacy), true) ?? DEFAULT_QUERY_STATE;
+      }
     }
   } catch {
     // Browser storage can be unavailable in privacy modes; URL state still works.
@@ -249,7 +310,8 @@ export function routePath(route: SiteRoute): string {
   if (typeof window === "undefined") return route === "home" ? "/" : `/${route}`;
 
   const pathname = window.location.pathname;
-  const routeSuffix = /\/(?:query|results|how-it-works)(?:\/|\.html)?$/;
+  const routeSuffix =
+    /\/(?:query|results|how-it-works|other-admissions)(?:\/|\.html)?$/;
   const match = pathname.match(routeSuffix);
   const base = match
     ? pathname.slice(0, match.index)

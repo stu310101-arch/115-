@@ -189,52 +189,64 @@ export function UnsupportedProgramTable({
 
   return (
     <div className="program-list">
-      {programs.map((program, index) => (
-        <article
-          className="program-card needs-review"
-          key={program.programCode}
-        >
-          <div
-            className="program-rank"
-            aria-label={`第 ${startIndex + index + 1} 筆`}
-          >
-            {String(startIndex + index + 1).padStart(2, "0")}
-          </div>
-          <div className="program-main">
-            <div className="program-heading">
-              <div>
-                <div className="school-line">
-                  <span>{program.schoolName}</span>
-                  <span className="program-code">{program.programCode}</span>
-                </div>
-                <h3>{program.programName}</h3>
-              </div>
-              <div className="program-actions">
-                <span className="review-badge">資料待確認</span>
-                <SourceLink
-                  compact
-                  href={
-                    program.source.programDetailUrl ??
-                    program.source.reportHtmlUrl
-                  }
-                />
-              </div>
-            </div>
+      {programs.map((program, index) => {
+        const requiresSpecialScreening = program.reviewReasons?.some(
+          (reason) => reason.startsWith("需特殊檢定"),
+        );
 
-            <div className="review-reasons">
-              <b>目前無法安全自動判斷：</b>
-              <ul>
-                {(program.reviewReasons?.length
-                  ? program.reviewReasons
-                  : ["官方最低級分資料仍待人工確認"]
-                ).map((reason) => (
-                  <li key={reason}>{reason}</li>
-                ))}
-              </ul>
+        return (
+          <article
+            className="program-card needs-review"
+            key={program.programCode}
+          >
+            <div
+              className="program-rank"
+              aria-label={`第 ${startIndex + index + 1} 筆`}
+            >
+              {String(startIndex + index + 1).padStart(2, "0")}
             </div>
-          </div>
-        </article>
-      ))}
+            <div className="program-main">
+              <div className="program-heading">
+                <div>
+                  <div className="school-line">
+                    <span>{program.schoolName}</span>
+                    <span className="program-code">{program.programCode}</span>
+                  </div>
+                  <h3>{program.programName}</h3>
+                </div>
+                <div className="program-actions">
+                  <span className="review-badge">
+                    {requiresSpecialScreening ? "需特殊檢定" : "資料待確認"}
+                  </span>
+                  <SourceLink
+                    compact
+                    href={
+                      program.source.programDetailUrl ??
+                      program.source.reportHtmlUrl
+                    }
+                  />
+                </div>
+              </div>
+
+              <div className="review-reasons">
+                <b>
+                  {requiresSpecialScreening
+                    ? "需特殊檢定，詳情請至官方網站查詢："
+                    : "目前無法安全自動判斷："}
+                </b>
+                <ul>
+                  {(program.reviewReasons?.length
+                    ? program.reviewReasons
+                    : ["官方最低級分資料仍待人工確認"]
+                  ).map((reason) => (
+                    <li key={reason}>{reason}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </article>
+        );
+      })}
     </div>
   );
 }

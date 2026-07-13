@@ -99,7 +99,7 @@ export function matchesDepartmentFreeText(
 
 /** 判斷校系是否位於任一指定的預設／自訂學校集合。 */
 export function matchesSchoolSelection(
-  program: Program,
+  program: Pick<Program, "schoolId" | "schoolName">,
   schoolGroupIds: readonly SchoolGroupId[] = [],
   customSchoolIds: readonly string[] = [],
 ): boolean {

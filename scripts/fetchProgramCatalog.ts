@@ -43,6 +43,8 @@ type Program = {
       multipliersHtml: string;
     };
     detailCachePath: string;
+    /** Parsed from the official detail page's APCS screening section. */
+    requiresApcs: boolean;
   };
 };
 
@@ -647,6 +649,9 @@ async function main(): Promise<void> {
           candidate.includes("校系代碼") && candidate.includes(program.programCode),
       );
       const firstStage = parseFirstStage(detailHtml, program.programCode);
+      const requiresApcs = /須參加\s*APCS\s*檢測/iu.test(
+        textContent(detailHtml),
+      );
       completedDetails += 1;
       if (completedDetails % 25 === 0 || completedDetails === listedPrograms.length) {
         console.log(`[details ${completedDetails}/${listedPrograms.length}]`);
@@ -670,6 +675,7 @@ async function main(): Promise<void> {
           listRowHtml: program.listRowHtml,
           firstStage: firstStage.raw,
           detailCachePath,
+          requiresApcs,
         },
       };
     },

@@ -2,6 +2,7 @@
 
 import { useMemo, useState, useSyncExternalStore } from "react";
 import type { FormEvent } from "react";
+import { matchesSchoolSelection } from "@/lib/filters";
 import {
   selectedUniqueProgramCodes,
   type ProgramOption,
@@ -59,6 +60,23 @@ function HydratedQueryWorkspace({
   );
   const selectedCount = selectedProgramCodes.length;
   const requiresProgramSelection = selectedCount === 0;
+  const comparisonCount = useMemo(() => {
+    const selectedCodes = new Set(selectedProgramCodes);
+    return programOptions.filter(
+      (program) =>
+        selectedCodes.has(program.programCode) &&
+        matchesSchoolSelection(
+          program,
+          query.schoolGroupIds,
+          query.customSchoolIds,
+        ),
+    ).length;
+  }, [
+    programOptions,
+    query.customSchoolIds,
+    query.schoolGroupIds,
+    selectedProgramCodes,
+  ]);
 
   function updateScore(subject: ScoreSubject, value: string) {
     if (value === "") {
@@ -100,7 +118,6 @@ function HydratedQueryWorkspace({
   }
 
   const querySearch = queryStateToParams(query).toString();
-  const comparisonCount = selectedCount;
 
   return (
     <main className="subpage-main query-page">
@@ -136,12 +153,12 @@ function HydratedQueryWorkspace({
                 },
               }))
             }
-            onSchoolSelectionChange={(value) =>
-              update("schoolSelection", value)
+            onSchoolGroupIdsChange={(value) =>
+              update("schoolGroupIds", value)
             }
             programOptions={programOptions}
             programSelections={query.programSelections}
-            schoolSelection={query.schoolSelection}
+            schoolGroupIds={query.schoolGroupIds}
             schoolSources={schoolSources}
           />
         </div>

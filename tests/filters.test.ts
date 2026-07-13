@@ -124,6 +124,30 @@ describe("filterPrograms", () => {
     ]);
   });
 
+  it("師範體系涵蓋師範與教育大學", () => {
+    const teacherSchools = [
+      ["002", "國立臺灣師範大學"],
+      ["022", "國立高雄師範大學"],
+      ["023", "國立彰化師範大學"],
+      ["031", "國立臺中教育大學"],
+      ["032", "國立臺北教育大學"],
+    ] as const;
+
+    teacherSchools.forEach(([schoolId, schoolName], index) => {
+      expect(
+        matchesSchoolSelection(
+          program({
+            schoolId,
+            schoolName,
+            programCode: `${schoolId}${String(index + 1).padStart(3, "0")}`,
+            programName: "測試學系",
+          }),
+          [SCHOOL_GROUP_IDS.TEACHER],
+        ),
+      ).toBe(true);
+    });
+  });
+
   it("地名大學可由設定中的校名匹配，不依賴硬編碼校碼", () => {
     expect(
       matchesSchoolSelection(programs[2], [SCHOOL_GROUP_IDS.REGIONAL]),

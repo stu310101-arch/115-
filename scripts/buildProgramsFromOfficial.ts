@@ -32,7 +32,7 @@ type CatalogProgram = {
   quota: number | null;
   detailUrl: string;
   items: CatalogItem[];
-  raw?: { listRowHtml?: string };
+  raw?: { listRowHtml?: string; requiresApcs?: boolean };
 };
 
 type Catalog = {
@@ -133,6 +133,8 @@ type CropRequest = {
 
 const EXPECTED_SCHOOL_COUNT = 66;
 const EXPECTED_PROGRAM_COUNT = 2168;
+const EXPECTED_APCS_PROGRAM_COUNT = 60;
+const EXPECTED_ART_EXAM_PROGRAM_COUNT = 70;
 const MAX_ORDER_COLUMNS = 12;
 const FIVE_STANDARDS = new Set<RequirementStandard>([
   "頂標",
@@ -808,6 +810,19 @@ async function writeThresholdCellCrops(requests: readonly CropRequest[]): Promis
 function assertCatalog(catalog: Catalog): void {
   const uniqueCodes = new Set(catalog.programs.map(({ programCode }) => programCode));
   const uniqueSchools = new Set(catalog.programs.map(({ schoolId }) => schoolId));
+  const apcsCount = catalog.programs.filter(
+    (program) => program.raw?.requiresApcs === true,
+  ).length;
+  const artExamCount = catalog.programs.filter((program) => {
+    const rawListRow = program.raw?.listRowHtml ?? "";
+    const artExamCell = rawListRow.match(
+      /title=['"]是否要參加術科考試['"][^>]*>([^]*?)<\/td>/u,
+    )?.[1];
+    return artExamCell?.includes("是") ?? false;
+  }).length;
+  const specialFlagsComplete = catalog.programs.every(
+    (program) => typeof program.raw?.requiresApcs === "boolean",
+  );
   if (
     catalog.academicYear !== 114 ||
     catalog.declaredSchoolCount !== EXPECTED_SCHOOL_COUNT ||
@@ -820,11 +835,17 @@ function assertCatalog(catalog: Catalog): void {
     catalog.validation.uniqueProgramCodeCount !== EXPECTED_PROGRAM_COUNT ||
     !catalog.validation.schoolCountsMatch ||
     !catalog.validation.totalCountMatches ||
-    !catalog.validation.programCodesUnique
+    !catalog.validation.programCodesUnique ||
+    !specialFlagsComplete ||
+    apcsCount !== EXPECTED_APCS_PROGRAM_COUNT ||
+    artExamCount !== EXPECTED_ART_EXAM_PROGRAM_COUNT
   ) {
     throw new Error(
       `官方目錄完整性驗證失敗：schools=${uniqueSchools.size}/${EXPECTED_SCHOOL_COUNT}, ` +
-        `programs=${catalog.programs.length}/${EXPECTED_PROGRAM_COUNT}, unique=${uniqueCodes.size}`,
+        `programs=${catalog.programs.length}/${EXPECTED_PROGRAM_COUNT}, unique=${uniqueCodes.size}, ` +
+        `APCS=${apcsCount}/${EXPECTED_APCS_PROGRAM_COUNT}, ` +
+        `術科=${artExamCount}/${EXPECTED_ART_EXAM_PROGRAM_COUNT}。` +
+        `若 APCS 欄位缺漏，請先重新執行 data:catalog。`,
     );
   }
 }
@@ -855,16 +876,21 @@ async function main(): Promise<void> {
 
   const reviews: ReviewEntry[] = [];
   const cropRequests: CropRequest[] = [];
+  const renamedSchoolIds = new Set<string>();
   const programs: Program[] = catalog.programs.map((catalogProgram) => {
     const sourceIndex = sourceBySchool.get(catalogProgram.schoolId);
     if (!sourceIndex) {
       throw new Error(`缺少校碼 ${catalogProgram.schoolId} 的官方來源`);
     }
-    if (sourceIndex.schoolName !== catalogProgram.schoolName) {
+    if (
+      sourceIndex.schoolName !== catalogProgram.schoolName &&
+      !renamedSchoolIds.has(catalogProgram.schoolId)
+    ) {
       console.warn(
-        `校碼 ${catalogProgram.schoolId} 名稱已由官方校系頁更新：` +
-          `${sourceIndex.schoolName} → ${catalogProgram.schoolName}`,
+        `校碼 ${catalogProgram.schoolId} 校系頁現名為 ${catalogProgram.schoolName}；` +
+          `114 招生資料保留歷史名稱 ${sourceIndex.schoolName}`,
       );
+      renamedSchoolIds.add(catalogProgram.schoolId);
     }
 
     const ruleDerivation = deriveRuleSubjects(catalogProgram.items);
@@ -874,7 +900,7 @@ async function main(): Promise<void> {
       /title=['"]是否要參加術科考試['"][^>]*>([^]*?)<\/td>/u,
     )?.[1];
     const requiresArtExam = artExamCell?.includes("是") ?? false;
-    const requiresApcs = /APCS/iu.test(catalogProgram.programName);
+    const requiresApcs = catalogProgram.raw?.requiresApcs === true;
     const threshold = thresholdScoresForProgram(
       catalogProgram.programCode,
       ruleDerivation.rules,
@@ -892,11 +918,17 @@ async function main(): Promise<void> {
       : threshold.scores
         ? makeRules(ruleDerivation.rules, threshold.scores)
         : null;
-    const reasons = uniqueStrings([
+    const specialScreeningReasons = uniqueStrings([
+      ...(requiresArtExam
+        ? ["需特殊檢定（術科），詳情請至官方網站查詢"]
+        : []),
+      ...(requiresApcs
+        ? ["需特殊檢定（APCS），詳情請至官方網站查詢"]
+        : []),
+    ]);
+    const ordinaryReviewReasons = uniqueStrings([
       ...ruleDerivation.issues,
       ...requirementDerivation.issues,
-      ...(requiresArtExam ? ["另有術科倍率篩選，需輸入官方術科成績"] : []),
-      ...(requiresApcs ? ["另有 APCS 成績篩選，需輸入官方 APCS 成績"] : []),
       ...(screeningRules !== null && (screeningRules.length > 0 || requirementOnly)
         ? []
         : [
@@ -905,11 +937,21 @@ async function main(): Promise<void> {
               : threshold.reason ?? "缺少可信的最低級分",
           ]),
     ]);
+    const reasons =
+      specialScreeningReasons.length > 0
+        ? specialScreeningReasons
+        : ordinaryReviewReasons;
     const supported =
       reasons.length === 0 &&
       screeningRules !== null &&
       (screeningRules.length > 0 || requirementOnly);
     if (screeningRules === null) screeningRules = [];
+    if (specialScreeningReasons.length > 0) {
+      // 術科／APCS 會插入自己的倍率關卡；只把學測科目依序套到官方
+      // 欄位會造成關卡錯位。這些校系仍完整保留供搜尋與連往官方，
+      // 但在支援特殊成績型別前，不發布可能誤導的部分 rules[]。
+      screeningRules = [];
+    }
 
     if (
       !supported &&
@@ -935,7 +977,7 @@ async function main(): Promise<void> {
     const program: Program = {
       year: 114,
       schoolId: catalogProgram.schoolId,
-      schoolName: catalogProgram.schoolName,
+      schoolName: sourceIndex.schoolName,
       programCode: catalogProgram.programCode,
       programName: catalogProgram.programName,
       ...(catalogProgram.quota === null ? {} : { quota: catalogProgram.quota }),
