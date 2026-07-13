@@ -34279,15 +34279,6 @@
         ],
         "minScore": 8,
         "rawText": "英文8"
-      },
-      {
-        "order": 2,
-        "label": "社會",
-        "subjects": [
-          "社會"
-        ],
-        "minScore": 0,
-        "rawText": "社會—（官方未啟動倍率篩選）"
       }
     ],
     "source": {
@@ -34625,24 +34616,6 @@
     "screeningRules": [
       {
         "order": 1,
-        "label": "數B",
-        "subjects": [
-          "數B"
-        ],
-        "minScore": 0,
-        "rawText": "數B—（官方未啟動倍率篩選）"
-      },
-      {
-        "order": 2,
-        "label": "國文",
-        "subjects": [
-          "國文"
-        ],
-        "minScore": 0,
-        "rawText": "國文—（官方未啟動倍率篩選）"
-      },
-      {
-        "order": 3,
         "label": "英文",
         "subjects": [
           "英文"
@@ -35337,15 +35310,6 @@
       },
       {
         "order": 2,
-        "label": "社會",
-        "subjects": [
-          "社會"
-        ],
-        "minScore": 0,
-        "rawText": "社會—（官方未啟動倍率篩選）"
-      },
-      {
-        "order": 3,
         "label": "英文",
         "subjects": [
           "英文"
@@ -36290,6 +36254,18 @@
       }
     ],
     "screeningRules": [],
+    "additionalScreeningRules": [
+      {
+        "label": "英文",
+        "minScore": 3,
+        "rawText": "英文3"
+      },
+      {
+        "label": "APCS 觀念題＋實作題",
+        "minScore": 4,
+        "rawText": "APCS 觀念題＋實作題4"
+      }
+    ],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/014.htm",
@@ -36330,6 +36306,18 @@
       }
     ],
     "screeningRules": [],
+    "additionalScreeningRules": [
+      {
+        "label": "英文",
+        "minScore": 3,
+        "rawText": "英文3"
+      },
+      {
+        "label": "APCS 觀念題＋實作題",
+        "minScore": 4,
+        "rawText": "APCS 觀念題＋實作題4"
+      }
+    ],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/014.htm",
@@ -36370,6 +36358,18 @@
       }
     ],
     "screeningRules": [],
+    "additionalScreeningRules": [
+      {
+        "label": "國文",
+        "minScore": 8,
+        "rawText": "國文8"
+      },
+      {
+        "label": "APCS 觀念題＋實作題",
+        "minScore": 4,
+        "rawText": "APCS 觀念題＋實作題4"
+      }
+    ],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/014.htm",
@@ -36403,6 +36403,18 @@
       }
     ],
     "screeningRules": [],
+    "additionalScreeningRules": [
+      {
+        "label": "APCS 觀念題＋實作題",
+        "minScore": 4,
+        "rawText": "APCS 觀念題＋實作題4"
+      },
+      {
+        "label": "數B",
+        "minScore": 5,
+        "rawText": "數B5"
+      }
+    ],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/014.htm",
