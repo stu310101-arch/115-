@@ -271,6 +271,37 @@ export function UnsupportedProgramTable({
                         ))}
                       </ul>
                     ) : null}
+                    {program.specialScreeningGroups?.length ? (
+                      <details className="special-screening-details">
+                        <summary>
+                          已錄入 {program.specialScreeningGroups.length} 個主修分組的名額與官方最低篩選分數
+                        </summary>
+                        <div className="special-screening-table-wrap">
+                          <table>
+                            <thead>
+                              <tr>
+                                <th scope="col">主修</th>
+                                <th scope="col">名額</th>
+                                <th scope="col">最低篩選分數</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {program.specialScreeningGroups.map((group) => (
+                                <tr key={group.label}>
+                                  <th scope="row">{group.label}</th>
+                                  <td>{group.quota}</td>
+                                  <td>
+                                    {group.rules
+                                      .map((rule) => `${rule.label} ${rule.minScore}`)
+                                      .join("、")}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </details>
+                    ) : null}
                     <ul>
                       {(program.reviewReasons?.length
                         ? program.reviewReasons

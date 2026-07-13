@@ -274,6 +274,72 @@ describe("114 官方校系選取資料", () => {
     expect(music?.reviewReasons?.join("；")).toContain("19 種主修樂器名額加總");
     expect(music?.reviewReasons?.join("；")).toContain("名額與術科最低分不同");
   });
+
+  it("完整保留東吳與政大 3 筆特殊篩選門檻", () => {
+    const expectedApcsRules = {
+      "005222": [
+        ["APCS 觀念題＋實作題", 4],
+        ["英文＋數學B", 12],
+      ],
+      "006422": [
+        ["數學A＋自然", 20],
+        ["APCS 實作題", 3],
+      ],
+    } as const;
+
+    Object.entries(expectedApcsRules).forEach(([programCode, rules]) => {
+      const program = programs.find(
+        (candidate) => candidate.programCode === programCode,
+      );
+      expect(program).toMatchObject({
+        programCode,
+        evaluationSupport: "unsupported",
+        screeningRules: [],
+      });
+      expect(
+        program?.additionalScreeningRules?.map(({ label, minScore }) => [
+          label,
+          minScore,
+        ]),
+      ).toEqual(rules);
+    });
+
+    const music = programs.find(
+      (program) => program.programCode === "005242",
+    );
+    expect(music).toMatchObject({
+      programCode: "005242",
+      quota: 48,
+      evaluationSupport: "unsupported",
+      screeningRules: [],
+    });
+    expect(
+      music?.specialScreeningGroups?.map((group) => [
+        group.label,
+        group.quota,
+        group.rules[0]?.minScore,
+      ]),
+    ).toEqual([
+      ["鋼琴", 10, 80],
+      ["聲樂", 5, 83],
+      ["小提琴", 7, 82.07],
+      ["中提琴", 3, 83.73],
+      ["大提琴", 5, 82],
+      ["低音提琴", 1, 82.79],
+      ["長號", 1, 84.33],
+      ["小號", 1, 86.22],
+      ["法國號", 2, 84],
+      ["上低音號", 1, 86.89],
+      ["低音號", 1, 87.56],
+      ["薩克斯管", 1, 87],
+      ["長笛", 2, 85],
+      ["單簧管（豎笛）", 2, 84.22],
+      ["雙簧管", 1, 86.78],
+      ["低音管", 1, 85.22],
+      ["擊樂", 2, 85.2],
+      ["理論作曲", 2, 82.6],
+    ]);
+  });
 });
 
 describe("programSelection", () => {

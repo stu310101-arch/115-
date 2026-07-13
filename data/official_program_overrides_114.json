@@ -111,6 +111,137 @@
       "reviewReasons": [
         "需特殊檢定（術科），詳情請至官方網站查詢"
       ]
+    },
+    "005222": {
+      "additionalScreeningRules": [
+        {
+          "label": "APCS 觀念題＋實作題",
+          "minScore": 4,
+          "rawText": "APCS 觀念題＋實作題4"
+        },
+        {
+          "label": "英文＋數學B",
+          "minScore": 12,
+          "rawText": "英文＋數學B12"
+        }
+      ],
+      "reviewReasons": [
+        "需特殊檢定（APCS），詳情請至官方網站查詢"
+      ]
+    },
+    "005242": {
+      "specialScreeningGroups": [
+        {
+          "label": "鋼琴",
+          "quota": 10,
+          "rules": [{ "label": "主修", "minScore": 80, "rawText": "主修80" }]
+        },
+        {
+          "label": "聲樂",
+          "quota": 5,
+          "rules": [{ "label": "主修", "minScore": 83, "rawText": "主修83" }]
+        },
+        {
+          "label": "小提琴",
+          "quota": 7,
+          "rules": [{ "label": "主修", "minScore": 82.07, "rawText": "主修82.07" }]
+        },
+        {
+          "label": "中提琴",
+          "quota": 3,
+          "rules": [{ "label": "主修", "minScore": 83.73, "rawText": "主修83.73" }]
+        },
+        {
+          "label": "大提琴",
+          "quota": 5,
+          "rules": [{ "label": "主修", "minScore": 82, "rawText": "主修82" }]
+        },
+        {
+          "label": "低音提琴",
+          "quota": 1,
+          "rules": [{ "label": "主修", "minScore": 82.79, "rawText": "主修82.79" }]
+        },
+        {
+          "label": "長號",
+          "quota": 1,
+          "rules": [{ "label": "主修", "minScore": 84.33, "rawText": "主修84.33" }]
+        },
+        {
+          "label": "小號",
+          "quota": 1,
+          "rules": [{ "label": "主修", "minScore": 86.22, "rawText": "主修86.22" }]
+        },
+        {
+          "label": "法國號",
+          "quota": 2,
+          "rules": [{ "label": "主修", "minScore": 84, "rawText": "主修84" }]
+        },
+        {
+          "label": "上低音號",
+          "quota": 1,
+          "rules": [{ "label": "主修", "minScore": 86.89, "rawText": "主修86.89" }]
+        },
+        {
+          "label": "低音號",
+          "quota": 1,
+          "rules": [{ "label": "主修", "minScore": 87.56, "rawText": "主修87.56" }]
+        },
+        {
+          "label": "薩克斯管",
+          "quota": 1,
+          "rules": [{ "label": "主修", "minScore": 87, "rawText": "主修87" }]
+        },
+        {
+          "label": "長笛",
+          "quota": 2,
+          "rules": [{ "label": "主修", "minScore": 85, "rawText": "主修85" }]
+        },
+        {
+          "label": "單簧管（豎笛）",
+          "quota": 2,
+          "rules": [{ "label": "主修", "minScore": 84.22, "rawText": "主修84.22" }]
+        },
+        {
+          "label": "雙簧管",
+          "quota": 1,
+          "rules": [{ "label": "主修", "minScore": 86.78, "rawText": "主修86.78" }]
+        },
+        {
+          "label": "低音管",
+          "quota": 1,
+          "rules": [{ "label": "主修", "minScore": 85.22, "rawText": "主修85.22" }]
+        },
+        {
+          "label": "擊樂",
+          "quota": 2,
+          "rules": [{ "label": "主修", "minScore": 85.2, "rawText": "主修85.2" }]
+        },
+        {
+          "label": "理論作曲",
+          "quota": 2,
+          "rules": [{ "label": "主修", "minScore": 82.6, "rawText": "主修82.6" }]
+        }
+      ],
+      "reviewReasons": [
+        "需特殊檢定（術科），詳情請至官方網站查詢"
+      ]
+    },
+    "006422": {
+      "additionalScreeningRules": [
+        {
+          "label": "數學A＋自然",
+          "minScore": 20,
+          "rawText": "數學A＋自然20"
+        },
+        {
+          "label": "APCS 實作題",
+          "minScore": 3,
+          "rawText": "APCS 實作題3"
+        }
+      ],
+      "reviewReasons": [
+        "需特殊檢定（APCS），詳情請至官方網站查詢"
+      ]
     }
   }
 }

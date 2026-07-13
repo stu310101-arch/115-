@@ -6823,9 +6823,21 @@
       "需特殊檢定（APCS），詳情請至官方網站查詢"
     ],
     "additionalScreeningRules": [
-      { "label": "英文", "minScore": 8, "rawText": "英文8" },
-      { "label": "數學A", "minScore": 10, "rawText": "數學A10" },
-      { "label": "APCS 觀念題＋實作題", "minScore": 7, "rawText": "APCS 觀念題＋實作題7" }
+      {
+        "label": "英文",
+        "minScore": 8,
+        "rawText": "英文8"
+      },
+      {
+        "label": "數學A",
+        "minScore": 10,
+        "rawText": "數學A10"
+      },
+      {
+        "label": "APCS 觀念題＋實作題",
+        "minScore": 7,
+        "rawText": "APCS 觀念題＋實作題7"
+      }
     ],
     "verified": false
   },
@@ -7971,8 +7983,16 @@
       "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "additionalScreeningRules": [
-      { "label": "國文＋英文", "minScore": 34, "rawText": "國文＋英文34" },
-      { "label": "素描＋彩繪技法＋創意表現", "minScore": 213, "rawText": "素描＋彩繪技法＋創意表現213" }
+      {
+        "label": "國文＋英文",
+        "minScore": 34,
+        "rawText": "國文＋英文34"
+      },
+      {
+        "label": "素描＋彩繪技法＋創意表現",
+        "minScore": 213,
+        "rawText": "素描＋彩繪技法＋創意表現213"
+      }
     ],
     "verified": false
   },
@@ -8008,9 +8028,21 @@
       "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "additionalScreeningRules": [
-      { "label": "國文＋英文", "minScore": 28, "rawText": "國文＋英文28" },
-      { "label": "彩繪技法", "minScore": 72, "rawText": "彩繪技法72" },
-      { "label": "素描", "minScore": 75, "rawText": "素描75" }
+      {
+        "label": "國文＋英文",
+        "minScore": 28,
+        "rawText": "國文＋英文28"
+      },
+      {
+        "label": "彩繪技法",
+        "minScore": 72,
+        "rawText": "彩繪技法72"
+      },
+      {
+        "label": "素描",
+        "minScore": 75,
+        "rawText": "素描75"
+      }
     ],
     "verified": false
   },
@@ -8046,10 +8078,26 @@
       "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "additionalScreeningRules": [
-      { "label": "國文＋英文", "minScore": 26, "rawText": "國文＋英文26" },
-      { "label": "彩繪技法", "minScore": 69, "rawText": "彩繪技法69" },
-      { "label": "素描", "minScore": 69, "rawText": "素描69" },
-      { "label": "水墨書畫", "minScore": 79.8, "rawText": "水墨書畫79.8" }
+      {
+        "label": "國文＋英文",
+        "minScore": 26,
+        "rawText": "國文＋英文26"
+      },
+      {
+        "label": "彩繪技法",
+        "minScore": 69,
+        "rawText": "彩繪技法69"
+      },
+      {
+        "label": "素描",
+        "minScore": 69,
+        "rawText": "素描69"
+      },
+      {
+        "label": "水墨書畫",
+        "minScore": 79.8,
+        "rawText": "水墨書畫79.8"
+      }
     ],
     "verified": false
   },
@@ -8104,8 +8152,16 @@
       "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "additionalScreeningRules": [
-      { "label": "體育百分等級", "minScore": 75.36, "rawText": "體育百分等級75.36" },
-      { "label": "國文＋英文", "minScore": 30, "rawText": "國文＋英文30" }
+      {
+        "label": "體育百分等級",
+        "minScore": 75.36,
+        "rawText": "體育百分等級75.36"
+      },
+      {
+        "label": "國文＋英文",
+        "minScore": 30,
+        "rawText": "國文＋英文30"
+      }
     ],
     "verified": false
   },
@@ -8160,8 +8216,16 @@
       "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "additionalScreeningRules": [
-      { "label": "體育百分等級", "minScore": 75.3, "rawText": "體育百分等級75.3" },
-      { "label": "國文＋英文", "minScore": 37, "rawText": "國文＋英文37" }
+      {
+        "label": "體育百分等級",
+        "minScore": 75.3,
+        "rawText": "體育百分等級75.3"
+      },
+      {
+        "label": "國文＋英文",
+        "minScore": 37,
+        "rawText": "國文＋英文37"
+      }
     ],
     "verified": false
   },
@@ -8216,8 +8280,16 @@
       "需特殊檢定（術科），詳情請至官方網站查詢"
     ],
     "additionalScreeningRules": [
-      { "label": "體育百分等級", "minScore": 82.7, "rawText": "體育百分等級82.7" },
-      { "label": "國文＋英文", "minScore": 43, "rawText": "國文＋英文43" }
+      {
+        "label": "體育百分等級",
+        "minScore": 82.7,
+        "rawText": "體育百分等級82.7"
+      },
+      {
+        "label": "國文＋英文",
+        "minScore": 43,
+        "rawText": "國文＋英文43"
+      }
     ],
     "verified": false
   },
@@ -16686,6 +16758,18 @@
       }
     ],
     "screeningRules": [],
+    "additionalScreeningRules": [
+      {
+        "label": "APCS 觀念題＋實作題",
+        "minScore": 4,
+        "rawText": "APCS 觀念題＋實作題4"
+      },
+      {
+        "label": "英文＋數學B",
+        "minScore": 12,
+        "rawText": "英文＋數學B12"
+      }
+    ],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/005.htm",
@@ -16773,6 +16857,206 @@
       }
     ],
     "screeningRules": [],
+    "specialScreeningGroups": [
+      {
+        "label": "鋼琴",
+        "quota": 10,
+        "rules": [
+          {
+            "label": "主修",
+            "minScore": 80,
+            "rawText": "主修80"
+          }
+        ]
+      },
+      {
+        "label": "聲樂",
+        "quota": 5,
+        "rules": [
+          {
+            "label": "主修",
+            "minScore": 83,
+            "rawText": "主修83"
+          }
+        ]
+      },
+      {
+        "label": "小提琴",
+        "quota": 7,
+        "rules": [
+          {
+            "label": "主修",
+            "minScore": 82.07,
+            "rawText": "主修82.07"
+          }
+        ]
+      },
+      {
+        "label": "中提琴",
+        "quota": 3,
+        "rules": [
+          {
+            "label": "主修",
+            "minScore": 83.73,
+            "rawText": "主修83.73"
+          }
+        ]
+      },
+      {
+        "label": "大提琴",
+        "quota": 5,
+        "rules": [
+          {
+            "label": "主修",
+            "minScore": 82,
+            "rawText": "主修82"
+          }
+        ]
+      },
+      {
+        "label": "低音提琴",
+        "quota": 1,
+        "rules": [
+          {
+            "label": "主修",
+            "minScore": 82.79,
+            "rawText": "主修82.79"
+          }
+        ]
+      },
+      {
+        "label": "長號",
+        "quota": 1,
+        "rules": [
+          {
+            "label": "主修",
+            "minScore": 84.33,
+            "rawText": "主修84.33"
+          }
+        ]
+      },
+      {
+        "label": "小號",
+        "quota": 1,
+        "rules": [
+          {
+            "label": "主修",
+            "minScore": 86.22,
+            "rawText": "主修86.22"
+          }
+        ]
+      },
+      {
+        "label": "法國號",
+        "quota": 2,
+        "rules": [
+          {
+            "label": "主修",
+            "minScore": 84,
+            "rawText": "主修84"
+          }
+        ]
+      },
+      {
+        "label": "上低音號",
+        "quota": 1,
+        "rules": [
+          {
+            "label": "主修",
+            "minScore": 86.89,
+            "rawText": "主修86.89"
+          }
+        ]
+      },
+      {
+        "label": "低音號",
+        "quota": 1,
+        "rules": [
+          {
+            "label": "主修",
+            "minScore": 87.56,
+            "rawText": "主修87.56"
+          }
+        ]
+      },
+      {
+        "label": "薩克斯管",
+        "quota": 1,
+        "rules": [
+          {
+            "label": "主修",
+            "minScore": 87,
+            "rawText": "主修87"
+          }
+        ]
+      },
+      {
+        "label": "長笛",
+        "quota": 2,
+        "rules": [
+          {
+            "label": "主修",
+            "minScore": 85,
+            "rawText": "主修85"
+          }
+        ]
+      },
+      {
+        "label": "單簧管（豎笛）",
+        "quota": 2,
+        "rules": [
+          {
+            "label": "主修",
+            "minScore": 84.22,
+            "rawText": "主修84.22"
+          }
+        ]
+      },
+      {
+        "label": "雙簧管",
+        "quota": 1,
+        "rules": [
+          {
+            "label": "主修",
+            "minScore": 86.78,
+            "rawText": "主修86.78"
+          }
+        ]
+      },
+      {
+        "label": "低音管",
+        "quota": 1,
+        "rules": [
+          {
+            "label": "主修",
+            "minScore": 85.22,
+            "rawText": "主修85.22"
+          }
+        ]
+      },
+      {
+        "label": "擊樂",
+        "quota": 2,
+        "rules": [
+          {
+            "label": "主修",
+            "minScore": 85.2,
+            "rawText": "主修85.2"
+          }
+        ]
+      },
+      {
+        "label": "理論作曲",
+        "quota": 2,
+        "rules": [
+          {
+            "label": "主修",
+            "minScore": 82.6,
+            "rawText": "主修82.6"
+          }
+        ]
+      }
+    ],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/005.htm",
@@ -19691,6 +19975,18 @@
       }
     ],
     "screeningRules": [],
+    "additionalScreeningRules": [
+      {
+        "label": "數學A＋自然",
+        "minScore": 20,
+        "rawText": "數學A＋自然20"
+      },
+      {
+        "label": "APCS 實作題",
+        "minScore": 3,
+        "rawText": "APCS 實作題3"
+      }
+    ],
     "source": {
       "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/collegeList.htm",
       "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply114/114appLy_3Hd_SieVe_QueRy_9dS4cqa1g_Kp3z/html_sieve_114_Ja9z51F/Standard/report/006.htm",

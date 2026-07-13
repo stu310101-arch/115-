@@ -80,6 +80,13 @@ export type AdditionalScreeningRule = {
   rawText: string;
 };
 
+/** A quota-bearing official subgroup whose thresholds require a special score type. */
+export type SpecialScreeningGroup = {
+  label: string;
+  quota: number;
+  rules: AdditionalScreeningRule[];
+};
+
 export type ProgramSource = {
   collegeListUrl: string;
   reportHtmlUrl: string;
@@ -103,6 +110,8 @@ export type Program = {
   screeningVariants?: ProgramScreeningVariant[];
   /** Verified special thresholds retained for display while automatic evaluation is unsupported. */
   additionalScreeningRules?: AdditionalScreeningRule[];
+  /** Official major/instrument subgroups with separate quotas and special thresholds. */
+  specialScreeningGroups?: SpecialScreeningGroup[];
   source: ProgramSource;
   /**
    * New official imports always set both fields. They are optional only so the

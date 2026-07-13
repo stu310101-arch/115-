@@ -15,6 +15,7 @@ import type {
   ProgramSource,
   RequirementStandard,
   ScreeningRule,
+  SpecialScreeningGroup,
   Subject,
   SubjectRequirement,
 } from "../lib/types.ts";
@@ -117,6 +118,7 @@ type ReviewEntry = {
 type ProgramOverride = {
   screeningVariants?: ProgramScreeningVariant[];
   additionalScreeningRules?: AdditionalScreeningRule[];
+  specialScreeningGroups?: SpecialScreeningGroup[];
   reviewReasons?: string[];
 };
 
@@ -1016,6 +1018,9 @@ async function main(): Promise<void> {
       ...(hasScreeningVariants ? { screeningVariants } : {}),
       ...(programOverride?.additionalScreeningRules?.length
         ? { additionalScreeningRules: programOverride.additionalScreeningRules }
+        : {}),
+      ...(programOverride?.specialScreeningGroups?.length
+        ? { specialScreeningGroups: programOverride.specialScreeningGroups }
         : {}),
       source,
       dataStatus: supported ? "complete" : "needs-review",
