@@ -7,7 +7,7 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
   "https://admission-114-review-tw.lhxuan970930.chatgpt.site/";
 // Next applies `basePath` to Open Graph images during a static export.
-const socialImagePath = "/og.png";
+const socialImagePath = "/og-share.png";
 const faviconPath = `${basePath}/favicon.svg`;
 
 export const metadata: Metadata = {

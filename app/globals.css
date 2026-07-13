@@ -781,9 +781,14 @@ input:focus-visible {
 }
 
 .proof-grid strong {
-  font-family: Georgia, serif;
+  display: block;
+  font-family: var(--sans);
   font-size: 32px;
+  font-feature-settings: "lnum" 1, "tnum" 1;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-weight: 900;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .proof-grid span {
