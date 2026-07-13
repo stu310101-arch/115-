@@ -1872,6 +1872,12 @@ input:focus-visible {
   color: #76541c;
 }
 
+.review-badge.incomplete {
+  background: #a54b2f;
+  box-shadow: 0 4px 12px rgba(165, 75, 47, 0.2);
+  color: #fff;
+}
+
 .review-reasons {
   margin-top: 15px;
   border-top: 1px solid var(--line);
@@ -1883,6 +1889,55 @@ input:focus-visible {
 
 .review-reasons b {
   color: var(--ink);
+}
+
+.additional-screening-heading {
+  margin: 11px 0 0;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.special-screening-details {
+  margin-top: 11px;
+}
+
+.special-screening-details summary {
+  width: fit-content;
+  cursor: pointer;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.special-screening-table-wrap {
+  max-width: 680px;
+  margin-top: 9px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.special-screening-table-wrap table {
+  width: 100%;
+  min-width: 420px;
+  border-collapse: collapse;
+  background: var(--surface);
+}
+
+.special-screening-table-wrap th,
+.special-screening-table-wrap td {
+  border-bottom: 1px solid var(--line);
+  padding: 7px 10px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.special-screening-table-wrap thead th {
+  background: #f8f0de;
+  color: var(--ink);
+}
+
+.special-screening-table-wrap tbody tr:last-child > * {
+  border-bottom: 0;
 }
 
 .review-reasons ul {

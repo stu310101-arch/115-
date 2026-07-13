@@ -128,6 +128,22 @@ describe("114 官方校系選取資料", () => {
     });
   });
 
+  it("逢甲中文不將官方未啟動的社會倍率建模為零分門檻", () => {
+    const chinese = programs.find(
+      (program) => program.programCode === "015232",
+    );
+
+    expect(chinese?.screeningRules).toEqual([
+      {
+        order: 1,
+        label: "國文",
+        subjects: ["國文"],
+        minScore: 10,
+        rawText: "國文10",
+      },
+    ]);
+  });
+
   it("臺大戲劇保留男、女生分列名額與兩套官方門檻", () => {
     const theatre = programs.find(
       (program) => program.programCode === "001082",
@@ -162,7 +178,7 @@ describe("114 官方校系選取資料", () => {
     ]);
   });
 
-  it("臺大資工 APCS 組明列數學A與實作題特殊門檻", () => {
+  it("臺大資工 APCS 組明列特殊門檻並警示不可只用學測完整判定", () => {
     const apcs = programs.find(
       (program) => program.programCode === "001602",
     );
@@ -175,6 +191,36 @@ describe("114 官方校系選取資料", () => {
         { label: "APCS 實作題", minScore: 5, rawText: "APCS 實作題5" },
       ],
     });
+    expect(apcs?.reviewReasons?.join(" ")).toContain(
+      "不可用一般學測成績完整判定",
+    );
+  });
+
+  it("逢甲資工 APCS 組完整保留三項官方最低篩選分數", () => {
+    const apcs = programs.find(
+      (program) => program.programCode === "015262",
+    );
+
+    expect(apcs).toMatchObject({
+      evaluationSupport: "unsupported",
+      screeningRules: [],
+      additionalScreeningRules: [
+        {
+          label: "APCS 觀念題＋實作題",
+          minScore: 4,
+          rawText: "APCS 觀念題＋實作題4",
+        },
+        { label: "數學A", minScore: 4, rawText: "數學A4" },
+        {
+          label: "國文＋英文＋數學A",
+          minScore: 24,
+          rawText: "國文＋英文＋數學A24",
+        },
+      ],
+    });
+    expect(apcs?.reviewReasons).toEqual([
+      "需特殊檢定（APCS），不可用一般學測成績完整判定，詳情請至官方網站查詢",
+    ]);
   });
 
   it("APCS 與術科校系不發布可能錯位的部分學測規則", () => {
@@ -188,11 +234,9 @@ describe("114 官方校系選取資料", () => {
         screeningRules: [],
       });
       expect(program?.source.reportImageUrl).toMatch(/^https:\/\//u);
-      expect(program?.reviewReasons).toEqual([
-        expect.stringMatching(
-          /^需特殊檢定（(?:APCS|術科)），詳情請至官方網站查詢$/u,
-        ),
-      ]);
+      expect(program?.reviewReasons?.[0]).toMatch(
+        /^需特殊檢定（(?:APCS|術科)）/u,
+      );
     });
   });
 
@@ -230,17 +274,365 @@ describe("114 官方校系選取資料", () => {
     specialPrograms.forEach((program) => {
       expect(program.evaluationSupport).toBe("unsupported");
       expect(program.screeningRules).toEqual([]);
-      expect(program.reviewReasons).toHaveLength(1);
-      expect(program.reviewReasons).toEqual(
-        expect.arrayContaining([
-          expect.stringMatching(
-            /^需特殊檢定（(?:APCS|術科)），詳情請至官方網站查詢$/u,
-          ),
-        ]),
+      expect(program.reviewReasons?.[0]).toMatch(
+        /^需特殊檢定（(?:APCS|術科)）/u,
       );
     });
     expectedApcsPrograms.forEach((program) => {
       expect(specialPrograms).toContain(program);
+    });
+  });
+
+  it("完整說明臺師大 8 筆特殊檢定門檻與音樂系分流名額", () => {
+    const expectedRules = {
+      "002282": [
+        { label: "英文", minScore: 8, rawText: "英文8" },
+        { label: "數學A", minScore: 10, rawText: "數學A10" },
+        {
+          label: "APCS 觀念題＋實作題",
+          minScore: 7,
+          rawText: "APCS 觀念題＋實作題7",
+        },
+      ],
+      "002472": [
+        { label: "國文＋英文", minScore: 34, rawText: "國文＋英文34" },
+        {
+          label: "素描＋彩繪技法＋創意表現",
+          minScore: 213,
+          rawText: "素描＋彩繪技法＋創意表現213",
+        },
+      ],
+      "002482": [
+        { label: "國文＋英文", minScore: 28, rawText: "國文＋英文28" },
+        { label: "彩繪技法", minScore: 72, rawText: "彩繪技法72" },
+        { label: "素描", minScore: 75, rawText: "素描75" },
+      ],
+      "002492": [
+        { label: "國文＋英文", minScore: 26, rawText: "國文＋英文26" },
+        { label: "彩繪技法", minScore: 69, rawText: "彩繪技法69" },
+        { label: "素描", minScore: 69, rawText: "素描69" },
+        { label: "水墨書畫", minScore: 79.8, rawText: "水墨書畫79.8" },
+      ],
+      "002502": [
+        {
+          label: "體育百分等級",
+          minScore: 75.36,
+          rawText: "體育百分等級75.36",
+        },
+        { label: "國文＋英文", minScore: 30, rawText: "國文＋英文30" },
+      ],
+      "002512": [
+        {
+          label: "體育百分等級",
+          minScore: 75.3,
+          rawText: "體育百分等級75.3",
+        },
+        { label: "國文＋英文", minScore: 37, rawText: "國文＋英文37" },
+      ],
+      "002522": [
+        {
+          label: "體育百分等級",
+          minScore: 82.7,
+          rawText: "體育百分等級82.7",
+        },
+        { label: "國文＋英文", minScore: 43, rawText: "國文＋英文43" },
+      ],
+    } as const;
+    const expectedDetails = {
+      "002282": ["英文 8", "數學A 10", "APCS 觀念題＋實作題合計 7"],
+      "002452": ["64 名", "19 種主修樂器", "名額與術科最低分不同"],
+      "002472": ["國文＋英文 34", "素描＋彩繪技法＋創意表現 213"],
+      "002482": ["國文＋英文 28", "彩繪技法 72", "素描 75"],
+      "002492": ["國文＋英文 26", "彩繪技法 69", "素描 69", "水墨書畫 79.8"],
+      "002502": ["體育百分等級 75.36", "國文＋英文 30"],
+      "002512": ["體育百分等級 75.3", "國文＋英文 37"],
+      "002522": ["體育百分等級 82.7", "國文＋英文 43"],
+    } as const;
+
+    Object.entries(expectedDetails).forEach(([programCode, details]) => {
+      const program = programs.find(
+        (candidate) => candidate.programCode === programCode,
+      );
+      expect(program).toMatchObject({
+        programCode,
+        evaluationSupport: "unsupported",
+      });
+      const explanation = program?.reviewReasons?.join("；") ?? "";
+      details.forEach((detail) => expect(explanation).toContain(detail));
+      if (programCode in expectedRules) {
+        expect(program?.additionalScreeningRules).toEqual(
+          expectedRules[programCode as keyof typeof expectedRules],
+        );
+      }
+    });
+  });
+
+  it("完整說明中興大學 2 筆 APCS 特殊門檻", () => {
+    const expectedRules = {
+      "003082": [
+        { label: "英文＋自然", minScore: 23, rawText: "英文＋自然23" },
+        {
+          label: "APCS 觀念題＋實作題",
+          minScore: 6,
+          rawText: "APCS 觀念題＋實作題6",
+        },
+        { label: "數學A", minScore: 9, rawText: "數學A9" },
+      ],
+      "003272": [
+        { label: "數學A", minScore: 7, rawText: "數學A7" },
+        { label: "英文＋自然", minScore: 25, rawText: "英文＋自然25" },
+        {
+          label: "英文＋數學A＋自然",
+          minScore: 34,
+          rawText: "英文＋數學A＋自然34",
+        },
+        {
+          label: "APCS 觀念題＋實作題",
+          minScore: 7,
+          rawText: "APCS 觀念題＋實作題7",
+        },
+      ],
+    } as const;
+
+    Object.entries(expectedRules).forEach(([programCode, rules]) => {
+      const program = programs.find(
+        (candidate) => candidate.programCode === programCode,
+      );
+      expect(program).toMatchObject({
+        programCode,
+        evaluationSupport: "unsupported",
+        screeningRules: [],
+      });
+      expect(program?.additionalScreeningRules).toEqual(rules);
+      expect(program?.reviewReasons).toEqual([
+        "需特殊檢定（APCS），不可用一般學測成績完整判定，詳情請至官方網站查詢",
+      ]);
+    });
+  });
+
+  it("完整說明成功大學 2 筆 APCS 組最低篩選分數", () => {
+    const expectedRules = {
+      "004252": [
+        { label: "英文＋數學A", minScore: 21, rawText: "英文＋數學A21" },
+        {
+          label: "APCS 觀念題＋實作題",
+          minScore: 8,
+          rawText: "APCS 觀念題＋實作題8",
+        },
+      ],
+      "004522": [
+        { label: "國文", minScore: 10, rawText: "國文10" },
+        {
+          label: "APCS 觀念題＋實作題",
+          minScore: 5,
+          rawText: "APCS 觀念題＋實作題5",
+        },
+        { label: "英文＋數學A", minScore: 16, rawText: "英文＋數學A16" },
+        { label: "自然", minScore: 12, rawText: "自然12" },
+      ],
+    } as const;
+
+    Object.entries(expectedRules).forEach(([programCode, rules]) => {
+      const program = programs.find(
+        (candidate) => candidate.programCode === programCode,
+      );
+      expect(program).toMatchObject({
+        programCode,
+        evaluationSupport: "unsupported",
+        screeningRules: [],
+      });
+      expect(program?.additionalScreeningRules).toEqual(rules);
+      expect(program?.reviewReasons).toEqual([
+        "需特殊檢定（APCS），不可用一般學測成績完整判定，詳情請至官方網站查詢",
+      ]);
+    });
+  });
+
+  it("完整保留東吳與政大 3 筆特殊篩選門檻", () => {
+    const expectedApcsRules = {
+      "005222": [
+        {
+          label: "APCS 觀念題＋實作題",
+          minScore: 4,
+          rawText: "APCS 觀念題＋實作題4",
+        },
+        { label: "英文＋數學B", minScore: 12, rawText: "英文＋數學B12" },
+      ],
+      "006422": [
+        { label: "數學A＋自然", minScore: 20, rawText: "數學A＋自然20" },
+        { label: "APCS 實作題", minScore: 3, rawText: "APCS 實作題3" },
+      ],
+    } as const;
+
+    Object.entries(expectedApcsRules).forEach(([programCode, rules]) => {
+      const program = programs.find(
+        (candidate) => candidate.programCode === programCode,
+      );
+      expect(program).toMatchObject({
+        programCode,
+        evaluationSupport: "unsupported",
+        screeningRules: [],
+      });
+      expect(program?.additionalScreeningRules).toEqual(rules);
+    });
+
+    const music = programs.find(
+      (program) => program.programCode === "005242",
+    );
+    expect(music).toMatchObject({
+      programCode: "005242",
+      quota: 48,
+      evaluationSupport: "unsupported",
+      screeningRules: [],
+    });
+    expect(
+      music?.specialScreeningGroups?.map((group) => [
+        group.label,
+        group.quota,
+        group.rules[0]?.minScore,
+      ]),
+    ).toEqual([
+      ["鋼琴", 10, 80],
+      ["聲樂", 5, 83],
+      ["小提琴", 7, 82.07],
+      ["中提琴", 3, 83.73],
+      ["大提琴", 5, 82],
+      ["低音提琴", 1, 82.79],
+      ["長號", 1, 84.33],
+      ["小號", 1, 86.22],
+      ["法國號", 2, 84],
+      ["上低音號", 1, 86.89],
+      ["低音號", 1, 87.56],
+      ["薩克斯管", 1, 87],
+      ["長笛", 2, 85],
+      ["單簧管（豎笛）", 2, 84.22],
+      ["雙簧管", 1, 86.78],
+      ["低音管", 1, 85.22],
+      ["擊樂", 2, 85.2],
+      ["理論作曲", 2, 82.6],
+    ]);
+  });
+
+  it("修正靜宜大學未啟動門檻並完整保留 3 筆 APCS 最低篩選分數", () => {
+    const sustainability = programs.find(
+      (program) => program.programCode === "018152",
+    );
+    expect(sustainability).toMatchObject({
+      programCode: "018152",
+      evaluationSupport: "supported",
+      screeningRules: [
+        {
+          order: 1,
+          label: "國文",
+          subjects: ["國文"],
+          minScore: 7,
+          rawText: "國文7",
+        },
+      ],
+    });
+
+    const expectedApcsRules = {
+      "018232": [
+        { label: "APCS 觀念題", minScore: 2, rawText: "APCS 觀念題2" },
+        { label: "國文＋英文", minScore: 9, rawText: "國文＋英文9" },
+      ],
+      "018262": [
+        { label: "APCS 觀念題", minScore: 2, rawText: "APCS 觀念題2" },
+        { label: "數學B", minScore: 3, rawText: "數學B3" },
+      ],
+      "018292": [
+        { label: "APCS 觀念題", minScore: 2, rawText: "APCS 觀念題2" },
+        { label: "國文", minScore: 6, rawText: "國文6" },
+      ],
+    } as const;
+
+    Object.entries(expectedApcsRules).forEach(([programCode, rules]) => {
+      const program = programs.find(
+        (candidate) => candidate.programCode === programCode,
+      );
+      expect(program).toMatchObject({
+        programCode,
+        evaluationSupport: "unsupported",
+        screeningRules: [],
+      });
+      expect(program?.additionalScreeningRules).toEqual(rules);
+      expect(program?.reviewReasons).toEqual([
+        "需特殊檢定（APCS），不可用一般學測成績完整判定，詳情請至官方網站查詢",
+      ]);
+    });
+  });
+
+  it("淡江大學移除未啟動的零分門檻並完整錄入 4 筆 APCS 門檻", () => {
+    const expectedOrdinaryRules = {
+      "014092": [{ label: "英文", minScore: 8 }],
+      "014162": [{ label: "英文", minScore: 6 }],
+      "014292": [
+        { label: "國文", minScore: 4 },
+        { label: "英文", minScore: 10 },
+      ],
+    } as const;
+    const expectedApcsRules = {
+      "014482": [
+        { label: "英文", minScore: 3, rawText: "英文3" },
+        {
+          label: "APCS 觀念題＋實作題",
+          minScore: 4,
+          rawText: "APCS 觀念題＋實作題4",
+        },
+      ],
+      "014492": [
+        { label: "英文", minScore: 3, rawText: "英文3" },
+        {
+          label: "APCS 觀念題＋實作題",
+          minScore: 4,
+          rawText: "APCS 觀念題＋實作題4",
+        },
+      ],
+      "014502": [
+        { label: "國文", minScore: 8, rawText: "國文8" },
+        {
+          label: "APCS 觀念題＋實作題",
+          minScore: 4,
+          rawText: "APCS 觀念題＋實作題4",
+        },
+      ],
+      "014512": [
+        {
+          label: "APCS 觀念題＋實作題",
+          minScore: 4,
+          rawText: "APCS 觀念題＋實作題4",
+        },
+        { label: "數B", minScore: 5, rawText: "數B5" },
+      ],
+    } as const;
+
+    Object.entries(expectedOrdinaryRules).forEach(([programCode, rules]) => {
+      const program = programs.find(
+        (candidate) => candidate.programCode === programCode,
+      );
+      expect(
+        program?.screeningRules.map(({ label, minScore }) => ({
+          label,
+          minScore,
+        })),
+      ).toEqual(rules);
+      expect(program?.screeningRules.some((rule) => rule.minScore === 0)).toBe(
+        false,
+      );
+    });
+
+    Object.entries(expectedApcsRules).forEach(([programCode, rules]) => {
+      const program = programs.find(
+        (candidate) => candidate.programCode === programCode,
+      );
+      expect(program).toMatchObject({
+        evaluationSupport: "unsupported",
+        screeningRules: [],
+        additionalScreeningRules: rules,
+      });
+      expect(program?.reviewReasons).toEqual([
+        "需特殊檢定（APCS），不可用一般學測成績完整判定，詳情請至官方網站查詢",
+      ]);
     });
   });
 });

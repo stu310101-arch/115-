@@ -15,6 +15,7 @@ import type {
   ProgramSource,
   RequirementStandard,
   ScreeningRule,
+  SpecialScreeningGroup,
   Subject,
   SubjectRequirement,
 } from "../lib/types.ts";
@@ -117,6 +118,7 @@ type ReviewEntry = {
 type ProgramOverride = {
   screeningVariants?: ProgramScreeningVariant[];
   additionalScreeningRules?: AdditionalScreeningRule[];
+  specialScreeningGroups?: SpecialScreeningGroup[];
   reviewReasons?: string[];
 };
 
@@ -165,6 +167,40 @@ const SUBJECT_ORDER: readonly Subject[] = [
   "自然",
   "英聽",
 ];
+
+/**
+ * Official special-screening details that are not yet represented by the
+ * site's automatic evaluator. Keep these notes in the generated program data
+ * so search results can explain exactly why a result is incomplete.
+ */
+const SPECIAL_SCREENING_DETAILS_BY_CODE: Readonly<
+  Record<string, readonly string[]>
+> = {
+  "002282": [
+    "官方另列最低篩選分數：英文 8、數學A 10、APCS 觀念題＋實作題合計 7；這些特殊條件尚未納入自動判斷",
+  ],
+  "002452": [
+    "招生名額 64 名為鋼琴、聲樂、小提琴、中提琴等 19 種主修樂器名額加總；各主修樂器的名額與術科最低分不同，須依官方資料逐項確認",
+  ],
+  "002472": [
+    "官方最低分：國文＋英文 34、素描＋彩繪技法＋創意表現 213；術科條件尚未納入自動判斷",
+  ],
+  "002482": [
+    "官方最低分：國文＋英文 28、彩繪技法 72、素描 75；術科條件尚未納入自動判斷",
+  ],
+  "002492": [
+    "官方最低分：國文＋英文 26、彩繪技法 69、素描 69、水墨書畫 79.8；術科條件尚未納入自動判斷",
+  ],
+  "002502": [
+    "官方另列最低分：體育百分等級 75.36、國文＋英文 30；術科條件尚未納入自動判斷",
+  ],
+  "002512": [
+    "官方另列最低分：體育百分等級 75.3、國文＋英文 37；術科條件尚未納入自動判斷",
+  ],
+  "002522": [
+    "官方另列最低分：體育百分等級 82.7、國文＋英文 43；術科條件尚未納入自動判斷",
+  ],
+};
 
 const catalogUrl = new URL("../work/official-114/catalog.json", import.meta.url);
 const ocrDirectoryUrl = new URL("../work/official-114/ocr/", import.meta.url);
@@ -570,7 +606,7 @@ function thresholdScoresForProgram(
   geometry: ImageGeometry | null,
   targetedCells: ReadonlyMap<string, TargetedCellOcr>,
   thresholdOverrides: ReadonlyMap<string, number | null>,
-): { scores: number[] | null; reason?: string } {
+): { scores: Array<number | null> | null; reason?: string } {
   if (!index) return { scores: null, reason: "缺少可用的官方表格 OCR" };
   const codeWord = index.wordByCode.get(programCode);
   if (!codeWord) {
@@ -591,21 +627,22 @@ function thresholdScoresForProgram(
   if (derivedRules.length > edges.columns.length) {
     return { scores: null, reason: "官方倍率篩選關數超出表格欄位" };
   }
-  const scores: number[] = [];
+  const scores: Array<number | null> = [];
   for (let order = 0; order < derivedRules.length; order += 1) {
     const { left, right } = edges.columns[order]!;
     const maximum = derivedRules[order]!.subjects.length * 15;
     const overrideKey = `${programCode}-${order + 1}`;
     if (thresholdOverrides.has(overrideKey)) {
       const override = thresholdOverrides.get(overrideKey);
-      const score = override ?? 0;
-      if (score < 0 || score > maximum) {
+      if (override !== null && override !== undefined && (override < 0 || override > maximum)) {
         return {
           scores: null,
-          reason: `人工覆核值 ${overrideKey}=${score} 超出科目級分上限`,
+          reason: `人工覆核值 ${overrideKey}=${override} 超出科目級分上限`,
         };
       }
-      scores.push(score);
+      // null means the official table contains "—": this screening gate was
+      // not activated and must not be published as a zero-point threshold.
+      scores.push(override ?? null);
       continue;
     }
     const candidates = index.words.flatMap((word) => {
@@ -642,15 +679,17 @@ function thresholdScoresForProgram(
   return { scores };
 }
 
-function makeRules(
+export function makeRules(
   derived: readonly DerivedRule[],
-  scores: readonly number[],
+  scores: readonly (number | null)[],
 ): ScreeningRule[] {
-  return derived.map((rule, index) => {
+  const rules: ScreeningRule[] = [];
+  derived.forEach((rule, index) => {
+    const minScore = scores[index];
+    if (minScore === null || minScore === undefined) return;
     const label = rule.subjects.join("＋");
-    const minScore = scores[index]!;
-    return {
-      order: index + 1,
+    rules.push({
+      order: rules.length + 1,
       label,
       subjects: rule.subjects,
       minScore,
@@ -658,8 +697,9 @@ function makeRules(
         minScore === 0
           ? `${label}—（官方未啟動倍率篩選）`
           : `${label}${minScore}`,
-    };
+    });
   });
+  return rules;
 }
 
 function deriveGroupTags(program: CatalogProgram): GroupTag[] {
@@ -962,11 +1002,17 @@ async function main(): Promise<void> {
               : threshold.reason ?? "缺少可信的最低級分",
           ]),
     ]);
-    const reasons =
-      programOverride?.reviewReasons ??
-      (specialScreeningReasons.length > 0
-        ? specialScreeningReasons
-        : ordinaryReviewReasons);
+    const reasons = programOverride?.reviewReasons
+      ? uniqueStrings([
+          ...programOverride.reviewReasons,
+          ...(SPECIAL_SCREENING_DETAILS_BY_CODE[catalogProgram.programCode] ?? []),
+        ])
+      : specialScreeningReasons.length > 0
+        ? uniqueStrings([
+            ...specialScreeningReasons,
+            ...(SPECIAL_SCREENING_DETAILS_BY_CODE[catalogProgram.programCode] ?? []),
+          ])
+        : ordinaryReviewReasons;
     const screeningVariants = programOverride?.screeningVariants ?? [];
     const hasScreeningVariants = screeningVariants.length > 0;
     const supported =
@@ -1016,6 +1062,9 @@ async function main(): Promise<void> {
       ...(hasScreeningVariants ? { screeningVariants } : {}),
       ...(programOverride?.additionalScreeningRules?.length
         ? { additionalScreeningRules: programOverride.additionalScreeningRules }
+        : {}),
+      ...(programOverride?.specialScreeningGroups?.length
+        ? { specialScreeningGroups: programOverride.specialScreeningGroups }
         : {}),
       source,
       dataStatus: supported ? "complete" : "needs-review",

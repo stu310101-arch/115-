@@ -222,11 +222,13 @@ export function UnsupportedProgramTable({
                   <h3>{program.programName}</h3>
                 </div>
                 <div className="program-actions">
-                  <span className="review-badge">
+                  <span
+                    className={`review-badge${requiresSpecialScreening || requiresGenderSelection ? " incomplete" : ""}`}
+                  >
                     {requiresGenderSelection
                       ? "需選性別組別"
                       : requiresSpecialScreening
-                        ? "需特殊檢定"
+                        ? "無法完整判定"
                         : "資料待確認"}
                   </span>
                   <SourceLink
@@ -244,7 +246,7 @@ export function UnsupportedProgramTable({
                   {requiresGenderSelection
                     ? "官方分列男、女生名額與門檻；請返回上頁選擇招生性別組別："
                     : requiresSpecialScreening
-                      ? "需特殊檢定，無法只用一般學測成績完整判定："
+                      ? "含系統尚未完整建模的特殊門檻，無法完整判定："
                       : "目前無法安全自動判斷："}
                 </b>
                 {requiresGenderSelection ? (
@@ -258,27 +260,62 @@ export function UnsupportedProgramTable({
                       </li>
                     ))}
                   </ul>
-                ) : (
+                ) : null}
+                {program.additionalScreeningRules?.length ? (
                   <>
-                    {program.additionalScreeningRules?.length ? (
-                      <ul aria-label="已錄入的官方最低篩選分數">
-                        {program.additionalScreeningRules.map((rule) => (
-                          <li key={`${rule.label}-${rule.minScore}`}>
-                            {rule.label}：{rule.minScore}
-                          </li>
-                        ))}
-                      </ul>
-                    ) : null}
-                    <ul>
-                      {(program.reviewReasons?.length
-                        ? program.reviewReasons
-                        : ["官方最低級分資料仍待人工確認"]
-                      ).map((reason) => (
-                        <li key={reason}>{reason}</li>
+                    <p className="additional-screening-heading">
+                      已錄入的官方最低篩選分數
+                    </p>
+                    <ul aria-label="已錄入的官方最低篩選分數">
+                      {program.additionalScreeningRules.map((rule) => (
+                        <li key={`${rule.label}-${rule.minScore}`}>
+                          {rule.label}：{rule.minScore}
+                        </li>
                       ))}
                     </ul>
                   </>
-                )}
+                ) : null}
+                {program.specialScreeningGroups?.length ? (
+                  <details className="special-screening-details">
+                    <summary>
+                      已錄入 {program.specialScreeningGroups.length} 個主修分組的名額與官方最低篩選分數
+                    </summary>
+                    <div className="special-screening-table-wrap">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th scope="col">主修</th>
+                            <th scope="col">名額</th>
+                            <th scope="col">最低篩選分數</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {program.specialScreeningGroups.map((group) => (
+                            <tr key={group.label}>
+                              <th scope="row">{group.label}</th>
+                              <td>{group.quota}</td>
+                              <td>
+                                {group.rules
+                                  .map((rule) => `${rule.label} ${rule.minScore}`)
+                                  .join("、")}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </details>
+                ) : null}
+                {!requiresGenderSelection ? (
+                  <ul>
+                    {(program.reviewReasons?.length
+                      ? program.reviewReasons
+                      : ["官方最低級分資料仍待人工確認"]
+                    ).map((reason) => (
+                      <li key={reason}>{reason}</li>
+                    ))}
+                  </ul>
+                ) : null}
               </div>
             </div>
           </article>

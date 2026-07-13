@@ -197,7 +197,13 @@ describe("validatePrograms", () => {
           label: "男生組",
           quota: 8,
           screeningRules: [
-            { order: 1, label: "國文", subjects: ["國文"], minScore: 12, rawText: "國文12" },
+            {
+              order: 1,
+              label: "國文",
+              subjects: ["國文"],
+              minScore: 12,
+              rawText: "國文12",
+            },
           ],
         },
         {
@@ -205,7 +211,13 @@ describe("validatePrograms", () => {
           label: "女生組",
           quota: 9,
           screeningRules: [
-            { order: 1, label: "國文", subjects: ["國文"], minScore: 13, rawText: "國文13" },
+            {
+              order: 1,
+              label: "國文",
+              subjects: ["國文"],
+              minScore: 13,
+              rawText: "國文13",
+            },
           ],
         },
       ],

@@ -145,6 +145,30 @@ function validateScreeningRule(
   );
 }
 
+function validateAdditionalScreeningRule(
+  rule: unknown,
+  rulePath: string,
+  addError: (field: string, message: string) => void,
+): void {
+  if (!isRecord(rule)) {
+    addError(rulePath, "每筆特殊篩選規則必須是物件");
+    return;
+  }
+  if (!isNonEmptyString(rule.label)) {
+    addError(`${rulePath}.label`, "label 必須是非空字串");
+  }
+  if (
+    typeof rule.minScore !== "number" ||
+    !Number.isFinite(rule.minScore) ||
+    rule.minScore < 0
+  ) {
+    addError(`${rulePath}.minScore`, "minScore 必須是非負數字");
+  }
+  if (typeof rule.rawText !== "string") {
+    addError(`${rulePath}.rawText`, "rawText 必須是字串");
+  }
+}
+
 /**
  * 驗證完整官方校系資料。待確認門檻不算結構錯誤，且仍須保留讓使用者搜尋；
  * 只有 `evaluationSupport: supported` 的資料可以交給判斷函式。
@@ -397,25 +421,64 @@ export function validatePrograms(input: unknown): ProgramsValidationReport {
         addError("additionalScreeningRules", "additionalScreeningRules 必須是陣列");
       } else {
         candidate.additionalScreeningRules.forEach((rule, ruleIndex) => {
-          const path = `additionalScreeningRules[${ruleIndex}]`;
-          if (!isRecord(rule)) {
-            addError(path, "每筆特殊篩選規則必須是物件");
+          validateAdditionalScreeningRule(
+            rule,
+            `additionalScreeningRules[${ruleIndex}]`,
+            addError,
+          );
+        });
+      }
+    }
+
+    if (candidate.specialScreeningGroups !== undefined) {
+      if (
+        !Array.isArray(candidate.specialScreeningGroups) ||
+        candidate.specialScreeningGroups.length === 0
+      ) {
+        addError("specialScreeningGroups", "specialScreeningGroups 必須是非空陣列");
+      } else {
+        const seenLabels = new Set<string>();
+        let groupQuota = 0;
+        candidate.specialScreeningGroups.forEach((group, groupIndex) => {
+          const path = `specialScreeningGroups[${groupIndex}]`;
+          if (!isRecord(group)) {
+            addError(path, "每筆特殊篩選分組必須是物件");
             return;
           }
-          if (!isNonEmptyString(rule.label)) {
+          if (!isNonEmptyString(group.label)) {
             addError(`${path}.label`, "label 必須是非空字串");
+          } else if (seenLabels.has(group.label)) {
+            addError(`${path}.label`, "同一校系的特殊篩選分組名稱不可重複");
+          } else {
+            seenLabels.add(group.label);
           }
           if (
-            typeof rule.minScore !== "number" ||
-            !Number.isFinite(rule.minScore) ||
-            rule.minScore < 0
+            typeof group.quota !== "number" ||
+            !Number.isInteger(group.quota) ||
+            group.quota < 0
           ) {
-            addError(`${path}.minScore`, "minScore 必須是非負數字");
+            addError(`${path}.quota`, "quota 必須是非負整數");
+          } else {
+            groupQuota += group.quota;
           }
-          if (typeof rule.rawText !== "string") {
-            addError(`${path}.rawText`, "rawText 必須是字串");
+          if (!Array.isArray(group.rules) || group.rules.length === 0) {
+            addError(`${path}.rules`, "每個特殊篩選分組至少要有一筆門檻");
+          } else {
+            group.rules.forEach((rule, ruleIndex) => {
+              validateAdditionalScreeningRule(
+                rule,
+                `${path}.rules[${ruleIndex}]`,
+                addError,
+              );
+            });
           }
         });
+        if (typeof candidate.quota === "number" && groupQuota !== candidate.quota) {
+          addError(
+            "specialScreeningGroups",
+            "各特殊篩選分組名額加總必須等於校系招生名額",
+          );
+        }
       }
     }
 

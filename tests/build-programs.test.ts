@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   deriveRuleSubjects,
+  makeRules,
   parseSubjectsFromLabel,
 } from "../scripts/buildProgramsFromOfficial";
 
@@ -33,6 +34,27 @@ describe("official program importer", () => {
     expect(result.rules).toEqual([
       { multiplier: 6, subjects: ["英文", "數A"] },
       { multiplier: 3, subjects: ["自然"] },
+    ]);
+  });
+
+  it("官方未啟動的篩選欄位不會轉成零分門檻", () => {
+    const rules = makeRules(
+      [
+        { multiplier: 6, subjects: ["數B"] },
+        { multiplier: 5, subjects: ["國文"] },
+        { multiplier: 3, subjects: ["英文"] },
+      ],
+      [null, null, 6],
+    );
+
+    expect(rules).toEqual([
+      {
+        order: 1,
+        label: "英文",
+        subjects: ["英文"],
+        minScore: 6,
+        rawText: "英文6",
+      },
     ]);
   });
 
