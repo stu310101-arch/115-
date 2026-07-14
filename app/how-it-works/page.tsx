@@ -43,7 +43,6 @@ export default function HowItWorksPage() {
         <div className="formula-card">
           <span>一筆規則</span>
           <code>sum(使用者科目級分) ≥ 官方通過篩選最低級分</code>
-          <p>一個校系 = 一組 rules[]；所有 rules 通過，Program 才通過。</p>
         </div>
 
         <section className="five-standard-section" aria-labelledby="five-standard-title">

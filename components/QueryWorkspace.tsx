@@ -159,7 +159,6 @@ function HydratedQueryWorkspace({
 
       <form className="query-section standalone-query" onSubmit={showResults}>
         <div className="query-intro">
-          <span>STEP 01—02</span>
           <h1>先從你的成績開始</h1>
           <p>填入成績並選擇學校、科系；未填的科目會以 0 級分計算。</p>
         </div>
@@ -207,7 +206,6 @@ function HydratedQueryWorkspace({
 
         <div className="submit-bar">
           <div>
-            <span className="submit-index">03</span>
             <p>
               將依目前條件逐關比對 <b>{comparisonCount}</b> 筆校系資料
             </p>

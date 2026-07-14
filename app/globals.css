@@ -875,13 +875,12 @@ input:focus-visible {
 
 .query-intro {
   display: grid;
-  grid-template-columns: 170px 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
   gap: 20px;
   margin-bottom: 30px;
 }
 
-.query-intro > span,
 .method-heading > span {
   align-self: center;
   color: var(--teal);
@@ -1625,18 +1624,6 @@ input:focus-visible {
   gap: 15px;
 }
 
-.submit-index {
-  display: grid;
-  place-items: center;
-  width: 39px;
-  height: 39px;
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  border-radius: 50%;
-  color: #b8d3d0;
-  font-family: Georgia, serif;
-  font-size: 12px;
-}
-
 .submit-bar p {
   margin: 0;
   color: #c6d1d4;
@@ -1649,7 +1636,7 @@ input:focus-visible {
 
 .submit-guidance {
   flex-basis: 100%;
-  margin-left: 54px;
+  margin-left: 0;
   color: #f1cf7f;
   font-size: 10px;
 }

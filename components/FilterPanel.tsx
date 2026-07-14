@@ -282,7 +282,6 @@ export function FilterPanel({
     <section className="query-card filter-card" aria-labelledby="filter-heading">
       <div className="section-heading-row">
         <div>
-          <span className="step-kicker">STEP 02</span>
           <h2 id="filter-heading">篩選學校與科系</h2>
         </div>
         <span className="optional-label">可自由調整</span>

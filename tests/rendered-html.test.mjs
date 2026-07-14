@@ -48,7 +48,7 @@ test("server-renders the finished homepage and complete data status", async () =
 test("server-renders every requested site page", async () => {
   const cases = [
     ["/how-it-works", /HOW IT WORKS|網站怎麼判斷/],
-    ["/other-admissions", /找不到的學校，不一定是資料漏抓/],
+    ["/other-admissions", /咦，這間學校去哪了？/],
     ["/query", /資料讀取中，請稍後/],
     ["/results", /資料讀取中，請稍後/],
   ];
@@ -71,6 +71,12 @@ test("renders the official five-standard reference and navigation loading UI", a
   assert.match(howHtml, /114 學年度學測五標/);
   assert.match(howHtml, /大學入學考試中心 114 學年度學測各科成績標準/);
   assert.match(queryHtml, /資料讀取中，請稍後/);
+  assert.doesNotMatch(
+    howHtml,
+    /一個校系 = 一組 rules\[\]；所有 rules 通過，Program 才通過。/,
+  );
+  assert.doesNotMatch(queryHtml, /STEP 01—02|STEP 01|STEP 02/);
+  assert.doesNotMatch(queryHtml, /class="submit-index">03/);
 });
 
 test("keeps the homepage header static and removes starter preview files", async () => {

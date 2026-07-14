@@ -72,7 +72,7 @@ export function OtherAdmissionsDirectory() {
       <section className="other-admission-scope" aria-labelledby="other-scope-title">
         <div>
           <span className="step-kicker">資料範圍</span>
-          <h1 id="other-scope-title">找不到的學校，不一定是資料漏抓</h1>
+          <h1 id="other-scope-title">咦，這間學校去哪了？</h1>
         </div>
         <p>
           本站的一階回測已完整收錄

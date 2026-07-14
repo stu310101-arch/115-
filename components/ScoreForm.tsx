@@ -36,7 +36,6 @@ export function ScoreForm({
     <section className="query-card score-card" aria-labelledby="score-heading">
       <div className="section-heading-row">
         <div>
-          <span className="step-kicker">STEP 01</span>
           <h2 id="score-heading">填入學測級分</h2>
         </div>
         <div className="inline-actions">
