@@ -77,6 +77,10 @@ function HydratedQueryWorkspace({
     query.schoolGroupIds,
     selectedProgramCodes,
   ]);
+  const hasEmptyFilterIntersection =
+    !requiresProgramSelection && comparisonCount === 0;
+  const cannotShowResults =
+    requiresProgramSelection || hasEmptyFilterIntersection;
 
   function updateScore(subject: ScoreSubject, value: string) {
     if (value === "") {
@@ -110,7 +114,7 @@ function HydratedQueryWorkspace({
 
   function showResults(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (requiresProgramSelection) return;
+    if (cannotShowResults) return;
     saveQueryState(query);
     const params = queryStateToParams(query).toString();
     const destination = routePath("results");
@@ -175,14 +179,18 @@ function HydratedQueryWorkspace({
             </p>
             {requiresProgramSelection ? (
               <small className="submit-guidance" role="status">
-                請至少勾選一個科系，或按右上角「全選」。
+                請至少勾選一個科系，或使用「全選本頁／全選所有科系」。
+              </small>
+            ) : hasEmptyFilterIntersection ? (
+              <small className="submit-guidance" role="alert">
+                目前的學校範圍與科系選擇沒有交集；請改選學校範圍或科系後再查看。
               </small>
             ) : null}
           </div>
           <button
             className="submit-button"
             data-testid="submit-query"
-            disabled={requiresProgramSelection}
+            disabled={cannotShowResults}
             type="submit"
           >
             查看 <span aria-hidden="true">→</span>
@@ -190,7 +198,7 @@ function HydratedQueryWorkspace({
         </div>
       </form>
       <PageNavigation
-        nextDisabled={requiresProgramSelection}
+        nextDisabled={cannotShowResults}
         nextLabel="下一頁：查看結果"
         nextRoute="results"
         nextSearch={querySearch}

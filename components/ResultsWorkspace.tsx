@@ -202,7 +202,23 @@ function HydratedResultsWorkspace({ programs }: ResultsWorkspaceProps) {
   }, [programs, query]);
 
   const querySearch = queryStateToParams(query).toString();
-  const closest = evaluation.near[0];
+  const academicReviewEvaluations = evaluation.needsOfficialReview.flatMap(
+    (item) => item.academicEvaluation ? [item.academicEvaluation] : [],
+  );
+  const specialPassed = academicReviewEvaluations.filter(
+    (result) => result.passed,
+  );
+  const specialNear = academicReviewEvaluations.filter(
+    (result) => !result.passed,
+  );
+  const passedResults = [...evaluation.passed, ...specialPassed].sort(
+    comparePrograms,
+  );
+  const nearResults = [...evaluation.near, ...specialNear].sort(compareNear);
+  const unresolvedReviews = evaluation.needsOfficialReview.filter(
+    (item) => !item.academicEvaluation,
+  );
+  const closest = nearResults[0];
   const hasDepartmentFilter =
     query.programSelections.自然組.mode !== "none" ||
     query.programSelections.社會組.mode !== "none";
@@ -234,10 +250,13 @@ function HydratedResultsWorkspace({ programs }: ResultsWorkspaceProps) {
             <span className="step-kicker">RESULTS</span>
             <h1>一階篩選回測結果</h1>
             <p>
-              符合條件 {evaluation.matched.length} 筆；可安全自動判斷{" "}
-              {evaluation.supported.length} 筆，其中可能通過{" "}
-              {evaluation.passed.length} 筆。另有{" "}
-              {evaluation.needsOfficialReview.length} 筆無法完整判定，請查看官方資料。
+              符合條件 {evaluation.matched.length} 筆；已完成學測門檻試算{" "}
+              {evaluation.supported.length + academicReviewEvaluations.length}
+              筆，其中學測可能通過 {passedResults.length} 筆
+              {specialPassed.length > 0
+                ? `（${specialPassed.length} 筆另須特殊檢定／證照）`
+                : ""}
+              。另有 {unresolvedReviews.length} 筆缺少可獨立試算的學測門檻。
             </p>
           </div>
           <RouteLink className="back-to-query" route="query" search={querySearch}>
@@ -255,7 +274,7 @@ function HydratedResultsWorkspace({ programs }: ResultsWorkspaceProps) {
           </div>
         ) : null}
 
-        {hasDepartmentFilter && evaluation.passed.length === 0 && closest ? (
+        {hasDepartmentFilter && passedResults.length === 0 && closest ? (
           <div className="closest-callout">
             <span>最接近目標</span>
             <p>
@@ -273,14 +292,16 @@ function HydratedResultsWorkspace({ programs }: ResultsWorkspaceProps) {
               <span className="result-icon" aria-hidden="true">✓</span>
               <div>
                 <h2>可能通過的一階校系</h2>
-                <p>所有倍率篩選關卡皆達到 114 學年度最低級分。</p>
+                <p>
+                  一般校系所有倍率篩選關卡皆達到 114 學年度最低級分；黃色校系僅代表可確認的學測門檻已達標，仍須通過特殊檢定／證照，請點卡片內官方連結確認。
+                </p>
               </div>
             </div>
-            <strong>{evaluation.passed.length}</strong>
+            <strong>{passedResults.length}</strong>
           </div>
           <ProgramResultTable
             emptyMessage="目前條件下沒有全部過關的校系；請查看下方最接近的選項。"
-            evaluations={evaluation.passed.slice(
+            evaluations={passedResults.slice(
               passedStart,
               passedStart + RESULT_PAGE_SIZE,
             )}
@@ -293,7 +314,7 @@ function HydratedResultsWorkspace({ programs }: ResultsWorkspaceProps) {
             onPageChange={(page) =>
               changePage(page, setPassedPage, "passed-results")
             }
-            totalItems={evaluation.passed.length}
+            totalItems={passedResults.length}
           />
         </div>
 
@@ -306,17 +327,19 @@ function HydratedResultsWorkspace({ programs }: ResultsWorkspaceProps) {
                 <p>依「最少總加分」由近到遠排列，每頁顯示 20 筆。</p>
               </div>
             </div>
-            <strong>{evaluation.near.length}</strong>
+            <strong>{nearResults.length}</strong>
           </div>
           <ProgramResultTable
             emptyMessage={
               evaluation.matched.length === 0
                 ? "目前篩選條件沒有校系資料，請返回上一頁調整學校或科系。"
-                : evaluation.supported.length === 0
-                  ? "符合條件的校系目前皆待確認，請查看下方官方資料清單。"
+                : evaluation.supported.length +
+                      academicReviewEvaluations.length ===
+                    0
+                  ? "符合條件的校系目前皆缺少可試算門檻，請查看下方說明。"
                 : "太好了，符合條件的校系已全部通過。"
             }
-            evaluations={evaluation.near.slice(
+            evaluations={nearResults.slice(
               nearStart,
               nearStart + RESULT_PAGE_SIZE,
             )}
@@ -329,40 +352,52 @@ function HydratedResultsWorkspace({ programs }: ResultsWorkspaceProps) {
             onPageChange={(page) =>
               changePage(page, setNearPage, "near-results")
             }
-            totalItems={evaluation.near.length}
+            totalItems={nearResults.length}
           />
         </div>
 
-        <div className="result-block review-block" id="review-results">
-          <div className="result-block-heading review-heading">
-            <div>
-              <span className="result-icon" aria-hidden="true">!</span>
+        {unresolvedReviews.length > 0 ? (
+          <div className="result-block review-block" id="review-results">
+            <div className="result-block-heading review-heading">
               <div>
-                <h2>特殊檢定／查看官方</h2>
-                <p>
-                  特殊校系仍先試算可確認的學測門檻，完整資格與特殊檢定請以官方資料為準；每頁顯示 20 筆。
-                </p>
+                <span className="result-icon" aria-hidden="true">!</span>
+                <div>
+                  <h2>尚無法完成學測試算</h2>
+                  <p>
+                    官方資料未提供可和特殊成績分開計算的學測門檻，或尚未選擇必要組別；請依卡片說明補充條件。
+                  </p>
+                </div>
               </div>
+              <strong>{unresolvedReviews.length}</strong>
             </div>
-            <strong>{evaluation.needsOfficialReview.length}</strong>
+            <UnsupportedProgramTable
+              emptyMessage="目前符合條件的校系都有可試算的學測門檻。"
+              items={unresolvedReviews.slice(
+                reviewStart,
+                reviewStart + RESULT_PAGE_SIZE,
+              )}
+              startIndex={reviewStart}
+            />
+            <ResultPagination
+              currentPage={reviewPage}
+              label="無法完成試算校系"
+              onPageChange={(page) =>
+                changePage(page, setReviewPage, "review-results")
+              }
+              totalItems={unresolvedReviews.length}
+            />
           </div>
-          <UnsupportedProgramTable
-            emptyMessage="目前符合條件的校系都已有完整門檻，可以自動回測。"
-            items={evaluation.needsOfficialReview.slice(
-              reviewStart,
-              reviewStart + RESULT_PAGE_SIZE,
-            )}
-            startIndex={reviewStart}
-          />
-          <ResultPagination
-            currentPage={reviewPage}
-            label="待確認校系"
-            onPageChange={(page) =>
-              changePage(page, setReviewPage, "review-results")
-            }
-            totalItems={evaluation.needsOfficialReview.length}
-          />
-        </div>
+        ) : null}
+
+        {hasDepartmentFilter && evaluation.matched.length === 0 ? (
+          <div className="filter-conflict-alert" role="alert">
+            <span aria-hidden="true">!</span>
+            <p>
+              <b>目前的學校範圍與科系選擇沒有交集。</b>
+              請返回修改條件，改選學校範圍或科系；這不是成績高低造成的結果。
+            </p>
+          </div>
+        ) : null}
       </section>
 
       <div>

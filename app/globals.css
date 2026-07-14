@@ -1384,6 +1384,22 @@ input:focus-visible {
   color: var(--teal);
 }
 
+.program-picker-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.select-all-programs.page-scope {
+  background: transparent;
+  color: var(--teal);
+}
+
+.select-all-programs.page-scope[aria-pressed="true"] {
+  background: var(--teal-soft);
+}
+
 .select-all-programs:disabled {
   cursor: not-allowed;
   opacity: 0.42;
@@ -1806,6 +1822,58 @@ input:focus-visible {
   color: var(--teal);
 }
 
+.filter-conflict-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 16px 0 24px;
+  border: 1px solid #d9a933;
+  border-radius: 16px;
+  padding: 14px 16px;
+  background: #fff8dc;
+  color: #6b5018;
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+.filter-conflict-alert > span {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #f3d87c;
+  color: #533b0b;
+  font-weight: 900;
+}
+
+.filter-conflict-alert p {
+  margin: 1px 0 0;
+}
+
+.filter-conflict-alert b {
+  display: block;
+  color: #533b0b;
+}
+
+.program-card.special-screening-result {
+  border: 2px solid #d9a933;
+  background: #fff8dc;
+  box-shadow: 0 8px 20px rgba(138, 99, 34, 0.09);
+}
+
+.program-card.special-screening-result:hover {
+  border-color: #bd8d16;
+  box-shadow: 0 13px 28px rgba(138, 99, 34, 0.14);
+}
+
+.program-card.special-screening-result .program-rank {
+  border-right-color: rgba(160, 113, 22, 0.26);
+  background: #f8e8ae;
+  color: #76520d;
+}
+
 .program-card.needs-review .program-rank {
   background: #f8f0de;
   color: #8a6322;
@@ -1899,6 +1967,23 @@ input:focus-visible {
   border: 1px solid #d9a933;
   background: #fff3c7;
   color: #76520d;
+}
+
+.special-result-warning {
+  margin-top: 15px;
+  border-top: 1px solid rgba(160, 113, 22, 0.3);
+  padding-top: 13px;
+  color: #6b5018;
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+.special-result-warning b {
+  color: #533b0b;
+}
+
+.special-result-warning p {
+  margin: 2px 0 0;
 }
 
 .special-evaluation-panel {
@@ -2599,6 +2684,16 @@ footer span {
 
   .program-picker-heading {
     align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .program-picker-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .program-picker-actions .select-all-programs {
+    flex: 1 1 140px;
   }
 
   .program-pagination {

@@ -188,6 +188,8 @@ export function FilterPanel({
     visibleDepartments.every((department) =>
       areProgramCodesSelected(programSelection, department.programCodes),
     );
+  const allDepartmentsSelected =
+    groupDepartments.length > 0 && selectedCount === groupDepartments.length;
 
   function toggleProgramCodeScope(programCodes: readonly string[]) {
     const next = toggleProgramCodes(programSelection, programCodes);
@@ -377,16 +379,28 @@ export function FilterPanel({
             </span>
           </div>
           {groupSelection !== "all" ? (
-            <button
-              aria-pressed={allVisibleDepartmentsSelected}
-              className="select-all-programs"
-              data-testid="select-all-programs"
-              disabled={visibleDepartments.length === 0}
-              onClick={() => toggleProgramCodeScope(visibleProgramCodes)}
-              type="button"
-            >
-              {allVisibleDepartmentsSelected ? "取消本頁" : "全選本頁"}
-            </button>
+            <div className="program-picker-actions">
+              <button
+                aria-pressed={allVisibleDepartmentsSelected}
+                className="select-all-programs page-scope"
+                data-testid="select-all-programs"
+                disabled={visibleDepartments.length === 0}
+                onClick={() => toggleProgramCodeScope(visibleProgramCodes)}
+                type="button"
+              >
+                {allVisibleDepartmentsSelected ? "取消本頁" : "全選本頁"}
+              </button>
+              <button
+                aria-pressed={allDepartmentsSelected}
+                className="select-all-programs all-scope"
+                data-testid="select-all-all-programs"
+                disabled={groupDepartments.length === 0}
+                onClick={() => toggleProgramCodeScope(availableProgramCodes)}
+                type="button"
+              >
+                {allDepartmentsSelected ? "取消所有科系" : "全選所有科系"}
+              </button>
+            </div>
           ) : null}
         </div>
 

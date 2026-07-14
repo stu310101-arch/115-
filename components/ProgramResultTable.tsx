@@ -26,6 +26,14 @@ export type UnsupportedProgramItem = {
   academicEvaluation?: EvaluationResult;
 };
 
+function requiresSpecialScreening(program: Program): boolean {
+  return (
+    program.reviewReasons?.some((reason) =>
+      reason.startsWith("需特殊檢定"),
+    ) ?? false
+  );
+}
+
 function RuleSummary({ result }: { result: RuleResult }) {
   return (
     <li className={result.passed ? "rule-line passed" : "rule-line failed"}>
@@ -119,7 +127,11 @@ export function ProgramResultTable({
     <div className="program-list">
       {evaluations.map((evaluation, index) => (
         <article
-          className={`program-card ${tone}`}
+          className={`program-card ${tone}${
+            requiresSpecialScreening(evaluation.program)
+              ? " special-screening-result"
+              : ""
+          }`}
           key={evaluation.program.programCode}
         >
           <div
@@ -145,16 +157,31 @@ export function ProgramResultTable({
                 ) : null}
               </div>
               <div className="program-actions">
-                {tone === "passed" ? (
+                {requiresSpecialScreening(evaluation.program) ? (
+                  <span className="review-badge special">
+                    {tone === "passed"
+                      ? "學測達標・須特殊檢定"
+                      : "學測未達・須特殊檢定"}
+                  </span>
+                ) : tone === "passed" ? (
                   <span className="pass-badge">可能通過</span>
                 ) : (
                   <DeficitBadge
                     points={evaluation.nearestBoost[0]?.totalPoints ?? 0}
                   />
                 )}
+                {requiresSpecialScreening(evaluation.program) &&
+                tone === "near" ? (
+                  <DeficitBadge
+                    points={evaluation.nearestBoost[0]?.totalPoints ?? 0}
+                  />
+                ) : null}
                 <SourceLink
                   compact
-                  href={evaluation.program.source.reportHtmlUrl}
+                  href={
+                    evaluation.program.source.programDetailUrl ??
+                    evaluation.program.source.reportHtmlUrl
+                  }
                 />
               </div>
             </div>
@@ -181,6 +208,21 @@ export function ProgramResultTable({
             </ul>
 
             {tone === "near" ? <BoostPlan evaluation={evaluation} /> : null}
+
+            {requiresSpecialScreening(evaluation.program) ? (
+              <div className="special-result-warning" role="note">
+                <div>
+                  <b>
+                    {tone === "passed"
+                      ? "學測門檻已達，但尚未代表完整通過。"
+                      : "此處僅計算可確認的學測門檻。"}
+                  </b>
+                  <p>
+                    本校系另須特殊檢定／證照；請務必使用卡片右上角「官方原表」連結確認資格、採計方式與最低標準。
+                  </p>
+                </div>
+              </div>
+            ) : null}
           </div>
         </article>
       ))}
@@ -208,7 +250,7 @@ export function UnsupportedProgramTable({
 
         return (
           <article
-            className="program-card needs-review"
+            className={`program-card needs-review${requiresSpecialScreening ? " special-screening-result" : ""}`}
             key={program.programCode}
           >
             <div
