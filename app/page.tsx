@@ -63,15 +63,17 @@ export default function Home() {
           <span className="proof-kicker">DATA STATUS</span>
           <div className="proof-grid">
             <div>
-              <strong>{schoolSources.length}</strong>
+              <strong className="proof-number">{schoolSources.length}</strong>
               <span>所學校來源索引</span>
             </div>
             <div>
-              <strong>{programs.length}</strong>
+              <strong className="proof-number" data-testid="official-program-count">
+                {programs.length}
+              </strong>
               <span>筆官方校系資料</span>
             </div>
             <div>
-              <strong>{verifiedSchoolCount}</strong>
+              <strong className="proof-number">{verifiedSchoolCount}</strong>
               <span>所學校可回測</span>
             </div>
           </div>

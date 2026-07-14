@@ -782,11 +782,12 @@ input:focus-visible {
 
 .proof-grid strong {
   display: block;
-  font-family: var(--sans);
+  font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", monospace;
   font-size: 32px;
   font-feature-settings: "lnum" 1, "tnum" 1;
   font-variant-numeric: lining-nums tabular-nums;
   font-weight: 900;
+  letter-spacing: 0;
   line-height: 1;
   white-space: nowrap;
 }
