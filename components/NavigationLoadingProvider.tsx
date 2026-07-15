@@ -33,6 +33,10 @@ export function NavigationLoadingScreen() {
       <div className="navigation-loading-panel">
         <span className="navigation-loading-spinner" aria-hidden="true" />
         <p className="navigation-loading-message">資料讀取中，請稍後</p>
+        <span className="navigation-loading-progress" aria-hidden="true">
+          <i />
+        </span>
+        <small>正在逐關比對校系；大量結果可能需要數秒。</small>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { HistoricalDataBanner } from "@/components/HistoricalDataBanner";
 import { NavigationLoadingProvider } from "@/components/NavigationLoadingProvider";
 import "./globals.css";
 
@@ -50,6 +51,7 @@ export default function RootLayout({
   return (
     <html lang="zh-Hant">
       <body>
+        <HistoricalDataBanner />
         <NavigationLoadingProvider>{children}</NavigationLoadingProvider>
       </body>
     </html>

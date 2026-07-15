@@ -33,8 +33,11 @@ test("server-renders the finished homepage and complete data status", async () =
   const html = await response.text();
   assert.match(html, /<title>114 申請入學一階落點查詢/);
   assert.match(html, /每一關都算清楚/);
-  assert.match(html, />66<\/strong><span>所學校來源索引/);
-  assert.match(html, />2168<\/strong><span>筆官方校系資料/);
+  assert.match(html, />2168<\/strong><span>筆官方資料總數/);
+  assert.match(html, />2115<\/strong><span>筆可做學測試算/);
+  assert.match(html, />53<\/strong><span>筆無法獨立試算/);
+  assert.match(html, /這是 114 歷史資料回測/);
+  assert.match(html, /不是 115／下一年度落點預測/);
   assert.match(html, /href="\/how-it-works"/);
   assert.match(html, /href="\/query"/);
   assert.match(html, /官方總表/);

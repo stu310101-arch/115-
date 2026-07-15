@@ -65,8 +65,9 @@ type GroupedDepartmentOption = DepartmentOption & {
 };
 
 const PROGRAM_PAGE_SIZE = 12;
-const MOBILE_PROGRAM_PAGE_SIZE = 4;
+const MOBILE_PROGRAM_PAGE_SIZE = 20;
 const MOBILE_PROGRAM_MEDIA_QUERY = "(max-width: 720px)";
+const BULK_SELECTION_CONFIRM_THRESHOLD = 100;
 const SCHOOL_SEARCH_ALIASES: Readonly<Record<string, readonly string[]>> = {
   "152": ["馬偕醫學大學"],
 };
@@ -127,6 +128,10 @@ export function FilterPanel({
   );
   const [programSearch, setProgramSearch] = useState("");
   const [programPage, setProgramPage] = useState(0);
+  const [pendingBulkSelection, setPendingBulkSelection] = useState<{
+    departments: readonly GroupedDepartmentOption[];
+    label: string;
+  } | null>(null);
   const programPageSize = useProgramPageSize();
 
   const availableAcademicCategoryOptions = useMemo(
@@ -258,11 +263,11 @@ export function FilterPanel({
     groupDepartments.every((department) => isDepartmentSelected(department));
 
   function isDepartmentSelected(department: GroupedDepartmentOption): boolean {
-    return activeProgramGroups.every((group) => {
+    return activeProgramGroups.some((group) => {
       const programCodes = department.programCodesByGroup[group];
       return (
-        !programCodes?.length ||
-        areProgramCodesSelected(programSelections[group], programCodes)
+        Boolean(programCodes?.length) &&
+        areProgramCodesSelected(programSelections[group], programCodes ?? [])
       );
     });
   }
@@ -301,6 +306,24 @@ export function FilterPanel({
         normalizeProgramSelection(group, next),
       );
     });
+  }
+
+  function requestProgramDepartmentScope(
+    departments: readonly GroupedDepartmentOption[],
+    label: string,
+  ) {
+    const shouldSelect = !departments.every((department) =>
+      isDepartmentSelected(department),
+    );
+    if (
+      shouldSelect &&
+      departments.length >= BULK_SELECTION_CONFIRM_THRESHOLD
+    ) {
+      setPendingBulkSelection({ departments, label });
+      return;
+    }
+    toggleProgramDepartmentScope(departments);
+    setPendingBulkSelection(null);
   }
 
   const programStart = visibleProgramPage * programPageSize + 1;
@@ -350,6 +373,7 @@ export function FilterPanel({
             }
             data-testid="filter-method-academic-categories"
             onClick={() => {
+              setPendingBulkSelection(null);
               setProgramSearch("");
               setProgramPage(0);
               onFilterMethodChange("academic-categories");
@@ -364,6 +388,7 @@ export function FilterPanel({
             className={filterMethod === "learning-groups" ? "selected" : ""}
             data-testid="filter-method-learning-groups"
             onClick={() => {
+              setPendingBulkSelection(null);
               setProgramSearch("");
               setProgramPage(0);
               onFilterMethodChange("learning-groups");
@@ -393,6 +418,7 @@ export function FilterPanel({
                   data-testid={`group-${value}`}
                   key={value}
                   onClick={() => {
+                    setPendingBulkSelection(null);
                     onGroupSelectionChange(
                       toggleValue(groupSelection, value),
                     );
@@ -432,6 +458,7 @@ export function FilterPanel({
                       }
                       key={option.id}
                       onClick={() => {
+                        setPendingBulkSelection(null);
                         onAcademicCategoryIdsChange(
                           toggleValue(academicCategoryIds, option.id),
                         );
@@ -470,6 +497,7 @@ export function FilterPanel({
                   }
                   key={option.id}
                   onClick={() => {
+                    setPendingBulkSelection(null);
                     onLearningGroupIdsChange(
                       toggleValue(learningGroupIds, option.id),
                     );
@@ -627,36 +655,83 @@ export function FilterPanel({
                 className="select-all-programs page-scope"
                 data-testid="select-all-programs"
                 disabled={visibleDepartments.length === 0}
-                onClick={() => toggleProgramDepartmentScope(visibleDepartments)}
+                onClick={() =>
+                  requestProgramDepartmentScope(visibleDepartments, "本頁")
+                }
                 type="button"
               >
-                {allVisibleDepartmentsSelected ? "取消本頁" : "全選本頁"}
+                {allVisibleDepartmentsSelected
+                  ? `取消本頁（${visibleDepartments.length}）`
+                  : `全選本頁（${visibleDepartments.length}）`}
               </button>
               <button
                 aria-pressed={allSearchResultsSelected}
                 className="select-all-programs search-scope"
                 data-testid="select-all-search-results"
-                disabled={filteredDepartments.length === 0}
+                disabled={
+                  filteredDepartments.length === 0 ||
+                  programSearch.trim() === ""
+                }
                 onClick={() =>
-                  toggleProgramDepartmentScope(filteredDepartments)
+                  requestProgramDepartmentScope(
+                    filteredDepartments,
+                    "搜尋結果",
+                  )
                 }
                 type="button"
               >
-                {allSearchResultsSelected ? "取消搜尋結果" : "全選搜尋結果"}
+                {programSearch.trim() === ""
+                  ? "先搜尋再全選"
+                  : allSearchResultsSelected
+                    ? `取消搜尋結果（${filteredDepartments.length}）`
+                    : `全選搜尋結果（${filteredDepartments.length}）`}
               </button>
               <button
                 aria-pressed={allDepartmentsSelected}
                 className="select-all-programs all-scope"
                 data-testid="select-all-all-programs"
                 disabled={groupDepartments.length === 0}
-                onClick={() => toggleProgramDepartmentScope(groupDepartments)}
+                onClick={() =>
+                  requestProgramDepartmentScope(groupDepartments, "所有科系")
+                }
                 type="button"
               >
-                {allDepartmentsSelected ? "取消所有科系" : "全選所有科系"}
+                {allDepartmentsSelected
+                  ? `取消所有科系（${groupDepartments.length}）`
+                  : `全選所有科系（${groupDepartments.length}）`}
               </button>
             </div>
           ) : null}
         </div>
+
+        {pendingBulkSelection ? (
+          <div className="bulk-selection-confirm" role="alert">
+            <p>
+              將一次選取 <b>{pendingBulkSelection.departments.length}</b> 個
+              {pendingBulkSelection.label}。確定要繼續嗎？
+            </p>
+            <div>
+              <button
+                className="confirm"
+                onClick={() => {
+                  toggleProgramDepartmentScope(
+                    pendingBulkSelection.departments,
+                  );
+                  setPendingBulkSelection(null);
+                }}
+                type="button"
+              >
+                確認選取 {pendingBulkSelection.departments.length} 個
+              </button>
+              <button
+                onClick={() => setPendingBulkSelection(null)}
+                type="button"
+              >
+                取消
+              </button>
+            </div>
+          </div>
+        ) : null}
 
         {!filterReady ? (
           <div className="program-picker-empty">
@@ -676,6 +751,7 @@ export function FilterPanel({
               <input
                 data-testid="program-search"
                 onChange={(event) => {
+                  setPendingBulkSelection(null);
                   setProgramSearch(event.target.value);
                   setProgramPage(0);
                 }}

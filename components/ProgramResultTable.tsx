@@ -238,7 +238,7 @@ function BoostPlan({ evaluation }: { evaluation: EvaluationResult }) {
 
   return (
     <div className="boost-plan">
-      <span className="boost-label">最省力方向</span>
+      <span className="boost-label">最低總加分方案之一</span>
       <p className="boost-copy">
         {plan.changes.map((change, index) => (
           <span key={change.subject}>
@@ -248,9 +248,23 @@ function BoostPlan({ evaluation }: { evaluation: EvaluationResult }) {
         ))}
       </p>
       {evaluation.nearestBoost.length > 1 ? (
-        <span className="boost-alternatives">
-          另有 {evaluation.nearestBoost.length - 1} 種同分方案
-        </span>
+        <details className="boost-alternatives">
+          <summary>
+            查看另有 {evaluation.nearestBoost.length - 1} 種同分方案
+          </summary>
+          <ol>
+            {evaluation.nearestBoost.slice(1).map((alternative, index) => (
+              <li key={`${alternative.totalPoints}-${index}`}>
+                {alternative.changes.map((change, changeIndex) => (
+                  <span key={change.subject}>
+                    {changeIndex > 0 ? "、" : ""}
+                    <b>{change.subject}</b> +{change.points}
+                  </span>
+                ))}
+              </li>
+            ))}
+          </ol>
+        </details>
       ) : null}
     </div>
   );

@@ -4,7 +4,6 @@ import { useMemo, useState, useSyncExternalStore } from "react";
 import type { FormEvent } from "react";
 import { matchesSchoolSelection } from "@/lib/filters";
 import {
-  EMPTY_GROUPED_PROGRAM_SELECTIONS,
   selectedUniqueProgramCodes,
   type ProgramOption,
 } from "@/lib/programSelection";
@@ -64,6 +63,10 @@ function HydratedQueryWorkspace({
   const [query, setQuery] = useState<AdmissionQueryState>(() =>
     restoreQueryState(),
   );
+  const [filterChangeNotice, setFilterChangeNotice] = useState<{
+    message: string;
+    previousQuery: AdmissionQueryState;
+  } | null>(null);
   const { navigate } = useNavigationLoading();
 
   const taxonomyFilteredProgramOptions = useMemo(
@@ -170,14 +173,26 @@ function HydratedQueryWorkspace({
   }
 
   function selectFilterMethod(value: ProgramFilterMethod) {
-    setQuery((current) => ({
-      ...current,
-      filterMethod: value,
-      groupSelection: [],
-      academicCategoryIds: [],
-      learningGroupIds: [],
-      programSelections: EMPTY_GROUPED_PROGRAM_SELECTIONS,
-    }));
+    setQuery((current) => {
+      if (current.filterMethod === value) return current;
+      const hasSelections =
+        current.programSelections.自然組.mode !== "none" ||
+        current.programSelections.社會組.mode !== "none";
+      if (hasSelections) {
+        setFilterChangeNotice({
+          message:
+            "已切換篩選方式，原本勾選的科系仍保留；選好新條件後，只會顯示仍符合的項目。",
+          previousQuery: current,
+        });
+      }
+      return {
+        ...current,
+        filterMethod: value,
+        groupSelection: [],
+        academicCategoryIds: [],
+        learningGroupIds: [],
+      };
+    });
   }
 
   function selectGroups(value: GroupSelection) {
@@ -189,9 +204,18 @@ function HydratedQueryWorkspace({
           current.academicCategoryIds,
           value,
         ),
-        programSelections: EMPTY_GROUPED_PROGRAM_SELECTIONS,
       };
     });
+    if (
+      query.programSelections.自然組.mode !== "none" ||
+      query.programSelections.社會組.mode !== "none"
+    ) {
+      setFilterChangeNotice({
+        message:
+          "類組已更新；已選科系不會被清空，不符合目前條件的項目會暫時隱藏。",
+        previousQuery: query,
+      });
+    }
   }
 
   function selectAcademicCategories(value: AcademicCategoryId[]) {
@@ -201,8 +225,17 @@ function HydratedQueryWorkspace({
         value,
         current.groupSelection,
       ),
-      programSelections: EMPTY_GROUPED_PROGRAM_SELECTIONS,
     }));
+    if (
+      query.programSelections.自然組.mode !== "none" ||
+      query.programSelections.社會組.mode !== "none"
+    ) {
+      setFilterChangeNotice({
+        message:
+          "細分類別已更新；已選科系仍保留，不符合目前條件的項目只會暫時隱藏。",
+        previousQuery: query,
+      });
+    }
   }
 
   function selectLearningGroups(
@@ -211,8 +244,17 @@ function HydratedQueryWorkspace({
     setQuery((current) => ({
       ...current,
       learningGroupIds: value,
-      programSelections: EMPTY_GROUPED_PROGRAM_SELECTIONS,
     }));
+    if (
+      query.programSelections.自然組.mode !== "none" ||
+      query.programSelections.社會組.mode !== "none"
+    ) {
+      setFilterChangeNotice({
+        message:
+          "學群已更新；已選科系仍保留，不符合目前條件的項目只會暫時隱藏。",
+        previousQuery: query,
+      });
+    }
   }
 
   function showResults(event: FormEvent<HTMLFormElement>) {
@@ -237,6 +279,30 @@ function HydratedQueryWorkspace({
             學測未填科目以 0 級分計算；APCS 為選填，留白只提醒、不判定為 0 分。
           </p>
         </div>
+
+        {filterChangeNotice ? (
+          <div className="filter-change-notice" role="status">
+            <p>{filterChangeNotice.message}</p>
+            <div>
+              <button
+                onClick={() => {
+                  setQuery(filterChangeNotice.previousQuery);
+                  setFilterChangeNotice(null);
+                }}
+                type="button"
+              >
+                復原篩選變更
+              </button>
+              <button
+                className="dismiss"
+                onClick={() => setFilterChangeNotice(null)}
+                type="button"
+              >
+                知道了
+              </button>
+            </div>
+          </div>
+        ) : null}
 
         <div className="query-grid">
           <ScoreForm

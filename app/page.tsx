@@ -1,6 +1,10 @@
 import { RouteLink } from "@/components/PageNavigation";
 import programsJson from "@/data/programs_114.json";
 import sourcesJson from "@/data/sources_114.json";
+import {
+  supportsAcademicPartialEvaluation,
+  supportsProgramEvaluation,
+} from "@/lib/admission";
 import type { Program } from "@/lib/types";
 
 type SchoolSource = {
@@ -10,9 +14,15 @@ type SchoolSource = {
 export default function Home() {
   const programs = programsJson as Program[];
   const schoolSources = sourcesJson as SchoolSource[];
-  const verifiedSchoolCount = new Set(
-    programs.map((program) => program.schoolId),
-  ).size;
+  const testableProgramCount = programs.filter((program) => {
+    if (supportsProgramEvaluation(program)) return true;
+    return (
+      program.reviewReasons?.some((reason) =>
+        reason.startsWith("需特殊檢定"),
+      ) === true && supportsAcademicPartialEvaluation(program)
+    );
+  }).length;
+  const unresolvedProgramCount = programs.length - testableProgramCount;
   const officialListUrl = schoolSources[0]?.collegeListUrl ?? "#";
 
   return (
@@ -63,23 +73,23 @@ export default function Home() {
           <span className="proof-kicker">DATA STATUS</span>
           <div className="proof-grid">
             <div>
-              <strong className="proof-number">{schoolSources.length}</strong>
-              <span>所學校來源索引</span>
-            </div>
-            <div>
               <strong className="proof-number" data-testid="official-program-count">
                 {programs.length}
               </strong>
-              <span>筆官方校系資料</span>
+              <span>筆官方資料總數</span>
             </div>
             <div>
-              <strong className="proof-number">{verifiedSchoolCount}</strong>
-              <span>所學校可回測</span>
+              <strong className="proof-number">{testableProgramCount}</strong>
+              <span>筆可做學測試算</span>
+            </div>
+            <div>
+              <strong className="proof-number">{unresolvedProgramCount}</strong>
+              <span>筆無法獨立試算</span>
             </div>
           </div>
           <div className="proof-rule">
-            <span>判斷核心</span>
-            <code>Σ 科目級分 ≥ 每關門檻</code>
+            <span>資料範圍</span>
+            <code>{schoolSources.length} 校・未含下一學年度門檻</code>
           </div>
         </aside>
       </section>
