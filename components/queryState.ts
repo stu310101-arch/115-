@@ -12,6 +12,7 @@ import {
 import type { ApplicantGender, GroupTag } from "../lib/types";
 import {
   isLearningGroupId,
+  normalizeLearningGroupIdsForGroups,
   type LearningGroupId,
 } from "../lib/learningGroups";
 import {
@@ -216,6 +217,7 @@ function normalizeStoredState(
     ? [candidate.schoolSelection]
     : [];
   const customSchoolIds = safeSchoolIds(candidate.customSchoolIds);
+  const groupSelection = safeGroups(candidate.groupSelection);
 
   return {
     scores: SCORE_SUBJECTS.reduce<ScoreDraft>(
@@ -230,7 +232,7 @@ function normalizeStoredState(
       practice: safeApcsScore(storedApcsScores.practice),
     },
     applicantGender: safeApplicantGender(candidate.applicantGender),
-    groupSelection: safeGroups(candidate.groupSelection),
+    groupSelection,
     schoolGroupIds:
       !legacy && storedSchoolGroupIds.length > 0
         ? storedSchoolGroupIds
@@ -240,7 +242,10 @@ function normalizeStoredState(
         ? customSchoolIds
         : [],
     programSelections: safeGroupedProgramSelections(candidate.programSelections),
-    learningGroupIds: safeLearningGroupIds(candidate.learningGroupIds),
+    learningGroupIds: normalizeLearningGroupIdsForGroups(
+      safeLearningGroupIds(candidate.learningGroupIds),
+      groupSelection,
+    ),
   };
 }
 
@@ -255,6 +260,7 @@ export function queryStateFromParams(
   const customSchoolIds = safeSchoolIds(
     params.get("schoolIds")?.split(",") ?? [],
   );
+  const groupSelection = safeGroups(params.getAll("group"));
   const programSelections: GroupedProgramSelections = {
     自然組: safeProgramSelection({
       mode: params.get(PROGRAM_SELECTION_PARAMS.自然組.mode),
@@ -279,7 +285,7 @@ export function queryStateFromParams(
       practice: safeApcsScore(params.get(APCS_PARAMS.practice)),
     },
     applicantGender: safeApplicantGender(params.get(APPLICANT_GENDER_PARAM)),
-    groupSelection: safeGroups(params.getAll("group")),
+    groupSelection,
     schoolGroupIds:
       hasMultiSchoolState && schoolGroupIds.length > 0
         ? schoolGroupIds
@@ -291,7 +297,10 @@ export function queryStateFromParams(
         ? customSchoolIds
         : [],
     programSelections,
-    learningGroupIds: safeLearningGroupIds(params.getAll(LEARNING_GROUP_PARAM)),
+    learningGroupIds: normalizeLearningGroupIdsForGroups(
+      safeLearningGroupIds(params.getAll(LEARNING_GROUP_PARAM)),
+      groupSelection,
+    ),
   };
 }
 
@@ -308,10 +317,14 @@ export function queryStateToParams(state: AdmissionQueryState): URLSearchParams 
   });
   const applicantGender = safeApplicantGender(state.applicantGender);
   if (applicantGender) params.set(APPLICANT_GENDER_PARAM, applicantGender);
-  safeLearningGroupIds(state.learningGroupIds).forEach((learningGroupId) => {
+  const groupSelection = safeGroups(state.groupSelection);
+  normalizeLearningGroupIdsForGroups(
+    safeLearningGroupIds(state.learningGroupIds),
+    groupSelection,
+  ).forEach((learningGroupId) => {
     params.append(LEARNING_GROUP_PARAM, learningGroupId);
   });
-  safeGroups(state.groupSelection).forEach((group) => {
+  groupSelection.forEach((group) => {
     params.append("group", group);
   });
   const schoolGroupIds = safeSchoolGroupIds(state.schoolGroupIds);

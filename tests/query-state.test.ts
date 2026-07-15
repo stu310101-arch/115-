@@ -93,6 +93,7 @@ describe("school query state", () => {
   it("官方十八學群可不選、單選或複選並安全寫入網址", () => {
     const params = queryStateToParams({
       ...DEFAULT_QUERY_STATE,
+      groupSelection: ["自然組"],
       learningGroupIds: ["information", "engineering"],
     });
 
@@ -107,13 +108,39 @@ describe("school query state", () => {
     expect(
       queryStateFromParams(
         new URLSearchParams(
-          "learningGroup=unknown&learningGroup=health-medicine",
+          "group=自然組&learningGroup=unknown&learningGroup=health-medicine",
         ),
       ).learningGroupIds,
     ).toEqual(["health-medicine"]);
     expect(queryStateFromParams(new URLSearchParams()).learningGroupIds).toEqual(
       [],
     );
+  });
+
+  it("十八學群會依招生組別移除不相容的選項", () => {
+    const socialOnly = queryStateFromParams(
+      new URLSearchParams(
+        "group=社會組&learningGroup=information&learningGroup=engineering&learningGroup=management",
+      ),
+    );
+    const bothGroups = queryStateFromParams(
+      new URLSearchParams(
+        "group=自然組&group=社會組&learningGroup=information&learningGroup=management",
+      ),
+    );
+
+    expect(socialOnly.learningGroupIds).toEqual(["management"]);
+    expect(bothGroups.learningGroupIds).toEqual([
+      "information",
+      "management",
+    ]);
+    expect(
+      queryStateToParams({
+        ...DEFAULT_QUERY_STATE,
+        groupSelection: ["社會組"],
+        learningGroupIds: ["information", "law-politics"],
+      }).getAll("learningGroup"),
+    ).toEqual(["law-politics"]);
   });
 
   it("官方招生性別組別可寫入網址，非法值會安全忽略", () => {

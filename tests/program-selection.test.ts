@@ -1,7 +1,11 @@
 import { describe, expect, it } from "vitest";
 import programsJson from "../data/programs_114.json";
 import learningGroupsJson from "../data/program_learning_groups_114.json";
-import { LEARNING_GROUP_OPTIONS } from "../lib/learningGroups";
+import {
+  LEARNING_GROUP_OPTIONS,
+  learningGroupOptionsForGroups,
+  normalizeLearningGroupIdsForGroups,
+} from "../lib/learningGroups";
 import {
   isProgramSelected,
   rankDepartmentOptions,
@@ -193,6 +197,35 @@ describe("114 官方校系選取資料", () => {
         ]),
       }),
     ]);
+  });
+
+  it("十八學群會依自然組、社會組顯示，跨組學群保留在兩邊", () => {
+    const naturalIds = learningGroupOptionsForGroups(["自然組"]).map(
+      ({ id }) => id,
+    );
+    const socialIds = learningGroupOptionsForGroups(["社會組"]).map(
+      ({ id }) => id,
+    );
+    const bothIds = learningGroupOptionsForGroups(["自然組", "社會組"]).map(
+      ({ id }) => id,
+    );
+
+    expect(naturalIds).toContain("information");
+    expect(naturalIds).toContain("engineering");
+    expect(socialIds).not.toContain("information");
+    expect(socialIds).not.toContain("engineering");
+    expect(socialIds).toContain("law-politics");
+    expect(naturalIds).not.toContain("law-politics");
+    expect(naturalIds).toContain("education");
+    expect(socialIds).toContain("education");
+    expect(bothIds).toHaveLength(18);
+    expect(new Set(bothIds).size).toBe(18);
+    expect(
+      normalizeLearningGroupIdsForGroups(
+        ["information", "engineering", "management"],
+        ["社會組"],
+      ),
+    ).toEqual(["management"]);
   });
 
   it("三筆校系保留官方男女名額與不同篩選門檻", () => {

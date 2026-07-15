@@ -4,6 +4,8 @@ import type { Program } from "./types";
 export {
   isLearningGroupId,
   LEARNING_GROUP_OPTIONS,
+  learningGroupOptionsForGroups,
+  normalizeLearningGroupIdsForGroups,
   type LearningGroupId,
 } from "./learningGroupCatalog";
 import type { LearningGroupId } from "./learningGroupCatalog";

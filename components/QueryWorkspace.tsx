@@ -9,7 +9,10 @@ import {
   type ProgramOption,
 } from "@/lib/programSelection";
 import type { GroupTag } from "@/lib/types";
-import { matchesLearningGroupIds } from "@/lib/learningGroups";
+import {
+  matchesLearningGroupIds,
+  normalizeLearningGroupIdsForGroups,
+} from "@/lib/learningGroups";
 import { FilterPanel, type SchoolSourceOption } from "./FilterPanel";
 import {
   NavigationLoadingScreen,
@@ -160,6 +163,10 @@ function HydratedQueryWorkspace({
       return {
         ...current,
         groupSelection: value,
+        learningGroupIds: normalizeLearningGroupIdsForGroups(
+          current.learningGroupIds,
+          value,
+        ),
         programSelections,
       };
     });

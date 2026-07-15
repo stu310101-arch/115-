@@ -20,8 +20,9 @@ import {
 } from "@/lib/programSelection";
 import type { GroupTag } from "@/lib/types";
 import {
-  LEARNING_GROUP_OPTIONS,
+  learningGroupOptionsForGroups,
   matchesLearningGroupIds,
+  normalizeLearningGroupIdsForGroups,
   type LearningGroupId,
 } from "@/lib/learningGroups";
 import type { GroupSelection } from "./queryState";
@@ -115,6 +116,16 @@ export function FilterPanel({
   const [programPage, setProgramPage] = useState(0);
   const programPageSize = useProgramPageSize();
 
+  const availableLearningGroupOptions = useMemo(
+    () => learningGroupOptionsForGroups(groupSelection),
+    [groupSelection],
+  );
+  const activeLearningGroupIds = useMemo(
+    () =>
+      normalizeLearningGroupIdsForGroups(learningGroupIds, groupSelection),
+    [groupSelection, learningGroupIds],
+  );
+
   const filteredSchools = useMemo(() => {
     const query = normalizeSearch(schoolSearch);
     if (!query) return schoolSources;
@@ -133,10 +144,10 @@ export function FilterPanel({
       programOptions.filter((program) =>
         matchesLearningGroupIds(
           program.learningGroupIds,
-          learningGroupIds,
+          activeLearningGroupIds,
         ),
       ),
-    [learningGroupIds, programOptions],
+    [activeLearningGroupIds, programOptions],
   );
   const programsByGroup = useMemo(
     () => ({
@@ -340,8 +351,10 @@ export function FilterPanel({
               role="group"
             >
               <button
-                aria-pressed={learningGroupIds.length === 0}
-                className={learningGroupIds.length === 0 ? "selected" : ""}
+                aria-pressed={activeLearningGroupIds.length === 0}
+                className={
+                  activeLearningGroupIds.length === 0 ? "selected" : ""
+                }
                 onClick={() => {
                   onLearningGroupIdsChange([]);
                   setProgramSearch("");
@@ -356,16 +369,16 @@ export function FilterPanel({
                     : `顯示${groupSelection[0]}全部科系`}
                 </small>
               </button>
-              {LEARNING_GROUP_OPTIONS.map((option) => (
+              {availableLearningGroupOptions.map((option) => (
                 <button
-                  aria-pressed={learningGroupIds.includes(option.id)}
+                  aria-pressed={activeLearningGroupIds.includes(option.id)}
                   className={
-                    learningGroupIds.includes(option.id) ? "selected" : ""
+                    activeLearningGroupIds.includes(option.id) ? "selected" : ""
                   }
                   key={option.id}
                   onClick={() => {
                     onLearningGroupIdsChange(
-                      toggleValue(learningGroupIds, option.id),
+                      toggleValue(activeLearningGroupIds, option.id),
                     );
                     setProgramSearch("");
                     setProgramPage(0);
@@ -379,7 +392,7 @@ export function FilterPanel({
               ))}
             </div>
             <p className="microcopy">
-              依 ColleGo! 官方學群、學類與對應校系整理；同一學類可能跨群。官方跨領域校系不會被硬歸入任一十八學群。
+              學群與學類依 ColleGo! 官方資料；顯示選項會依自然組、社會組切換，跨組學群會同時出現在兩組。
             </p>
           </div>
         ) : null}
