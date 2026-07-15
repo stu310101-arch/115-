@@ -12,6 +12,7 @@ import {
   toProgramOptions,
   toggleProgramCodes,
   toggleProgramSelection,
+  type ProgramSelection,
 } from "../lib/programSelection";
 import { filterPrograms } from "../lib/filters";
 import {
@@ -645,6 +646,43 @@ describe("114 官方校系選取資料", () => {
     expect(
       dentistry.some((department) => department.departmentName === "中醫學系"),
     ).toBe(false);
+  });
+
+  it("本頁、搜尋結果與所有科系使用各自正確的全選範圍", () => {
+    const naturalDepartments = toDepartmentOptions(
+      toProgramOptions(programs),
+      "自然組",
+    );
+    const searchResults = rankDepartmentOptions(
+      naturalDepartments,
+      "資工系",
+    );
+    const firstPage = searchResults.slice(0, 4);
+    const selectScope = (
+      departments: readonly (typeof naturalDepartments)[number][],
+    ) =>
+      departments.reduce<ProgramSelection>(
+        (selection, department) =>
+          toggleProgramCodes(selection, department.programCodes),
+        { mode: "none", codes: [] },
+      );
+
+    const pageSelection = selectScope(firstPage);
+    const searchSelection = selectScope(searchResults);
+    const allSelection = selectScope(naturalDepartments);
+
+    expect(selectedDepartmentCount(pageSelection, searchResults)).toBe(
+      firstPage.length,
+    );
+    expect(selectedDepartmentCount(searchSelection, searchResults)).toBe(
+      searchResults.length,
+    );
+    expect(
+      selectedDepartmentCount(searchSelection, naturalDepartments),
+    ).toBeLessThan(naturalDepartments.length);
+    expect(selectedDepartmentCount(allSelection, naturalDepartments)).toBe(
+      naturalDepartments.length,
+    );
   });
 
   it("完整說明中興大學 2 筆 APCS 特殊門檻", () => {

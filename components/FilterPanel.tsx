@@ -228,6 +228,9 @@ export function FilterPanel({
     filteredDepartments.every((department) =>
       isDepartmentSelected(department),
     );
+  const allDepartmentsSelected =
+    groupDepartments.length > 0 &&
+    groupDepartments.every((department) => isDepartmentSelected(department));
 
   function isDepartmentSelected(department: GroupedDepartmentOption): boolean {
     return groupSelection.every((group) => {
@@ -517,8 +520,8 @@ export function FilterPanel({
               </button>
               <button
                 aria-pressed={allSearchResultsSelected}
-                className="select-all-programs all-scope"
-                data-testid="select-all-all-programs"
+                className="select-all-programs search-scope"
+                data-testid="select-all-search-results"
                 disabled={filteredDepartments.length === 0}
                 onClick={() =>
                   toggleProgramDepartmentScope(filteredDepartments)
@@ -526,6 +529,16 @@ export function FilterPanel({
                 type="button"
               >
                 {allSearchResultsSelected ? "取消搜尋結果" : "全選搜尋結果"}
+              </button>
+              <button
+                aria-pressed={allDepartmentsSelected}
+                className="select-all-programs all-scope"
+                data-testid="select-all-all-programs"
+                disabled={groupDepartments.length === 0}
+                onClick={() => toggleProgramDepartmentScope(groupDepartments)}
+                type="button"
+              >
+                {allDepartmentsSelected ? "取消所有科系" : "全選所有科系"}
               </button>
             </div>
           ) : null}

@@ -250,7 +250,7 @@ function HydratedQueryWorkspace({
             </p>
             {requiresProgramSelection ? (
               <small className="submit-guidance" role="status">
-                請至少勾選一個科系，或使用「全選本頁／全選搜尋結果」。
+                請至少勾選一個科系，或使用「全選本頁／全選搜尋結果／全選所有科系」。
               </small>
             ) : hasEmptyFilterIntersection ? (
               <small className="submit-guidance" role="alert">
