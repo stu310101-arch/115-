@@ -1,11 +1,13 @@
 import { describe, expect, it } from "vitest";
 import programsJson from "../data/programs_114.json";
 import learningGroupsJson from "../data/program_learning_groups_114.json";
+import { LEARNING_GROUP_OPTIONS } from "../lib/learningGroups";
 import {
-  LEARNING_GROUP_OPTIONS,
-  learningGroupOptionsForGroups,
-  normalizeLearningGroupIdsForGroups,
-} from "../lib/learningGroups";
+  ACADEMIC_CATEGORY_OPTIONS,
+  activeAdmissionGroupsForSelection,
+  academicCategoryIdsForLearningGroupIds,
+  admissionGroupTagsForCategoryIds,
+} from "../lib/admissionTaxonomy";
 import {
   isProgramSelected,
   rankDepartmentOptions,
@@ -50,8 +52,8 @@ describe("114 官方校系選取資料", () => {
     expect(codes.size).toBe(2168);
     expect(schools.size).toBe(66);
     expect([...codes].every((code) => /^\d{6}$/.test(code))).toBe(true);
-    expect(natural).toHaveLength(1280);
-    expect(social).toHaveLength(1287);
+    expect(natural).toHaveLength(1201);
+    expect(social).toHaveLength(1234);
     expect(Object.keys(learningGroupsJson.programs)).toHaveLength(2168);
     expect(learningGroupsJson.unresolvedPrograms).toEqual([]);
     expect(LEARNING_GROUP_OPTIONS).toHaveLength(18);
@@ -84,7 +86,7 @@ describe("114 官方校系選取資料", () => {
       社會組: { mode: "all", codes: [] },
     });
 
-    expect(naturalOnly).toHaveLength(1280);
+    expect(naturalOnly).toHaveLength(1201);
     expect(bothGroups).toHaveLength(2168);
     expect(new Set(bothGroups).size).toBe(2168);
   });
@@ -97,9 +99,9 @@ describe("114 官方校系選取資料", () => {
       (department) => department.departmentName === "資訊工程學系",
     );
 
-    expect(naturalDepartments).toHaveLength(853);
-    expect(socialDepartments).toHaveLength(934);
-    expect(computerScience?.programCodes).toHaveLength(30);
+    expect(naturalDepartments).toHaveLength(792);
+    expect(socialDepartments).toHaveLength(871);
+    expect(computerScience?.programCodes).toHaveLength(32);
     expect(
       naturalDepartments.every(
         (department) => !("schoolName" in department),
@@ -199,33 +201,48 @@ describe("114 官方校系選取資料", () => {
     ]);
   });
 
-  it("十八學群會依自然組、社會組顯示，跨組學群保留在兩邊", () => {
-    const naturalIds = learningGroupOptionsForGroups(["自然組"]).map(
-      ({ id }) => id,
+  it("官方十八學群完整映射至四大類組，資工歸入自然組理工資訊", () => {
+    const mappedLearningGroupIds = ACADEMIC_CATEGORY_OPTIONS.flatMap(
+      ({ learningGroupIds }) => learningGroupIds,
     );
-    const socialIds = learningGroupOptionsForGroups(["社會組"]).map(
-      ({ id }) => id,
+    const options = toProgramOptions(programs);
+    const computerScience = options.find(
+      (program) => program.programName === "資訊工程學系",
     );
-    const bothIds = learningGroupOptionsForGroups(["自然組", "社會組"]).map(
-      ({ id }) => id,
+    const officiallyUnclassified = options.filter(
+      (program) => program.learningGroupIds.length === 0,
     );
 
-    expect(naturalIds).toContain("information");
-    expect(naturalIds).toContain("engineering");
-    expect(socialIds).not.toContain("information");
-    expect(socialIds).not.toContain("engineering");
-    expect(socialIds).toContain("law-politics");
-    expect(naturalIds).not.toContain("law-politics");
-    expect(naturalIds).toContain("education");
-    expect(socialIds).toContain("education");
-    expect(bothIds).toHaveLength(18);
-    expect(new Set(bothIds).size).toBe(18);
+    expect(ACADEMIC_CATEGORY_OPTIONS).toHaveLength(4);
+    expect(mappedLearningGroupIds).toHaveLength(18);
+    expect(new Set(mappedLearningGroupIds).size).toBe(18);
     expect(
-      normalizeLearningGroupIdsForGroups(
-        ["information", "engineering", "management"],
-        ["社會組"],
+      academicCategoryIdsForLearningGroupIds(["information"]),
+    ).toEqual(["engineering-information"]);
+    expect(
+      admissionGroupTagsForCategoryIds(["engineering-information"]),
+    ).toEqual(["自然組"]);
+    expect(
+      activeAdmissionGroupsForSelection({
+        filterMethod: "academic-categories",
+        groupSelection: ["社會組", "自然組"],
+        academicCategoryIds: ["engineering-information"],
+        learningGroupIds: [],
+      }),
+    ).toEqual(["自然組"]);
+    expect(computerScience?.learningGroupIds).toContain("information");
+    expect(computerScience?.academicCategoryIds).toContain(
+      "engineering-information",
+    );
+    expect(computerScience?.groupTags).toContain("自然組");
+    expect(officiallyUnclassified).toHaveLength(24);
+    expect(
+      officiallyUnclassified.every(
+        (program) =>
+          program.academicCategoryIds.length === 0 &&
+          program.groupTags.length > 0,
       ),
-    ).toEqual(["management"]);
+    ).toBe(true);
   });
 
   it("三筆校系保留官方男女名額與不同篩選門檻", () => {
@@ -1030,7 +1047,7 @@ describe("programSelection", () => {
       computerScience.programCodes,
     );
     expect(selection.mode).toBe("include");
-    expect(selection.codes).toHaveLength(30);
+    expect(selection.codes).toHaveLength(32);
     expect(selectedDepartmentCount(selection, naturalDepartments)).toBe(1);
 
     const selectedPrograms = filterPrograms(programs, {
@@ -1039,7 +1056,7 @@ describe("programSelection", () => {
         社會組: { mode: "none", codes: [] },
       },
     });
-    expect(selectedPrograms).toHaveLength(30);
+    expect(selectedPrograms).toHaveLength(32);
     expect(
       selectedPrograms.every(
         (program) => program.programName === "資訊工程學系",
@@ -1055,14 +1072,14 @@ describe("programSelection", () => {
       computerScience.programCodes,
     );
     expect(excluded.mode).toBe("exclude");
-    expect(excluded.codes).toHaveLength(30);
+    expect(excluded.codes).toHaveLength(32);
 
     const completedFromPartial = toggleProgramCodes(
       { mode: "include", codes: [computerScience.programCodes[0]] },
       computerScience.programCodes,
     );
     expect(completedFromPartial.mode).toBe("include");
-    expect(completedFromPartial.codes).toHaveLength(30);
+    expect(completedFromPartial.codes).toHaveLength(32);
   });
 
   it("結果篩選精確使用校系代碼", () => {
@@ -1104,6 +1121,7 @@ describe("科系選取網址狀態", () => {
     const params = queryStateToParams({
       ...DEFAULT_QUERY_STATE,
       scores: EXAMPLE_SCORES,
+      filterMethod: "academic-categories",
       groupSelection: ["自然組"],
       programSelections: {
         自然組: {
@@ -1130,6 +1148,7 @@ describe("科系選取網址狀態", () => {
   it("兩組全選各自只傳模式，不在網址列展開上千個代碼", () => {
     const params = queryStateToParams({
       ...DEFAULT_QUERY_STATE,
+      filterMethod: "academic-categories",
       groupSelection: ["自然組", "社會組"],
       programSelections: {
         自然組: { mode: "all", codes: [] },

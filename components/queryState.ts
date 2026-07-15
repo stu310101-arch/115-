@@ -12,9 +12,15 @@ import {
 import type { ApplicantGender, GroupTag } from "../lib/types";
 import {
   isLearningGroupId,
-  normalizeLearningGroupIdsForGroups,
   type LearningGroupId,
 } from "../lib/learningGroups";
+import {
+  isAcademicCategoryId,
+  isProgramFilterMethod,
+  normalizeAcademicCategoryIdsForGroups,
+  type AcademicCategoryId,
+  type ProgramFilterMethod,
+} from "../lib/admissionTaxonomy";
 import {
   SCORE_SUBJECTS,
   type ApcsScoreDraft,
@@ -34,7 +40,9 @@ export type AdmissionQueryState = {
   scores: ScoreDraft;
   apcsScores: ApcsScoreDraft;
   applicantGender: ApplicantGender | "";
+  filterMethod: ProgramFilterMethod;
   groupSelection: GroupSelection;
+  academicCategoryIds: AcademicCategoryId[];
   schoolGroupIds: SchoolGroupId[];
   customSchoolIds: string[];
   programSelections: GroupedProgramSelections;
@@ -70,15 +78,18 @@ export const DEFAULT_QUERY_STATE: AdmissionQueryState = {
   scores: { ...EMPTY_SCORES },
   apcsScores: { ...EMPTY_APCS_SCORES },
   applicantGender: "",
+  filterMethod: "",
   groupSelection: [],
+  academicCategoryIds: [],
   schoolGroupIds: [],
   customSchoolIds: [],
   programSelections: EMPTY_GROUPED_PROGRAM_SELECTIONS,
   learningGroupIds: [],
 };
 
-const SESSION_KEY = "admission-114-query-v9";
+const SESSION_KEY = "admission-114-query-v10";
 const LEGACY_SESSION_KEYS = [
+  { key: "admission-114-query-v9", usesLegacySchoolState: false },
   { key: "admission-114-query-v8", usesLegacySchoolState: false },
   { key: "admission-114-query-v7", usesLegacySchoolState: false },
   { key: "admission-114-query-v6", usesLegacySchoolState: false },
@@ -89,6 +100,8 @@ const LEGACY_SESSION_KEYS = [
 const SCHOOL_MODE_PARAM = "schoolMode";
 const MULTI_SCHOOL_MODE = "multi";
 const APPLICANT_GENDER_PARAM = "gender";
+const FILTER_METHOD_PARAM = "filterBy";
+const ACADEMIC_CATEGORY_PARAM = "academicCategory";
 const LEARNING_GROUP_PARAM = "learningGroup";
 const CONFIGURED_BASE_PATH = (process.env.NEXT_PUBLIC_BASE_PATH ?? "")
   .replace(/\/$/, "")
@@ -168,6 +181,28 @@ function safeLearningGroupIds(value: unknown): LearningGroupId[] {
   return safeStringArray(value).filter(isLearningGroupId);
 }
 
+function safeAcademicCategoryIds(value: unknown): AcademicCategoryId[] {
+  return safeStringArray(value).filter(isAcademicCategoryId);
+}
+
+function safeProgramFilterMethod(value: unknown): ProgramFilterMethod {
+  return typeof value === "string" && isProgramFilterMethod(value)
+    ? value
+    : "";
+}
+
+function inferProgramFilterMethod(
+  value: unknown,
+  groups: readonly GroupTag[],
+  learningGroupIds: readonly LearningGroupId[],
+): ProgramFilterMethod {
+  const explicit = safeProgramFilterMethod(value);
+  if (explicit) return explicit;
+  if (learningGroupIds.length > 0) return "learning-groups";
+  if (groups.length > 0) return "academic-categories";
+  return "";
+}
+
 function safeProgramSelection(value: unknown): ProgramSelection {
   if (!value || typeof value !== "object") {
     return { mode: "none", codes: [] };
@@ -217,7 +252,26 @@ function normalizeStoredState(
     ? [candidate.schoolSelection]
     : [];
   const customSchoolIds = safeSchoolIds(candidate.customSchoolIds);
-  const groupSelection = safeGroups(candidate.groupSelection);
+  const storedGroups = safeGroups(candidate.groupSelection);
+  const storedLearningGroupIds = safeLearningGroupIds(
+    candidate.learningGroupIds,
+  );
+  const filterMethod = inferProgramFilterMethod(
+    candidate.filterMethod,
+    storedGroups,
+    storedLearningGroupIds,
+  );
+  const groupSelection =
+    filterMethod === "academic-categories" ? storedGroups : [];
+  const academicCategoryIds =
+    filterMethod === "academic-categories"
+      ? normalizeAcademicCategoryIdsForGroups(
+          safeAcademicCategoryIds(candidate.academicCategoryIds),
+          groupSelection,
+        )
+      : [];
+  const learningGroupIds =
+    filterMethod === "learning-groups" ? storedLearningGroupIds : [];
 
   return {
     scores: SCORE_SUBJECTS.reduce<ScoreDraft>(
@@ -232,7 +286,9 @@ function normalizeStoredState(
       practice: safeApcsScore(storedApcsScores.practice),
     },
     applicantGender: safeApplicantGender(candidate.applicantGender),
+    filterMethod,
     groupSelection,
+    academicCategoryIds,
     schoolGroupIds:
       !legacy && storedSchoolGroupIds.length > 0
         ? storedSchoolGroupIds
@@ -242,10 +298,7 @@ function normalizeStoredState(
         ? customSchoolIds
         : [],
     programSelections: safeGroupedProgramSelections(candidate.programSelections),
-    learningGroupIds: normalizeLearningGroupIdsForGroups(
-      safeLearningGroupIds(candidate.learningGroupIds),
-      groupSelection,
-    ),
+    learningGroupIds,
   };
 }
 
@@ -260,7 +313,26 @@ export function queryStateFromParams(
   const customSchoolIds = safeSchoolIds(
     params.get("schoolIds")?.split(",") ?? [],
   );
-  const groupSelection = safeGroups(params.getAll("group"));
+  const storedGroups = safeGroups(params.getAll("group"));
+  const storedLearningGroupIds = safeLearningGroupIds(
+    params.getAll(LEARNING_GROUP_PARAM),
+  );
+  const filterMethod = inferProgramFilterMethod(
+    params.get(FILTER_METHOD_PARAM),
+    storedGroups,
+    storedLearningGroupIds,
+  );
+  const groupSelection =
+    filterMethod === "academic-categories" ? storedGroups : [];
+  const academicCategoryIds =
+    filterMethod === "academic-categories"
+      ? normalizeAcademicCategoryIdsForGroups(
+          safeAcademicCategoryIds(params.getAll(ACADEMIC_CATEGORY_PARAM)),
+          groupSelection,
+        )
+      : [];
+  const learningGroupIds =
+    filterMethod === "learning-groups" ? storedLearningGroupIds : [];
   const programSelections: GroupedProgramSelections = {
     自然組: safeProgramSelection({
       mode: params.get(PROGRAM_SELECTION_PARAMS.自然組.mode),
@@ -285,7 +357,9 @@ export function queryStateFromParams(
       practice: safeApcsScore(params.get(APCS_PARAMS.practice)),
     },
     applicantGender: safeApplicantGender(params.get(APPLICANT_GENDER_PARAM)),
+    filterMethod,
     groupSelection,
+    academicCategoryIds,
     schoolGroupIds:
       hasMultiSchoolState && schoolGroupIds.length > 0
         ? schoolGroupIds
@@ -297,10 +371,7 @@ export function queryStateFromParams(
         ? customSchoolIds
         : [],
     programSelections,
-    learningGroupIds: normalizeLearningGroupIdsForGroups(
-      safeLearningGroupIds(params.getAll(LEARNING_GROUP_PARAM)),
-      groupSelection,
-    ),
+    learningGroupIds,
   };
 }
 
@@ -317,16 +388,21 @@ export function queryStateToParams(state: AdmissionQueryState): URLSearchParams 
   });
   const applicantGender = safeApplicantGender(state.applicantGender);
   if (applicantGender) params.set(APPLICANT_GENDER_PARAM, applicantGender);
-  const groupSelection = safeGroups(state.groupSelection);
-  normalizeLearningGroupIdsForGroups(
-    safeLearningGroupIds(state.learningGroupIds),
-    groupSelection,
-  ).forEach((learningGroupId) => {
-    params.append(LEARNING_GROUP_PARAM, learningGroupId);
-  });
-  groupSelection.forEach((group) => {
-    params.append("group", group);
-  });
+  const filterMethod = safeProgramFilterMethod(state.filterMethod);
+  if (filterMethod) params.set(FILTER_METHOD_PARAM, filterMethod);
+  if (filterMethod === "academic-categories") {
+    const groupSelection = safeGroups(state.groupSelection);
+    groupSelection.forEach((group) => params.append("group", group));
+    normalizeAcademicCategoryIdsForGroups(
+      safeAcademicCategoryIds(state.academicCategoryIds),
+      groupSelection,
+    ).forEach((id) => params.append(ACADEMIC_CATEGORY_PARAM, id));
+  }
+  if (filterMethod === "learning-groups") {
+    safeLearningGroupIds(state.learningGroupIds).forEach((learningGroupId) => {
+      params.append(LEARNING_GROUP_PARAM, learningGroupId);
+    });
+  }
   const schoolGroupIds = safeSchoolGroupIds(state.schoolGroupIds);
   const customSchoolIds = safeSchoolIds(state.customSchoolIds);
   if (schoolGroupIds.length > 0 || customSchoolIds.length > 0) {
@@ -357,6 +433,8 @@ export function restoreQueryState(): AdmissionQueryState {
     ...Object.values(SCORE_PARAMS),
     ...Object.values(APCS_PARAMS),
     APPLICANT_GENDER_PARAM,
+    FILTER_METHOD_PARAM,
+    ACADEMIC_CATEGORY_PARAM,
     LEARNING_GROUP_PARAM,
     "group",
     SCHOOL_MODE_PARAM,

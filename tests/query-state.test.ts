@@ -66,13 +66,24 @@ describe("school query state", () => {
   it("自然組與社會組可複選並完整寫入網址", () => {
     const params = queryStateToParams({
       ...DEFAULT_QUERY_STATE,
+      filterMethod: "academic-categories",
       groupSelection: ["自然組", "社會組"],
+      academicCategoryIds: ["social-humanities", "engineering-information"],
     });
 
+    expect(params.get("filterBy")).toBe("academic-categories");
     expect(params.getAll("group")).toEqual(["自然組", "社會組"]);
+    expect(params.getAll("academicCategory")).toEqual([
+      "social-humanities",
+      "engineering-information",
+    ]);
     expect(queryStateFromParams(params).groupSelection).toEqual([
       "自然組",
       "社會組",
+    ]);
+    expect(queryStateFromParams(params).academicCategoryIds).toEqual([
+      "social-humanities",
+      "engineering-information",
     ]);
     expect(
       queryStateFromParams(
@@ -93,10 +104,11 @@ describe("school query state", () => {
   it("官方十八學群可不選、單選或複選並安全寫入網址", () => {
     const params = queryStateToParams({
       ...DEFAULT_QUERY_STATE,
-      groupSelection: ["自然組"],
+      filterMethod: "learning-groups",
       learningGroupIds: ["information", "engineering"],
     });
 
+    expect(params.get("filterBy")).toBe("learning-groups");
     expect(params.getAll("learningGroup")).toEqual([
       "information",
       "engineering",
@@ -108,7 +120,7 @@ describe("school query state", () => {
     expect(
       queryStateFromParams(
         new URLSearchParams(
-          "group=自然組&learningGroup=unknown&learningGroup=health-medicine",
+          "filterBy=learning-groups&learningGroup=unknown&learningGroup=health-medicine",
         ),
       ).learningGroupIds,
     ).toEqual(["health-medicine"]);
@@ -117,30 +129,33 @@ describe("school query state", () => {
     );
   });
 
-  it("十八學群會依招生組別移除不相容的選項", () => {
-    const socialOnly = queryStateFromParams(
-      new URLSearchParams(
-        "group=社會組&learningGroup=information&learningGroup=engineering&learningGroup=management",
-      ),
-    );
-    const bothGroups = queryStateFromParams(
-      new URLSearchParams(
-        "group=自然組&group=社會組&learningGroup=information&learningGroup=management",
-      ),
-    );
+  it("兩種篩選方法互斥，網址只保留目前方法的選項", () => {
+    const categoryParams = queryStateToParams({
+      ...DEFAULT_QUERY_STATE,
+      filterMethod: "academic-categories",
+      groupSelection: ["社會組"],
+      academicCategoryIds: ["social-humanities"],
+      learningGroupIds: ["information"],
+    });
+    const learningParams = queryStateToParams({
+      ...DEFAULT_QUERY_STATE,
+      filterMethod: "learning-groups",
+      groupSelection: ["自然組"],
+      academicCategoryIds: ["engineering-information"],
+      learningGroupIds: ["information", "engineering"],
+    });
 
-    expect(socialOnly.learningGroupIds).toEqual(["management"]);
-    expect(bothGroups.learningGroupIds).toEqual([
-      "information",
-      "management",
+    expect(categoryParams.getAll("group")).toEqual(["社會組"]);
+    expect(categoryParams.getAll("academicCategory")).toEqual([
+      "social-humanities",
     ]);
-    expect(
-      queryStateToParams({
-        ...DEFAULT_QUERY_STATE,
-        groupSelection: ["社會組"],
-        learningGroupIds: ["information", "law-politics"],
-      }).getAll("learningGroup"),
-    ).toEqual(["law-politics"]);
+    expect(categoryParams.getAll("learningGroup")).toEqual([]);
+    expect(learningParams.getAll("group")).toEqual([]);
+    expect(learningParams.getAll("academicCategory")).toEqual([]);
+    expect(learningParams.getAll("learningGroup")).toEqual([
+      "information",
+      "engineering",
+    ]);
   });
 
   it("官方招生性別組別可寫入網址，非法值會安全忽略", () => {

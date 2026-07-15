@@ -1,8 +1,9 @@
 import type { GroupTag, Program } from "./types";
+import type { LearningGroupId } from "./learningGroups";
 import {
-  learningGroupIdsFor,
-  type LearningGroupId,
-} from "./learningGroups";
+  programTaxonomyFor,
+  type AcademicCategoryId,
+} from "./admissionTaxonomy";
 
 export const PROGRAM_SELECTION_MODES = [
   "none",
@@ -32,6 +33,7 @@ export type ProgramOption = Readonly<{
   schoolId: string;
   schoolName: string;
   groupTags: readonly GroupTag[];
+  academicCategoryIds: readonly AcademicCategoryId[];
   learningGroupIds: readonly LearningGroupId[];
 }>;
 
@@ -121,22 +123,18 @@ export const EMPTY_GROUPED_PROGRAM_SELECTIONS: GroupedProgramSelections = {
 export function toProgramOptions(
   programs: readonly Program[],
 ): ProgramOption[] {
-  return programs.map(
-    ({
-      programCode,
-      programName,
-      schoolId,
-      schoolName,
-      groupTags,
-    }) => ({
-      programCode,
-      programName,
-      schoolId,
-      schoolName,
-      groupTags,
-      learningGroupIds: learningGroupIdsFor({ programCode }),
-    }),
-  );
+  return programs.map((program) => {
+    const taxonomy = programTaxonomyFor(program);
+    return {
+      programCode: program.programCode,
+      programName: program.programName,
+      schoolId: program.schoolId,
+      schoolName: program.schoolName,
+      groupTags: taxonomy.groupTags,
+      academicCategoryIds: taxonomy.academicCategoryIds,
+      learningGroupIds: taxonomy.learningGroupIds,
+    };
+  });
 }
 
 export function toDepartmentOptions(

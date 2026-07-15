@@ -28,7 +28,7 @@ const OVERRIDES_PATH = path.join(
 const MAJOR_LIST_URL = "https://collego.edu.tw/Highschool/MajorList";
 const MAJOR_URL =
   "https://collego.edu.tw/Highschool/MajorIntro?current_major_id=";
-const RETRIEVED_AT = "2026-07-14";
+const RETRIEVED_AT = "2026-07-15";
 
 type OfficialDepartment = {
   departmentId: string;

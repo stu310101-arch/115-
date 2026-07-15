@@ -177,7 +177,18 @@ function HydratedResultsWorkspace({ programs }: ResultsWorkspaceProps) {
       schoolGroupIds: query.schoolGroupIds,
       customSchoolIds: query.customSchoolIds,
       groupedProgramSelections: query.programSelections,
-      learningGroupIds: query.learningGroupIds,
+      groupTags:
+        query.filterMethod === "academic-categories"
+          ? query.groupSelection
+          : [],
+      academicCategoryIds:
+        query.filterMethod === "academic-categories"
+          ? query.academicCategoryIds
+          : [],
+      learningGroupIds:
+        query.filterMethod === "learning-groups"
+          ? query.learningGroupIds
+          : [],
     };
     const matched = filterPrograms(programs, criteria);
     const userScores = toUserScores(query);

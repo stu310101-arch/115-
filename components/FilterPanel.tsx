@@ -9,7 +9,6 @@ import {
   areProgramCodesSelected,
   EMPTY_PROGRAM_SELECTION,
   rankDepartmentOptions,
-  selectedDepartmentCount,
   selectedProgramCount,
   toDepartmentOptions,
   toggleProgramCodes,
@@ -20,11 +19,17 @@ import {
 } from "@/lib/programSelection";
 import type { GroupTag } from "@/lib/types";
 import {
-  learningGroupOptionsForGroups,
-  matchesLearningGroupIds,
-  normalizeLearningGroupIdsForGroups,
+  LEARNING_GROUP_OPTIONS,
   type LearningGroupId,
 } from "@/lib/learningGroups";
+import {
+  ACADEMIC_CATEGORY_OPTIONS,
+  academicCategoryOptionsForGroups,
+  activeAdmissionGroupsForSelection,
+  matchesProgramTaxonomySelection,
+  type AcademicCategoryId,
+  type ProgramFilterMethod,
+} from "@/lib/admissionTaxonomy";
 import type { GroupSelection } from "./queryState";
 import { RouteLink } from "./PageNavigation";
 
@@ -34,8 +39,12 @@ export type SchoolSourceOption = {
 };
 
 type FilterPanelProps = {
+  filterMethod: ProgramFilterMethod;
+  onFilterMethodChange: (value: ProgramFilterMethod) => void;
   groupSelection: GroupSelection;
   onGroupSelectionChange: (value: GroupSelection) => void;
+  academicCategoryIds: readonly AcademicCategoryId[];
+  onAcademicCategoryIdsChange: (value: AcademicCategoryId[]) => void;
   schoolGroupIds: readonly SchoolGroupId[];
   onSchoolGroupIdsChange: (value: SchoolGroupId[]) => void;
   customSchoolIds: readonly string[];
@@ -95,8 +104,12 @@ function useProgramPageSize(): number {
 }
 
 export function FilterPanel({
+  filterMethod,
+  onFilterMethodChange,
   groupSelection,
   onGroupSelectionChange,
+  academicCategoryIds,
+  onAcademicCategoryIdsChange,
   schoolGroupIds,
   onSchoolGroupIdsChange,
   customSchoolIds,
@@ -116,14 +129,35 @@ export function FilterPanel({
   const [programPage, setProgramPage] = useState(0);
   const programPageSize = useProgramPageSize();
 
-  const availableLearningGroupOptions = useMemo(
-    () => learningGroupOptionsForGroups(groupSelection),
+  const availableAcademicCategoryOptions = useMemo(
+    () => academicCategoryOptionsForGroups(groupSelection),
     [groupSelection],
   );
-  const activeLearningGroupIds = useMemo(
+  const taxonomySelection = useMemo(
     () =>
-      normalizeLearningGroupIdsForGroups(learningGroupIds, groupSelection),
-    [groupSelection, learningGroupIds],
+      ({
+        filterMethod,
+        groupSelection,
+        academicCategoryIds,
+        learningGroupIds,
+      }) as const,
+    [
+      academicCategoryIds,
+      filterMethod,
+      groupSelection,
+      learningGroupIds,
+    ],
+  );
+  const activeProgramGroups = useMemo(
+    () => activeAdmissionGroupsForSelection(taxonomySelection),
+    [taxonomySelection],
+  );
+  const taxonomyFilteredPrograms = useMemo(
+    () =>
+      programOptions.filter((program) =>
+        matchesProgramTaxonomySelection(program, taxonomySelection),
+      ),
+    [programOptions, taxonomySelection],
   );
 
   const filteredSchools = useMemo(() => {
@@ -139,38 +173,28 @@ export function FilterPanel({
     );
   }, [schoolSearch, schoolSources]);
 
-  const learningGroupFilteredPrograms = useMemo(
-    () =>
-      programOptions.filter((program) =>
-        matchesLearningGroupIds(
-          program.learningGroupIds,
-          activeLearningGroupIds,
-        ),
-      ),
-    [activeLearningGroupIds, programOptions],
-  );
   const programsByGroup = useMemo(
     () => ({
-      自然組: learningGroupFilteredPrograms.filter((program) =>
+      自然組: taxonomyFilteredPrograms.filter((program) =>
         program.groupTags.includes("自然組"),
       ),
-      社會組: learningGroupFilteredPrograms.filter((program) =>
+      社會組: taxonomyFilteredPrograms.filter((program) =>
         program.groupTags.includes("社會組"),
       ),
     }),
-    [learningGroupFilteredPrograms],
+    [taxonomyFilteredPrograms],
   );
   const departmentsByGroup = useMemo(
     () => ({
-      自然組: toDepartmentOptions(learningGroupFilteredPrograms, "自然組"),
-      社會組: toDepartmentOptions(learningGroupFilteredPrograms, "社會組"),
+      自然組: toDepartmentOptions(taxonomyFilteredPrograms, "自然組"),
+      社會組: toDepartmentOptions(taxonomyFilteredPrograms, "社會組"),
     }),
-    [learningGroupFilteredPrograms],
+    [taxonomyFilteredPrograms],
   );
   const groupDepartments = useMemo<GroupedDepartmentOption[]>(
     () => {
       const departments = new Map<string, GroupedDepartmentOption>();
-      groupSelection.forEach((group) => {
+      activeProgramGroups.forEach((group) => {
         departmentsByGroup[group].forEach((department) => {
           const current = departments.get(department.departmentName);
           const programCodesByGroup = {
@@ -190,18 +214,8 @@ export function FilterPanel({
         left.departmentName.localeCompare(right.departmentName, "zh-Hant"),
       );
     },
-    [departmentsByGroup, groupSelection],
+    [activeProgramGroups, departmentsByGroup],
   );
-  const selectedByGroup = {
-    自然組: selectedDepartmentCount(
-      programSelections.自然組,
-      departmentsByGroup.自然組,
-    ),
-    社會組: selectedDepartmentCount(
-      programSelections.社會組,
-      departmentsByGroup.社會組,
-    ),
-  };
 
   const filteredDepartments = useMemo(() => {
     return rankDepartmentOptions(
@@ -244,7 +258,7 @@ export function FilterPanel({
     groupDepartments.every((department) => isDepartmentSelected(department));
 
   function isDepartmentSelected(department: GroupedDepartmentOption): boolean {
-    return groupSelection.every((group) => {
+    return activeProgramGroups.every((group) => {
       const programCodes = department.programCodesByGroup[group];
       return (
         !programCodes?.length ||
@@ -272,7 +286,7 @@ export function FilterPanel({
     const shouldSelect = !departments.every((department) =>
       isDepartmentSelected(department),
     );
-    groupSelection.forEach((group) => {
+    activeProgramGroups.forEach((group) => {
       let next = programSelections[group];
       departments.forEach((department) => {
         const programCodes = department.programCodesByGroup[group];
@@ -294,6 +308,21 @@ export function FilterPanel({
     filteredDepartments.length,
     programStart + programPageSize - 1,
   );
+  const filterReady =
+    (filterMethod === "academic-categories" && groupSelection.length > 0) ||
+    (filterMethod === "learning-groups" && learningGroupIds.length > 0);
+  const selectedCategoryLabels = ACADEMIC_CATEGORY_OPTIONS.filter((option) =>
+    academicCategoryIds.includes(option.id),
+  ).map(({ label }) => label);
+  const selectedLearningGroupLabels = LEARNING_GROUP_OPTIONS.filter((option) =>
+    learningGroupIds.includes(option.id),
+  ).map(({ label }) => label);
+  const filterScopeLabel =
+    filterMethod === "academic-categories"
+      ? selectedCategoryLabels.length > 0
+        ? selectedCategoryLabels.join("＋")
+        : groupSelection.join("＋")
+      : selectedLearningGroupLabels.join("＋");
 
   return (
     <section className="query-card filter-card" aria-labelledby="filter-heading">
@@ -306,79 +335,143 @@ export function FilterPanel({
 
       <div className="filter-block">
         <div className="filter-label-row">
-          <h3>選擇組別</h3>
-          <span>可單選、可複選</span>
+          <h3>選擇科系篩選方式</h3>
+          <span>請先選一種</span>
         </div>
         <div
-          className="segmented-control group-control"
+          className="segmented-control group-control filter-method-control"
           role="group"
-          aria-label="選擇組別（可複選）"
+          aria-label="選擇科系篩選方式"
         >
-          {(["自然組", "社會組"] as const).map((value) => (
-            <button
-              aria-pressed={groupSelection.includes(value)}
-              className={groupSelection.includes(value) ? "selected" : ""}
-              data-testid={`group-${value}`}
-              key={value}
-              onClick={() => {
-                setProgramSearch("");
-                setProgramPage(0);
-                onGroupSelectionChange(toggleValue(groupSelection, value));
-              }}
-              type="button"
-            >
-              <b>{value}</b>
-              <small>
-                {selectedByGroup[value] === departmentsByGroup[value].length
-                  ? `已全選 ${departmentsByGroup[value].length}`
-                  : `已選 ${selectedByGroup[value]}`}
-              </small>
-            </button>
-          ))}
+          <button
+            aria-pressed={filterMethod === "academic-categories"}
+            className={
+              filterMethod === "academic-categories" ? "selected" : ""
+            }
+            data-testid="filter-method-academic-categories"
+            onClick={() => {
+              setProgramSearch("");
+              setProgramPage(0);
+              onFilterMethodChange("academic-categories");
+            }}
+            type="button"
+          >
+            <b>依類組篩選</b>
+            <small>自然／社會，再細分四大類</small>
+          </button>
+          <button
+            aria-pressed={filterMethod === "learning-groups"}
+            className={filterMethod === "learning-groups" ? "selected" : ""}
+            data-testid="filter-method-learning-groups"
+            onClick={() => {
+              setProgramSearch("");
+              setProgramPage(0);
+              onFilterMethodChange("learning-groups");
+            }}
+            type="button"
+          >
+            <b>依十八學群篩選</b>
+            <small>直接複選官方十八學群</small>
+          </button>
         </div>
-        <p className="microcopy">
-          分組依 114 學年度官方採計科目與系名整理；自然組與社會組可同時選取，科系結果採聯集且不重複。
-        </p>
-        {groupSelection.length > 0 ? (
+
+        {filterMethod === "academic-categories" ? (
           <div className="learning-group-filter">
             <div className="filter-label-row">
-              <h3>十八學群</h3>
-              <span>可不選、可複選</span>
+              <h3>第一步：選擇類組</h3>
+              <span>可複選</span>
+            </div>
+            <div
+              aria-label="自然組與社會組（可複選）"
+              className="segmented-control group-control"
+              role="group"
+            >
+              {(["社會組", "自然組"] as const).map((value) => (
+                <button
+                  aria-pressed={groupSelection.includes(value)}
+                  className={groupSelection.includes(value) ? "selected" : ""}
+                  data-testid={`group-${value}`}
+                  key={value}
+                  onClick={() => {
+                    onGroupSelectionChange(
+                      toggleValue(groupSelection, value),
+                    );
+                    setProgramSearch("");
+                    setProgramPage(0);
+                  }}
+                  type="button"
+                >
+                  <b>{value}</b>
+                  <small>
+                    {value === "社會組"
+                      ? "社會人文／財經商管"
+                      : "理工資訊／生物醫農"}
+                  </small>
+                </button>
+              ))}
+            </div>
+
+            {groupSelection.length > 0 ? (
+              <>
+                <div className="filter-label-row taxonomy-detail-heading">
+                  <h3>第二步：細分類別</h3>
+                  <span>可複選；不選即顯示整個類組</span>
+                </div>
+                <div
+                  aria-label="四大科系類別（可複選）"
+                  className="learning-group-grid"
+                  role="group"
+                >
+                  {availableAcademicCategoryOptions.map((option) => (
+                    <button
+                      aria-pressed={academicCategoryIds.includes(option.id)}
+                      className={
+                        academicCategoryIds.includes(option.id)
+                          ? "selected"
+                          : ""
+                      }
+                      key={option.id}
+                      onClick={() => {
+                        onAcademicCategoryIdsChange(
+                          toggleValue(academicCategoryIds, option.id),
+                        );
+                        setProgramSearch("");
+                        setProgramPage(0);
+                      }}
+                      type="button"
+                    >
+                      <b>{option.label}</b>
+                      <small>{option.admissionGroup}</small>
+                    </button>
+                  ))}
+                </div>
+              </>
+            ) : null}
+            <p className="microcopy">
+              十八學群與校系對應取自官方資料；四大類別由十八學群重新彙整，同一校系可跨類別。
+            </p>
+          </div>
+        ) : filterMethod === "learning-groups" ? (
+          <div className="learning-group-filter">
+            <div className="filter-label-row">
+              <h3>選擇十八學群</h3>
+              <span>可複選</span>
             </div>
             <div
               aria-label="十八學群（可複選）"
               className="learning-group-grid"
               role="group"
             >
-              <button
-                aria-pressed={activeLearningGroupIds.length === 0}
-                className={
-                  activeLearningGroupIds.length === 0 ? "selected" : ""
-                }
-                onClick={() => {
-                  onLearningGroupIdsChange([]);
-                  setProgramSearch("");
-                  setProgramPage(0);
-                }}
-                type="button"
-              >
-                <b>不限學群</b>
-                <small>
-                  {groupSelection.length === 2
-                    ? "顯示兩組全部科系"
-                    : `顯示${groupSelection[0]}全部科系`}
-                </small>
-              </button>
-              {availableLearningGroupOptions.map((option) => (
+              {LEARNING_GROUP_OPTIONS.map((option) => (
                 <button
-                  aria-pressed={activeLearningGroupIds.includes(option.id)}
+                  aria-pressed={learningGroupIds.includes(option.id)}
                   className={
-                    activeLearningGroupIds.includes(option.id) ? "selected" : ""
+                    learningGroupIds.includes(option.id) ? "selected" : ""
                   }
                   key={option.id}
                   onClick={() => {
                     onLearningGroupIdsChange(
-                      toggleValue(activeLearningGroupIds, option.id),
+                      toggleValue(learningGroupIds, option.id),
                     );
                     setProgramSearch("");
                     setProgramPage(0);
@@ -392,10 +485,14 @@ export function FilterPanel({
               ))}
             </div>
             <p className="microcopy">
-              學群與學類依 ColleGo! 官方資料；顯示選項會依自然組、社會組切換，跨組學群會同時出現在兩組。
+              依大考中心與 ColleGo! 官方十八學群、學類及校系對應資料篩選；同一校系可能屬於多個學群。
             </p>
           </div>
-        ) : null}
+        ) : (
+          <p className="microcopy">
+            先決定要用「類組」或「十八學群」篩選，之後的選項都可以複選。
+          </p>
+        )}
       </div>
 
       <div className="filter-block">
@@ -514,12 +611,16 @@ export function FilterPanel({
           <div>
             <h3>選取科系</h3>
             <span>
-              {groupSelection.length === 0
-                ? "先選自然組或社會組"
-                : `${groupSelection.join("＋")}共 ${groupDepartments.length} 個科系，已選 ${selectedCount} 個`}
+              {!filterMethod
+                ? "請先選擇篩選方式"
+                : !filterReady
+                  ? filterMethod === "academic-categories"
+                    ? "請至少選擇自然組或社會組"
+                    : "請至少選擇一個十八學群"
+                  : `${filterScopeLabel}共 ${groupDepartments.length} 個科系，已選 ${selectedCount} 個`}
             </span>
           </div>
-          {groupSelection.length > 0 ? (
+          {filterReady ? (
             <div className="program-picker-actions">
               <button
                 aria-pressed={allVisibleDepartmentsSelected}
@@ -557,10 +658,16 @@ export function FilterPanel({
           ) : null}
         </div>
 
-        {groupSelection.length === 0 ? (
+        {!filterReady ? (
           <div className="program-picker-empty">
-            <b>請先選擇自然組或社會組</b>
-            <p>選擇後會列出該組全部科系名稱，預設不勾選任何科系。</p>
+            <b>
+              {!filterMethod
+                ? "請先選擇科系篩選方式"
+                : filterMethod === "academic-categories"
+                  ? "請選擇自然組或社會組"
+                  : "請選擇至少一個十八學群"}
+            </b>
+            <p>完成上方篩選後會列出符合的科系名稱，預設不勾選任何科系。</p>
           </div>
         ) : (
           <>
@@ -586,7 +693,7 @@ export function FilterPanel({
 
             {visibleDepartments.length > 0 ? (
               <div
-                aria-label={`${groupSelection.join("及")}科系列表`}
+                aria-label={`${filterScopeLabel}科系列表`}
                 className="program-checklist"
                 data-page-size={programPageSize}
               >

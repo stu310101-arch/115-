@@ -17,12 +17,18 @@ import {
   matchesLearningGroups,
   type LearningGroupId,
 } from "./learningGroups";
+import {
+  programTaxonomyFor,
+  type AcademicCategoryId,
+} from "./admissionTaxonomy";
 
 export type ProgramGroupTag = Program["groupTags"][number];
 
 export type ProgramFilterCriteria = Readonly<{
   /** 同一欄位內採聯集，例如同時選自然組與社會組會保留任一符合者。 */
   groupTags?: readonly ProgramGroupTag[];
+  /** 四大類組採聯集，並與自然／社會組取交集。 */
+  academicCategoryIds?: readonly AcademicCategoryId[];
   /** 多個預設學校群組採聯集。 */
   schoolGroupIds?: readonly SchoolGroupId[];
   /** 傳入自訂校碼時，會與預設學校群組取聯集。 */
@@ -137,10 +143,21 @@ export function matchesProgramFilters(
   program: Program,
   criteria: ProgramFilterCriteria = {},
 ): boolean {
+  const taxonomy = programTaxonomyFor(program);
   const groupTags = criteria.groupTags ?? [];
   if (
     groupTags.length > 0 &&
-    !groupTags.some((tag) => program.groupTags.includes(tag))
+    !groupTags.some((tag) => taxonomy.groupTags.includes(tag))
+  ) {
+    return false;
+  }
+
+  const academicCategoryIds = criteria.academicCategoryIds ?? [];
+  if (
+    academicCategoryIds.length > 0 &&
+    !academicCategoryIds.some((id) =>
+      taxonomy.academicCategoryIds.includes(id),
+    )
   ) {
     return false;
   }
@@ -182,7 +199,10 @@ export function matchesProgramFilters(
   if (
     criteria.groupedProgramSelections !== undefined &&
     !matchesGroupedProgramSelections(
-      program,
+      {
+        programCode: program.programCode,
+        groupTags: taxonomy.groupTags,
+      },
       criteria.groupedProgramSelections,
     )
   ) {

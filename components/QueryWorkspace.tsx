@@ -4,15 +4,16 @@ import { useMemo, useState, useSyncExternalStore } from "react";
 import type { FormEvent } from "react";
 import { matchesSchoolSelection } from "@/lib/filters";
 import {
-  EMPTY_PROGRAM_SELECTION,
+  EMPTY_GROUPED_PROGRAM_SELECTIONS,
   selectedUniqueProgramCodes,
   type ProgramOption,
 } from "@/lib/programSelection";
-import type { GroupTag } from "@/lib/types";
 import {
-  matchesLearningGroupIds,
-  normalizeLearningGroupIdsForGroups,
-} from "@/lib/learningGroups";
+  matchesProgramTaxonomySelection,
+  normalizeAcademicCategoryIdsForGroups,
+  type AcademicCategoryId,
+  type ProgramFilterMethod,
+} from "@/lib/admissionTaxonomy";
 import { FilterPanel, type SchoolSourceOption } from "./FilterPanel";
 import {
   NavigationLoadingScreen,
@@ -65,26 +66,41 @@ function HydratedQueryWorkspace({
   );
   const { navigate } = useNavigationLoading();
 
-  const learningGroupFilteredProgramOptions = useMemo(
+  const taxonomyFilteredProgramOptions = useMemo(
     () =>
       programOptions.filter((program) =>
-        matchesLearningGroupIds(
-          program.learningGroupIds,
-          query.learningGroupIds,
-        ),
+        matchesProgramTaxonomySelection(program, {
+          filterMethod: query.filterMethod,
+          groupSelection: query.groupSelection,
+          academicCategoryIds: query.academicCategoryIds,
+          learningGroupIds: query.learningGroupIds,
+        }),
       ),
-    [programOptions, query.learningGroupIds],
+    [
+      programOptions,
+      query.academicCategoryIds,
+      query.filterMethod,
+      query.groupSelection,
+      query.learningGroupIds,
+    ],
   );
   const selectedProgramCodes = useMemo(
     () =>
       selectedUniqueProgramCodes(
-        learningGroupFilteredProgramOptions,
+        taxonomyFilteredProgramOptions,
         query.programSelections,
       ),
-    [learningGroupFilteredProgramOptions, query.programSelections],
+    [taxonomyFilteredProgramOptions, query.programSelections],
   );
   const selectedCount = selectedProgramCodes.length;
-  const requiresProgramSelection = selectedCount === 0;
+  const requiresTaxonomySelection =
+    !query.filterMethod ||
+    (query.filterMethod === "academic-categories" &&
+      query.groupSelection.length === 0) ||
+    (query.filterMethod === "learning-groups" &&
+      query.learningGroupIds.length === 0);
+  const requiresProgramSelection =
+    !requiresTaxonomySelection && selectedCount === 0;
   const comparisonCount = useMemo(() => {
     const selectedCodes = new Set(selectedProgramCodes);
     return programOptions.filter(
@@ -105,7 +121,9 @@ function HydratedQueryWorkspace({
   const hasEmptyFilterIntersection =
     !requiresProgramSelection && comparisonCount === 0;
   const cannotShowResults =
-    requiresProgramSelection || hasEmptyFilterIntersection;
+    requiresTaxonomySelection ||
+    requiresProgramSelection ||
+    hasEmptyFilterIntersection;
 
   function updateScore(subject: ScoreSubject, value: string) {
     if (value === "") {
@@ -151,25 +169,50 @@ function HydratedQueryWorkspace({
     setQuery((current) => ({ ...current, [key]: value }));
   }
 
+  function selectFilterMethod(value: ProgramFilterMethod) {
+    setQuery((current) => ({
+      ...current,
+      filterMethod: value,
+      groupSelection: [],
+      academicCategoryIds: [],
+      learningGroupIds: [],
+      programSelections: EMPTY_GROUPED_PROGRAM_SELECTIONS,
+    }));
+  }
+
   function selectGroups(value: GroupSelection) {
     setQuery((current) => {
-      const removedGroups = current.groupSelection.filter(
-        (group) => !value.includes(group),
-      );
-      const programSelections = { ...current.programSelections };
-      removedGroups.forEach((group: GroupTag) => {
-        programSelections[group] = EMPTY_PROGRAM_SELECTION;
-      });
       return {
         ...current,
         groupSelection: value,
-        learningGroupIds: normalizeLearningGroupIdsForGroups(
-          current.learningGroupIds,
+        academicCategoryIds: normalizeAcademicCategoryIdsForGroups(
+          current.academicCategoryIds,
           value,
         ),
-        programSelections,
+        programSelections: EMPTY_GROUPED_PROGRAM_SELECTIONS,
       };
     });
+  }
+
+  function selectAcademicCategories(value: AcademicCategoryId[]) {
+    setQuery((current) => ({
+      ...current,
+      academicCategoryIds: normalizeAcademicCategoryIdsForGroups(
+        value,
+        current.groupSelection,
+      ),
+      programSelections: EMPTY_GROUPED_PROGRAM_SELECTIONS,
+    }));
+  }
+
+  function selectLearningGroups(
+    value: AdmissionQueryState["learningGroupIds"],
+  ) {
+    setQuery((current) => ({
+      ...current,
+      learningGroupIds: value,
+      programSelections: EMPTY_GROUPED_PROGRAM_SELECTIONS,
+    }));
   }
 
   function showResults(event: FormEvent<HTMLFormElement>) {
@@ -221,11 +264,15 @@ function HydratedQueryWorkspace({
             scores={query.scores}
           />
           <FilterPanel
+            academicCategoryIds={query.academicCategoryIds}
             customSchoolIds={query.customSchoolIds}
+            filterMethod={query.filterMethod}
             groupSelection={query.groupSelection}
+            onAcademicCategoryIdsChange={selectAcademicCategories}
             onCustomSchoolIdsChange={(value) =>
               update("customSchoolIds", value)
             }
+            onFilterMethodChange={selectFilterMethod}
             onGroupSelectionChange={selectGroups}
             onProgramSelectionChange={(group, value) =>
               setQuery((current) => ({
@@ -241,9 +288,7 @@ function HydratedQueryWorkspace({
             }
             programOptions={programOptions}
             learningGroupIds={query.learningGroupIds}
-            onLearningGroupIdsChange={(value) =>
-              update("learningGroupIds", value)
-            }
+            onLearningGroupIdsChange={selectLearningGroups}
             programSelections={query.programSelections}
             schoolGroupIds={query.schoolGroupIds}
             schoolSources={schoolSources}
@@ -255,7 +300,11 @@ function HydratedQueryWorkspace({
             <p>
               將依目前條件逐關比對 <b>{comparisonCount}</b> 筆校系資料
             </p>
-            {requiresProgramSelection ? (
+            {requiresTaxonomySelection ? (
+              <small className="submit-guidance" role="status">
+                請先選擇科系篩選方式，並完成該方式的第一層選項。
+              </small>
+            ) : requiresProgramSelection ? (
               <small className="submit-guidance" role="status">
                 請至少勾選一個科系，或使用「全選本頁／全選搜尋結果／全選所有科系」。
               </small>

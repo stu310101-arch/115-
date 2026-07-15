@@ -1192,6 +1192,10 @@ input:focus-visible {
   border-top: 1px dashed var(--line);
 }
 
+.taxonomy-detail-heading {
+  margin-top: 18px;
+}
+
 .learning-group-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

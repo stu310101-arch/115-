@@ -3,7 +3,7 @@
   "source": {
     "name": "ColleGo! 大學選才與高中育才輔助系統",
     "url": "https://collego.edu.tw/Highschool/MajorList",
-    "retrievedAt": "2026-07-14",
+    "retrievedAt": "2026-07-15",
     "note": "依官方十八學群、學類及對應校系建立；招生組別沿用其官方母系分類。"
   },
   "learningGroups": [
@@ -80,7 +80,7 @@
       "label": "遊憩運動學群"
     }
   ],
-  "officialDepartmentCount": 1671,
+  "officialDepartmentCount": 1672,
   "matchCounts": {
     "official-current-name-extension": 4,
     "official-exact": 1426,
@@ -36578,86 +36578,6 @@
       "officialCrossDomain": false,
       "sourceUrl": "https://collego.edu.tw/Highschool/MajorList"
     },
-    "001692": {
-      "learningGroupIds": [
-        "mass-communication"
-      ],
-      "matchKind": "official-program-detail-distribution",
-      "officialDepartmentIds": [
-        "001050"
-      ],
-      "officialDepartmentNames": [
-        "生物產業傳播暨發展學系"
-      ],
-      "officialMajorNames": [
-        "大眾傳播 學類"
-      ],
-      "officialCrossDomain": false,
-      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_001692.htm?v=1.0"
-    },
-    "001712": {
-      "learningGroupIds": [
-        "health-medicine",
-        "life-science"
-      ],
-      "matchKind": "official-program-detail-distribution",
-      "officialDepartmentIds": [
-        "001060",
-        "001066",
-        "001030"
-      ],
-      "officialDepartmentNames": [
-        "公共衛生學系",
-        "生命科學系",
-        "護理學系"
-      ],
-      "officialMajorNames": [
-        "公共衛生 學類",
-        "生命科學 學類",
-        "護理 學類"
-      ],
-      "officialCrossDomain": false,
-      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_001712.htm?v=1.0"
-    },
-    "001682": {
-      "learningGroupIds": [
-        "arts",
-        "social-psychology",
-        "foreign-languages",
-        "literature-history-philosophy",
-        "law-politics"
-      ],
-      "matchKind": "official-program-detail-distribution",
-      "officialDepartmentIds": [
-        "001008",
-        "001005",
-        "001022",
-        "001023",
-        "001003",
-        "001002",
-        "001019"
-      ],
-      "officialDepartmentNames": [
-        "戲劇學系",
-        "人類學系",
-        "社會學系",
-        "社會工作學系",
-        "歷史學系",
-        "外國語文學系",
-        "政治學系"
-      ],
-      "officialMajorNames": [
-        "表演藝術 學類",
-        "人類民族 學類",
-        "社會學 學類",
-        "社會工作 學類",
-        "歷史 學類",
-        "英語文 學類",
-        "政治 學類"
-      ],
-      "officialCrossDomain": false,
-      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_001682.htm?v=1.0"
-    },
     "001742": {
       "learningGroupIds": [
         "health-medicine",
@@ -36683,6 +36603,73 @@
       "officialCrossDomain": false,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_001742.htm?v=1.0"
     },
+    "001682": {
+      "learningGroupIds": [
+        "arts",
+        "social-psychology",
+        "foreign-languages",
+        "literature-history-philosophy",
+        "law-politics"
+      ],
+      "matchKind": "official-program-detail-distribution",
+      "officialDepartmentIds": [
+        "001008",
+        "001005",
+        "001022",
+        "001023",
+        "001002",
+        "001003",
+        "001019"
+      ],
+      "officialDepartmentNames": [
+        "戲劇學系",
+        "人類學系",
+        "社會學系",
+        "社會工作學系",
+        "外國語文學系",
+        "歷史學系",
+        "政治學系"
+      ],
+      "officialMajorNames": [
+        "表演藝術 學類",
+        "人類民族 學類",
+        "社會學 學類",
+        "社會工作 學類",
+        "英語文 學類",
+        "歷史 學類",
+        "政治 學類"
+      ],
+      "officialCrossDomain": false,
+      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_001682.htm?v=1.0"
+    },
+    "001722": {
+      "learningGroupIds": [
+        "information",
+        "engineering",
+        "management"
+      ],
+      "matchKind": "official-program-detail-distribution",
+      "officialDepartmentIds": [
+        "001059",
+        "001061",
+        "001036",
+        "001062"
+      ],
+      "officialDepartmentNames": [
+        "資訊管理學系",
+        "電機工程學系",
+        "化學工程學系",
+        "資訊工程學系"
+      ],
+      "officialMajorNames": [
+        "資訊管理 學類",
+        "電機工程 學類",
+        "化學工程 學類",
+        "資訊工程 學類"
+      ],
+      "officialCrossDomain": false,
+      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_001722.htm?v=1.0"
+    },
     "001752": {
       "learningGroupIds": [
         "health-medicine"
@@ -36702,6 +36689,33 @@
       ],
       "officialCrossDomain": false,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_001752.htm?v=1.0"
+    },
+    "001732": {
+      "learningGroupIds": [
+        "management",
+        "finance-economics"
+      ],
+      "matchKind": "official-program-detail-distribution",
+      "officialDepartmentIds": [
+        "001056",
+        "001054",
+        "001021",
+        "001057"
+      ],
+      "officialDepartmentNames": [
+        "會計學系",
+        "工商管理學系企業管理組",
+        "經濟學系",
+        "財務金融學系"
+      ],
+      "officialMajorNames": [
+        "會計 學類",
+        "企業管理 學類",
+        "經濟 學類",
+        "財務金融 學類"
+      ],
+      "officialCrossDomain": false,
+      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_001732.htm?v=1.0"
     },
     "001702": {
       "learningGroupIds": [
@@ -36724,67 +36738,46 @@
       "officialCrossDomain": false,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_001702.htm?v=1.0"
     },
-    "001722": {
+    "001712": {
       "learningGroupIds": [
-        "information",
-        "engineering",
-        "management"
+        "health-medicine",
+        "life-science"
       ],
       "matchKind": "official-program-detail-distribution",
       "officialDepartmentIds": [
-        "001061",
-        "001059",
-        "001036",
-        "001062"
+        "001060",
+        "001030",
+        "001066"
       ],
       "officialDepartmentNames": [
-        "電機工程學系",
-        "資訊管理學系",
-        "化學工程學系",
-        "資訊工程學系"
+        "公共衛生學系",
+        "護理學系",
+        "生命科學系"
       ],
       "officialMajorNames": [
-        "電機工程 學類",
-        "資訊管理 學類",
-        "化學工程 學類",
-        "資訊工程 學類"
+        "公共衛生 學類",
+        "護理 學類",
+        "生命科學 學類"
       ],
       "officialCrossDomain": false,
-      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_001722.htm?v=1.0"
+      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_001712.htm?v=1.0"
     },
-    "003462": {
+    "001692": {
       "learningGroupIds": [
-        "information",
-        "management",
-        "finance-economics"
+        "mass-communication"
       ],
       "matchKind": "official-program-detail-distribution",
       "officialDepartmentIds": [
-        "003006",
-        "003008",
-        "003007",
-        "003010",
-        "003005",
-        "003004"
+        "001050"
       ],
       "officialDepartmentNames": [
-        "資訊管理學系",
-        "行銷學系",
-        "會計學系",
-        "應用經濟學系",
-        "企業管理學系",
-        "財務金融學系"
+        "生物產業傳播暨發展學系"
       ],
       "officialMajorNames": [
-        "資訊管理 學類",
-        "行銷經營 學類",
-        "會計 學類",
-        "經濟 學類",
-        "企業管理 學類",
-        "財務金融 學類"
+        "大眾傳播 學類"
       ],
       "officialCrossDomain": false,
-      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_003462.htm?v=1.0"
+      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_001692.htm?v=1.0"
     },
     "003472": {
       "learningGroupIds": [
@@ -36795,27 +36788,73 @@
       "matchKind": "official-program-detail-distribution",
       "officialDepartmentIds": [
         "003049",
-        "003003",
         "003002",
+        "003003",
         "003001",
         "003009"
       ],
       "officialDepartmentNames": [
         "台灣人文創新學士學位學程",
-        "歷史學系",
         "外國語文學系",
+        "歷史學系",
         "中國文學系",
         "法律學系"
       ],
       "officialMajorNames": [
         "文史哲跨學類",
-        "歷史 學類",
         "英語文 學類",
+        "歷史 學類",
         "中國語文 學類",
         "法律 學類"
       ],
       "officialCrossDomain": false,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_003472.htm?v=1.0"
+    },
+    "003492": {
+      "learningGroupIds": [
+        "information",
+        "engineering"
+      ],
+      "matchKind": "official-program-detail-distribution",
+      "officialDepartmentIds": [
+        "003020",
+        "003023",
+        "003016"
+      ],
+      "officialDepartmentNames": [
+        "電機工程學系",
+        "化學工程學系",
+        "資訊工程學系"
+      ],
+      "officialMajorNames": [
+        "電機工程 學類",
+        "化學工程 學類",
+        "資訊工程 學類"
+      ],
+      "officialCrossDomain": false,
+      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_003492.htm?v=1.0"
+    },
+    "003482": {
+      "learningGroupIds": [
+        "math-chemistry"
+      ],
+      "matchKind": "official-program-detail-distribution",
+      "officialDepartmentIds": [
+        "003014",
+        "003015",
+        "003011"
+      ],
+      "officialDepartmentNames": [
+        "應用數學系(應用數學組)",
+        "應用數學系(數據科學與計算組)",
+        "化學系"
+      ],
+      "officialMajorNames": [
+        "數學 學類",
+        "化學 學類"
+      ],
+      "officialCrossDomain": false,
+      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_003482.htm?v=1.0"
     },
     "003502": {
       "learningGroupIds": [
@@ -36850,21 +36889,21 @@
       "matchKind": "official-program-detail-distribution",
       "officialDepartmentIds": [
         "003040",
-        "003027",
+        "003039",
         "003036",
-        "003039"
+        "003027"
       ],
       "officialDepartmentNames": [
         "獸醫學系",
-        "食品暨應用生物科技學系",
+        "生命科學系",
         "生物科技學士學位學程",
-        "生命科學系"
+        "食品暨應用生物科技學系"
       ],
       "officialMajorNames": [
         "獸醫 學類",
-        "食品生技 學類",
+        "生命科學 學類",
         "生物科技 學類",
-        "生命科學 學類"
+        "食品生技 學類"
       ],
       "officialCrossDomain": false,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_003512.htm?v=1.0"
@@ -36878,89 +36917,30 @@
       "matchKind": "official-program-detail-distribution",
       "officialDepartmentIds": [
         "004004",
-        "004003",
         "004002",
-        "004035",
+        "004003",
         "004001",
-        "004037"
+        "004037",
+        "004035"
       ],
       "officialDepartmentNames": [
         "台灣文學系",
-        "歷史學系",
         "外國語文學系",
-        "政治學系",
+        "歷史學系",
         "中國文學系",
-        "法律學系"
+        "法律學系",
+        "政治學系"
       ],
       "officialMajorNames": [
         "台灣語文 學類",
-        "歷史 學類",
         "英語文 學類",
-        "政治 學類",
+        "歷史 學類",
         "中國語文 學類",
-        "法律 學類"
+        "法律 學類",
+        "政治 學類"
       ],
       "officialCrossDomain": false,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_004542.htm?v=1.0"
-    },
-    "004552": {
-      "learningGroupIds": [
-        "information",
-        "engineering",
-        "management",
-        "finance-economics"
-      ],
-      "matchKind": "official-program-detail-distribution",
-      "officialDepartmentIds": [
-        "004023",
-        "004024",
-        "004027",
-        "004036",
-        "004025"
-      ],
-      "officialDepartmentNames": [
-        "工業與資訊管理學系",
-        "交通管理科學系",
-        "會計學系",
-        "經濟學系",
-        "企業管理學系"
-      ],
-      "officialMajorNames": [
-        "資訊管理 學類",
-        "運輸物流 學類",
-        "會計 學類",
-        "經濟 學類",
-        "企業管理 學類"
-      ],
-      "officialCrossDomain": false,
-      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_004552.htm?v=1.0"
-    },
-    "001732": {
-      "learningGroupIds": [
-        "management",
-        "finance-economics"
-      ],
-      "matchKind": "official-program-detail-distribution",
-      "officialDepartmentIds": [
-        "001056",
-        "001021",
-        "001054",
-        "001057"
-      ],
-      "officialDepartmentNames": [
-        "會計學系",
-        "經濟學系",
-        "工商管理學系企業管理組",
-        "財務金融學系"
-      ],
-      "officialMajorNames": [
-        "會計 學類",
-        "經濟 學類",
-        "企業管理 學類",
-        "財務金融 學類"
-      ],
-      "officialCrossDomain": false,
-      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_001732.htm?v=1.0"
     },
     "004562": {
       "learningGroupIds": [
@@ -36972,23 +36952,23 @@
       "matchKind": "official-program-detail-distribution",
       "officialDepartmentIds": [
         "004009",
-        "004006",
         "004005",
         "004007",
+        "004006",
         "004008"
       ],
       "officialDepartmentNames": [
         "光電科學與工程學系",
-        "物理學系",
         "數學系",
         "化學系",
+        "物理學系",
         "地球科學系"
       ],
       "officialMajorNames": [
         "光電工程 學類",
-        "物理 學類",
         "數學 學類",
         "化學 學類",
+        "物理 學類",
         "地球科學 學類"
       ],
       "officialCrossDomain": false,
@@ -37028,82 +37008,40 @@
       ],
       "matchKind": "official-program-detail-distribution",
       "officialDepartmentIds": [
-        "004006",
         "004032",
+        "004006",
         "004033",
-        "004030",
-        "004034",
-        "004047",
-        "004046",
         "004031",
+        "004034",
+        "004030",
+        "004046",
+        "004047",
         "004038"
       ],
       "officialDepartmentNames": [
-        "物理學系",
         "職能治療學系",
+        "物理學系",
         "物理治療學系",
-        "醫學檢驗生物技術學系",
-        "藥學系",
-        "生物科技與產業科學系",
-        "生命科學系",
         "護理學系",
+        "藥學系",
+        "醫學檢驗生物技術學系",
+        "生命科學系",
+        "生物科技與產業科學系",
         "心理學系"
       ],
       "officialMajorNames": [
-        "物理 學類",
         "職能治療 學類",
+        "物理 學類",
         "物理治療 學類",
-        "醫學檢驗 學類",
-        "藥學 學類",
-        "生物科技 學類",
-        "生命科學 學類",
         "護理 學類",
+        "藥學 學類",
+        "醫學檢驗 學類",
+        "生命科學 學類",
+        "生物科技 學類",
         "心理 學類"
       ],
       "officialCrossDomain": false,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_004582.htm?v=1.0"
-    },
-    "006462": {
-      "learningGroupIds": [
-        "information",
-        "math-chemistry",
-        "social-psychology",
-        "management",
-        "finance-economics"
-      ],
-      "matchKind": "official-program-detail-distribution",
-      "officialDepartmentIds": [
-        "006026",
-        "006022",
-        "006043",
-        "006009",
-        "006021",
-        "006014",
-        "006025",
-        "006018"
-      ],
-      "officialDepartmentNames": [
-        "資訊管理學系",
-        "統計學系",
-        "心理學系",
-        "財政學系",
-        "會計學系",
-        "經濟學系",
-        "企業管理學系",
-        "金融學系"
-      ],
-      "officialMajorNames": [
-        "資訊管理 學類",
-        "數據統計 學類",
-        "心理 學類",
-        "財稅 學類",
-        "會計 學類",
-        "經濟 學類",
-        "企業管理 學類",
-        "財務金融 學類"
-      ],
-      "officialCrossDomain": false,
-      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_006462.htm?v=1.0"
     },
     "006452": {
       "learningGroupIds": [
@@ -37118,46 +37056,103 @@
         "006008",
         "006002",
         "006005",
+        "006041",
         "006007",
-        "006016",
-        "006041"
+        "006016"
       ],
       "officialDepartmentNames": [
         "民族學系",
         "社會學系",
         "歷史學系",
         "教育學系",
+        "法律學系",
         "政治學系",
-        "外交學系",
-        "法律學系"
+        "外交學系"
       ],
       "officialMajorNames": [
         "人類民族 學類",
         "社會學 學類",
         "歷史 學類",
         "教育 學類",
-        "政治 學類",
-        "法律 學類"
+        "法律 學類",
+        "政治 學類"
       ],
       "officialCrossDomain": false,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_006452.htm?v=1.0"
     },
-    "002462": {
+    "006462": {
       "learningGroupIds": [
-        "arts"
+        "information",
+        "math-chemistry",
+        "social-psychology",
+        "management",
+        "finance-economics"
       ],
       "matchKind": "official-program-detail-distribution",
       "officialDepartmentIds": [
-        "002038"
+        "006022",
+        "006026",
+        "006043",
+        "006009",
+        "006021",
+        "006025",
+        "006014",
+        "006018"
       ],
       "officialDepartmentNames": [
-        "音樂學系"
+        "統計學系",
+        "資訊管理學系",
+        "心理學系",
+        "財政學系",
+        "會計學系",
+        "企業管理學系",
+        "經濟學系",
+        "金融學系"
       ],
       "officialMajorNames": [
-        "音樂 學類"
+        "數據統計 學類",
+        "資訊管理 學類",
+        "心理 學類",
+        "財稅 學類",
+        "會計 學類",
+        "企業管理 學類",
+        "經濟 學類",
+        "財務金融 學類"
       ],
       "officialCrossDomain": false,
-      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_002462.htm?v=1.0"
+      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_006462.htm?v=1.0"
+    },
+    "007262": {
+      "learningGroupIds": [
+        "health-medicine"
+      ],
+      "matchKind": "official-program-detail-distribution",
+      "officialDepartmentIds": [
+        "007013",
+        "007011",
+        "007004",
+        "007014",
+        "007009",
+        "007010"
+      ],
+      "officialDepartmentNames": [
+        "職能治療學系",
+        "醫學影像暨放射科學系",
+        "呼吸治療學系",
+        "物理治療學系",
+        "護理學系",
+        "醫學檢驗生物技術學系"
+      ],
+      "officialMajorNames": [
+        "職能治療 學類",
+        "影像放射 學類",
+        "呼吸治療 學類",
+        "物理治療 學類",
+        "護理 學類",
+        "醫學檢驗 學類"
+      ],
+      "officialCrossDomain": false,
+      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_007262.htm?v=1.0"
     },
     "007282": {
       "learningGroupIds": [
@@ -37176,100 +37171,22 @@
       "officialCrossDomain": false,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_007282.htm?v=1.0"
     },
-    "003482": {
-      "learningGroupIds": [
-        "math-chemistry"
-      ],
-      "matchKind": "official-program-detail-distribution",
-      "officialDepartmentIds": [
-        "003014",
-        "003015",
-        "003011"
-      ],
-      "officialDepartmentNames": [
-        "應用數學系(應用數學組)",
-        "應用數學系(數據科學與計算組)",
-        "化學系"
-      ],
-      "officialMajorNames": [
-        "數學 學類",
-        "化學 學類"
-      ],
-      "officialCrossDomain": false,
-      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_003482.htm?v=1.0"
-    },
-    "007262": {
-      "learningGroupIds": [
-        "health-medicine"
-      ],
-      "matchKind": "official-program-detail-distribution",
-      "officialDepartmentIds": [
-        "007013",
-        "007014",
-        "007011",
-        "007010",
-        "007004",
-        "007009"
-      ],
-      "officialDepartmentNames": [
-        "職能治療學系",
-        "物理治療學系",
-        "醫學影像暨放射科學系",
-        "醫學檢驗生物技術學系",
-        "呼吸治療學系",
-        "護理學系"
-      ],
-      "officialMajorNames": [
-        "職能治療 學類",
-        "物理治療 學類",
-        "影像放射 學類",
-        "醫學檢驗 學類",
-        "呼吸治療 學類",
-        "護理 學類"
-      ],
-      "officialCrossDomain": false,
-      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_007262.htm?v=1.0"
-    },
-    "003492": {
-      "learningGroupIds": [
-        "information",
-        "engineering"
-      ],
-      "matchKind": "official-program-detail-distribution",
-      "officialDepartmentIds": [
-        "003020",
-        "003023",
-        "003016"
-      ],
-      "officialDepartmentNames": [
-        "電機工程學系",
-        "化學工程學系",
-        "資訊工程學系"
-      ],
-      "officialMajorNames": [
-        "電機工程 學類",
-        "化學工程 學類",
-        "資訊工程 學類"
-      ],
-      "officialCrossDomain": false,
-      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_003492.htm?v=1.0"
-    },
     "007292": {
       "learningGroupIds": [
         "life-science"
       ],
       "matchKind": "official-program-detail-distribution",
       "officialDepartmentIds": [
-        "007019",
-        "007018"
+        "007018",
+        "007019"
       ],
       "officialDepartmentNames": [
-        "生物科技學系",
-        "生物醫學暨環境生物學系"
+        "生物醫學暨環境生物學系",
+        "生物科技學系"
       ],
       "officialMajorNames": [
-        "生物科技 學類",
-        "生命科學 學類"
+        "生命科學 學類",
+        "生物科技 學類"
       ],
       "officialCrossDomain": false,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_007292.htm?v=1.0"
@@ -37314,25 +37231,56 @@
       "officialCrossDomain": false,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_011452.htm?v=1.0"
     },
-    "011462": {
+    "002462": {
       "learningGroupIds": [
+        "arts"
+      ],
+      "matchKind": "official-program-detail-distribution",
+      "officialDepartmentIds": [
+        "002038"
+      ],
+      "officialDepartmentNames": [
+        "音樂學系"
+      ],
+      "officialMajorNames": [
+        "音樂 學類"
+      ],
+      "officialCrossDomain": false,
+      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_002462.htm?v=1.0"
+    },
+    "003462": {
+      "learningGroupIds": [
+        "information",
+        "management",
         "finance-economics"
       ],
       "matchKind": "official-program-detail-distribution",
       "officialDepartmentIds": [
-        "011016",
-        "011051"
+        "003006",
+        "003008",
+        "003007",
+        "003005",
+        "003010",
+        "003004"
       ],
       "officialDepartmentNames": [
-        "經濟學系",
-        "清華學院學士班"
+        "資訊管理學系",
+        "行銷學系",
+        "會計學系",
+        "企業管理學系",
+        "應用經濟學系",
+        "財務金融學系"
       ],
       "officialMajorNames": [
+        "資訊管理 學類",
+        "行銷經營 學類",
+        "會計 學類",
+        "企業管理 學類",
         "經濟 學類",
-        "一般跨學類"
+        "財務金融 學類"
       ],
-      "officialCrossDomain": true,
-      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_011462.htm?v=1.0"
+      "officialCrossDomain": false,
+      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_003462.htm?v=1.0"
     },
     "011472": {
       "learningGroupIds": [
@@ -37367,6 +37315,58 @@
       ],
       "officialCrossDomain": true,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_011472.htm?v=1.0"
+    },
+    "011462": {
+      "learningGroupIds": [
+        "finance-economics"
+      ],
+      "matchKind": "official-program-detail-distribution",
+      "officialDepartmentIds": [
+        "011016",
+        "011051"
+      ],
+      "officialDepartmentNames": [
+        "經濟學系",
+        "清華學院學士班"
+      ],
+      "officialMajorNames": [
+        "經濟 學類",
+        "一般跨學類"
+      ],
+      "officialCrossDomain": true,
+      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_011462.htm?v=1.0"
+    },
+    "004552": {
+      "learningGroupIds": [
+        "information",
+        "engineering",
+        "management",
+        "finance-economics"
+      ],
+      "matchKind": "official-program-detail-distribution",
+      "officialDepartmentIds": [
+        "004023",
+        "004024",
+        "004027",
+        "004025",
+        "004036"
+      ],
+      "officialDepartmentNames": [
+        "工業與資訊管理學系",
+        "交通管理科學系",
+        "會計學系",
+        "企業管理學系",
+        "經濟學系"
+      ],
+      "officialMajorNames": [
+        "資訊管理 學類",
+        "運輸物流 學類",
+        "會計 學類",
+        "企業管理 學類",
+        "經濟 學類"
+      ],
+      "officialCrossDomain": false,
+      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_004552.htm?v=1.0"
     },
     "011482": {
       "learningGroupIds": [
@@ -37479,25 +37479,25 @@
       ],
       "matchKind": "official-program-detail-distribution",
       "officialDepartmentIds": [
-        "013043",
         "013041",
-        "013040",
+        "013043",
+        "013042",
         "013046",
-        "013042"
+        "013040"
       ],
       "officialDepartmentNames": [
-        "物理治療暨輔助科技學系",
         "生物醫學影像暨放射科學系",
-        "醫學生物技術暨檢驗學系",
+        "物理治療暨輔助科技學系",
+        "護理學系",
         "藥學系",
-        "護理學系"
+        "醫學生物技術暨檢驗學系"
       ],
       "officialMajorNames": [
-        "物理治療 學類",
         "影像放射 學類",
-        "醫學檢驗 學類",
+        "物理治療 學類",
+        "護理 學類",
         "藥學 學類",
-        "護理 學類"
+        "醫學檢驗 學類"
       ],
       "officialCrossDomain": false,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_013402.htm?v=1.0"
@@ -37559,20 +37559,20 @@
       "matchKind": "official-program-detail-distribution",
       "officialDepartmentIds": [
         "016015",
-        "016016",
         "016014",
+        "016016",
         "016017"
       ],
       "officialDepartmentNames": [
         "資訊管理學系",
-        "經濟學系",
         "企業管理學系",
+        "經濟學系",
         "財務金融學系"
       ],
       "officialMajorNames": [
         "資訊管理 學類",
-        "經濟 學類",
         "企業管理 學類",
+        "經濟 學類",
         "財務金融 學類"
       ],
       "officialCrossDomain": false,
@@ -37591,61 +37591,37 @@
         "016007",
         "016033",
         "016028",
-        "016005",
         "016004",
         "016006",
+        "016005",
         "016027",
-        "016023",
-        "016025"
+        "016025",
+        "016023"
       ],
       "officialDepartmentNames": [
         "光電科學與工程學系",
         "太空科學與工程學系",
         "生醫科學與工程學系",
-        "物理學系",
         "數學系",
         "化學學系",
+        "物理學系",
         "生命科學系",
-        "大氣科學學系",
-        "地球科學學系"
+        "地球科學學系",
+        "大氣科學學系"
       ],
       "officialMajorNames": [
         "光電工程 學類",
         "航空工程 學類",
         "生醫工程 學類",
-        "物理 學類",
         "數學 學類",
         "化學 學類",
+        "物理 學類",
         "生命科學 學類",
-        "大氣科學 學類",
-        "地球科學 學類"
+        "地球科學 學類",
+        "大氣科學 學類"
       ],
       "officialCrossDomain": false,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_016382.htm?v=1.0"
-    },
-    "016392": {
-      "learningGroupIds": [
-        "engineering",
-        "math-chemistry"
-      ],
-      "matchKind": "official-program-detail-distribution",
-      "officialDepartmentIds": [
-        "016008",
-        "016012",
-        "016006"
-      ],
-      "officialDepartmentNames": [
-        "土木工程學系",
-        "化學工程與材料工程學系",
-        "化學學系"
-      ],
-      "officialMajorNames": [
-        "土木工程 學類",
-        "化學工程 學類",
-        "化學 學類"
-      ],
-      "officialCrossDomain": false,
-      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_016392.htm?v=1.0"
     },
     "016402": {
       "learningGroupIds": [
@@ -37674,6 +37650,30 @@
       ],
       "officialCrossDomain": false,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_016402.htm?v=1.0"
+    },
+    "016392": {
+      "learningGroupIds": [
+        "engineering",
+        "math-chemistry"
+      ],
+      "matchKind": "official-program-detail-distribution",
+      "officialDepartmentIds": [
+        "016008",
+        "016012",
+        "016006"
+      ],
+      "officialDepartmentNames": [
+        "土木工程學系",
+        "化學工程與材料工程學系",
+        "化學學系"
+      ],
+      "officialMajorNames": [
+        "土木工程 學類",
+        "化學工程 學類",
+        "化學 學類"
+      ],
+      "officialCrossDomain": false,
+      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_016392.htm?v=1.0"
     },
     "023242": {
       "learningGroupIds": [
@@ -37756,21 +37756,21 @@
       ],
       "matchKind": "official-program-detail-distribution",
       "officialDepartmentIds": [
-        "023005",
-        "023006",
         "023004",
-        "023008"
+        "023008",
+        "023005",
+        "023006"
       ],
       "officialDepartmentNames": [
-        "物理學系物理組",
-        "物理學系光電組",
         "數學系",
-        "化學系"
+        "化學系",
+        "物理學系物理組",
+        "物理學系光電組"
       ],
       "officialMajorNames": [
-        "物理 學類",
         "數學 學類",
-        "化學 學類"
+        "化學 學類",
+        "物理 學類"
       ],
       "officialCrossDomain": false,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_023272.htm?v=1.0"
@@ -37840,6 +37840,26 @@
       "officialCrossDomain": false,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_027372.htm?v=1.0"
     },
+    "027382": {
+      "learningGroupIds": [
+        "math-chemistry"
+      ],
+      "matchKind": "official-program-detail-distribution",
+      "officialDepartmentIds": [
+        "027005",
+        "027006"
+      ],
+      "officialDepartmentNames": [
+        "化學系",
+        "物理學系"
+      ],
+      "officialMajorNames": [
+        "化學 學類",
+        "物理 學類"
+      ],
+      "officialCrossDomain": false,
+      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_027382.htm?v=1.0"
+    },
     "027392": {
       "learningGroupIds": [
         "information",
@@ -37867,25 +37887,22 @@
       "officialCrossDomain": false,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_027392.htm?v=1.0"
     },
-    "027382": {
+    "027402": {
       "learningGroupIds": [
-        "math-chemistry"
+        "earth-environment"
       ],
       "matchKind": "official-program-detail-distribution",
       "officialDepartmentIds": [
-        "027006",
-        "027005"
+        "027022"
       ],
       "officialDepartmentNames": [
-        "物理學系",
-        "化學系"
+        "海洋科學系"
       ],
       "officialMajorNames": [
-        "物理 學類",
-        "化學 學類"
+        "海洋科學 學類"
       ],
       "officialCrossDomain": false,
-      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_027382.htm?v=1.0"
+      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_027402.htm?v=1.0"
     },
     "027412": {
       "learningGroupIds": [
@@ -37919,23 +37936,6 @@
       "officialCrossDomain": true,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_027422.htm?v=1.0"
     },
-    "027402": {
-      "learningGroupIds": [
-        "earth-environment"
-      ],
-      "matchKind": "official-program-detail-distribution",
-      "officialDepartmentIds": [
-        "027022"
-      ],
-      "officialDepartmentNames": [
-        "海洋科學系"
-      ],
-      "officialMajorNames": [
-        "海洋科學 學類"
-      ],
-      "officialCrossDomain": false,
-      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_027402.htm?v=1.0"
-    },
     "027432": {
       "learningGroupIds": [
         "engineering",
@@ -37964,18 +37964,18 @@
       ],
       "matchKind": "official-program-detail-distribution",
       "officialDepartmentIds": [
-        "031002",
         "031003",
+        "031002",
         "031001"
       ],
       "officialDepartmentNames": [
-        "幼兒教育學系",
         "特殊教育學系",
+        "幼兒教育學系",
         "教育學系"
       ],
       "officialMajorNames": [
-        "幼兒教育 學類",
         "特殊教育 學類",
+        "幼兒教育 學類",
         "教育 學類"
       ],
       "officialCrossDomain": false,
@@ -37990,22 +37990,22 @@
       "officialDepartmentIds": [
         "041021",
         "041016",
-        "041019",
         "041020",
+        "041019",
         "041015"
       ],
       "officialDepartmentNames": [
         "通訊工程學系",
         "電機工程學系",
-        "機械工程學系",
         "化學工程學系",
+        "機械工程學系",
         "資訊工程學系"
       ],
       "officialMajorNames": [
         "通訊工程 學類",
         "電機工程 學類",
-        "機械工程 學類",
         "化學工程 學類",
+        "機械工程 學類",
         "資訊工程 學類"
       ],
       "officialCrossDomain": false,
@@ -38021,22 +38021,22 @@
       "officialDepartmentIds": [
         "041026",
         "041025",
-        "041022",
         "041024",
+        "041022",
         "041023"
       ],
       "officialDepartmentNames": [
         "資訊管理學系",
         "會計與資訊科技學系",
-        "經濟學系",
         "企業管理學系",
+        "經濟學系",
         "財務金融學系"
       ],
       "officialMajorNames": [
         "資訊管理 學類",
         "會計 學類",
-        "經濟 學類",
         "企業管理 學類",
+        "經濟 學類",
         "財務金融 學類"
       ],
       "officialCrossDomain": false,
@@ -38070,55 +38070,24 @@
       "matchKind": "official-program-detail-distribution",
       "officialDepartmentIds": [
         "041004",
-        "041003",
         "041002",
+        "041003",
         "041001"
       ],
       "officialDepartmentNames": [
         "哲學系",
-        "歷史學系",
         "外國語文學系",
+        "歷史學系",
         "中國文學系"
       ],
       "officialMajorNames": [
         "哲學 學類",
-        "歷史 學類",
         "英語文 學類",
+        "歷史 學類",
         "中國語文 學類"
       ],
       "officialCrossDomain": false,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_041372.htm?v=1.0"
-    },
-    "041382": {
-      "learningGroupIds": [
-        "math-chemistry",
-        "life-science",
-        "earth-environment"
-      ],
-      "matchKind": "official-program-detail-distribution",
-      "officialDepartmentIds": [
-        "041007",
-        "041005",
-        "041008",
-        "041009",
-        "041006"
-      ],
-      "officialDepartmentNames": [
-        "物理學系",
-        "數學系",
-        "化學暨生物化學系",
-        "生物醫學科學系",
-        "地球與環境科學系"
-      ],
-      "officialMajorNames": [
-        "物理 學類",
-        "數學 學類",
-        "化學 學類",
-        "生命科學 學類",
-        "地球科學 學類"
-      ],
-      "officialCrossDomain": false,
-      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_041382.htm?v=1.0"
     },
     "041392": {
       "learningGroupIds": [
@@ -38149,6 +38118,23 @@
       "officialCrossDomain": false,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_041392.htm?v=1.0"
     },
+    "041412": {
+      "learningGroupIds": [
+        "social-psychology"
+      ],
+      "matchKind": "official-program-detail-distribution",
+      "officialDepartmentIds": [
+        "041011"
+      ],
+      "officialDepartmentNames": [
+        "心理學系"
+      ],
+      "officialMajorNames": [
+        "心理 學類"
+      ],
+      "officialCrossDomain": false,
+      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_041412.htm?v=1.0"
+    },
     "041402": {
       "learningGroupIds": [
         "social-psychology",
@@ -38171,22 +38157,36 @@
       "officialCrossDomain": false,
       "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_041402.htm?v=1.0"
     },
-    "041412": {
+    "041382": {
       "learningGroupIds": [
-        "social-psychology"
+        "math-chemistry",
+        "life-science",
+        "earth-environment"
       ],
       "matchKind": "official-program-detail-distribution",
       "officialDepartmentIds": [
-        "041011"
+        "041005",
+        "041008",
+        "041007",
+        "041009",
+        "041006"
       ],
       "officialDepartmentNames": [
-        "心理學系"
+        "數學系",
+        "化學暨生物化學系",
+        "物理學系",
+        "生物醫學科學系",
+        "地球與環境科學系"
       ],
       "officialMajorNames": [
-        "心理 學類"
+        "數學 學類",
+        "化學 學類",
+        "物理 學類",
+        "生命科學 學類",
+        "地球科學 學類"
       ],
       "officialCrossDomain": false,
-      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_041412.htm?v=1.0"
+      "sourceUrl": "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/html/114_041382.htm?v=1.0"
     }
   }
 }
