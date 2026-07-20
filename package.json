@@ -1,5 +1,5 @@
 {
-  "name": "admission-114-screening-review",
+  "name": "admission-115-screening-review",
   "version": "0.1.0",
   "private": true,
   "engines": {
@@ -17,7 +17,7 @@
     "data:catalog": "node --experimental-strip-types scripts/fetchProgramCatalog.ts",
     "data:build": "node --experimental-strip-types scripts/buildProgramsFromOfficial.ts",
     "data:learning-groups": "node --experimental-strip-types scripts/buildOfficialLearningGroups.ts",
-    "data:validate": "node --experimental-strip-types scripts/validatePrograms.ts data/programs_114.json",
+    "data:validate": "node --experimental-strip-types scripts/validatePrograms.ts data/programs_115.json",
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {

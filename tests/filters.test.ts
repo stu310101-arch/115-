@@ -24,7 +24,7 @@ function program(
     Pick<Program, "schoolId" | "schoolName" | "programCode" | "programName">,
 ): Program {
   return {
-    year: 114,
+    year: 115,
     quota: 10,
     groupTags: ["自然組"],
     departmentKeywords: [],

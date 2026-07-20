@@ -49,7 +49,7 @@ export const LISTENING_STANDARDS = ["A級", "B級", "C級"] as const;
 
 export type ListeningStandard = (typeof LISTENING_STANDARDS)[number];
 
-/** An official subject threshold converted with the 114 GSAT five standards. */
+/** An official subject threshold converted with the 115 GSAT five standards. */
 export type SubjectRequirement =
   | {
       subject: Exclude<Subject, "英聽">;
@@ -98,12 +98,12 @@ export type ProgramSource = {
   collegeListUrl: string;
   reportHtmlUrl: string;
   reportImageUrl: string;
-  /** Official 114 application catalog page for this exact program. */
+  /** Official 115 application catalog page for this exact program. */
   programDetailUrl?: string;
 };
 
 export type Program = {
-  year: 114;
+  year: 115;
   schoolId: string;
   schoolName: string;
   programCode: string;
@@ -130,7 +130,7 @@ export type Program = {
   source: ProgramSource;
   /**
    * New official imports always set both fields. They are optional only so the
-   * original hand-curated 114 snapshot can remain readable during migration.
+   * original hand-curated 115 snapshot can remain readable during migration.
    */
   dataStatus?: ProgramDataStatus;
   evaluationSupport?: EvaluationSupportStatus;

@@ -5,12 +5,12 @@ type SourceUrlModule = typeof import("../lib/sourceUrls");
 
 // Node runs this TypeScript file directly, so the runtime import needs its .ts suffix.
 const {
-  CAC_114_COLLEGE_LIST_URL,
-  CAC_114_EXPECTED_SCHOOL_COUNT,
-  assertOfficialCac114SourceUrl,
+  CAC_115_COLLEGE_LIST_URL,
+  CAC_115_EXPECTED_SCHOOL_COUNT,
+  assertOfficialCac115SourceUrl,
   reportHtmlUrlForSchool,
   reportImageUrlForSchool,
-  resolveOfficialCac114SourceUrl,
+  resolveOfficialCac115SourceUrl,
 } = (await import(
   new URL("../lib/sourceUrls.ts", import.meta.url).href
 )) as SourceUrlModule;
@@ -21,7 +21,7 @@ type SchoolLink = {
   reportHtmlUrl: string;
 };
 
-type SchoolSource114 = SchoolLink & {
+type SchoolSource115 = SchoolLink & {
   reportImageUrl: string;
   collegeListUrl: string;
 };
@@ -32,7 +32,7 @@ type FetchedHtml = {
 };
 
 const outputDirectoryUrl = new URL("../data/", import.meta.url);
-const outputFileUrl = new URL("sources_114.json", outputDirectoryUrl);
+const outputFileUrl = new URL("sources_115.json", outputDirectoryUrl);
 const reportConcurrency = 5;
 const maximumFetchAttempts = 4;
 const requestTimeoutMs = 20_000;
@@ -41,7 +41,7 @@ const requestHeaders = {
   accept: "text/html,application/xhtml+xml",
   "accept-language": "zh-TW,zh;q=0.9,en;q=0.7",
   "user-agent":
-    "Mozilla/5.0 (compatible; CAC-114-source-indexer/1.0; +https://www.cac.edu.tw/)",
+    "Mozilla/5.0 (compatible; CAC-115-source-indexer/1.0; +https://www.cac.edu.tw/)",
 };
 
 function errorMessage(error: unknown): string {
@@ -53,7 +53,7 @@ function delay(milliseconds: number): Promise<void> {
 }
 
 async function fetchWithRetry(url: string): Promise<Response> {
-  assertOfficialCac114SourceUrl(url);
+  assertOfficialCac115SourceUrl(url);
   let lastError: unknown;
 
   for (let attempt = 1; attempt <= maximumFetchAttempts; attempt += 1) {
@@ -64,7 +64,7 @@ async function fetchWithRetry(url: string): Promise<Response> {
         signal: AbortSignal.timeout(requestTimeoutMs),
       });
 
-      assertOfficialCac114SourceUrl(response.url);
+      assertOfficialCac115SourceUrl(response.url);
 
       if (!response.ok) {
         await response.body?.cancel();
@@ -174,9 +174,9 @@ function parseSchoolLinks(html: string): SchoolLink[] {
     const href = attributeValue(match[1], "href");
     if (!href) continue;
 
-    const reportHtmlUrl = resolveOfficialCac114SourceUrl(
+    const reportHtmlUrl = resolveOfficialCac115SourceUrl(
       href,
-      CAC_114_COLLEGE_LIST_URL,
+      CAC_115_COLLEGE_LIST_URL,
     );
     const hrefId = new URL(reportHtmlUrl).pathname.match(
       /\/report\/(\d{3})\.htm$/i,
@@ -214,9 +214,9 @@ function parseSchoolLinks(html: string): SchoolLink[] {
     });
   }
 
-  if (schools.length !== CAC_114_EXPECTED_SCHOOL_COUNT) {
+  if (schools.length !== CAC_115_EXPECTED_SCHOOL_COUNT) {
     throw new Error(
-      `Parsed ${schools.length} schools; expected ${CAC_114_EXPECTED_SCHOOL_COUNT}`,
+      `Parsed ${schools.length} schools; expected ${CAC_115_EXPECTED_SCHOOL_COUNT}`,
     );
   }
 
@@ -239,7 +239,7 @@ function parseReportImageUrl(
     const candidate = new URL(src, school.reportHtmlUrl);
     if (!/\/report\/pict\/\d{3}\.png$/i.test(candidate.pathname)) continue;
 
-    const officialUrl = resolveOfficialCac114SourceUrl(
+    const officialUrl = resolveOfficialCac115SourceUrl(
       src,
       school.reportHtmlUrl,
     );
@@ -290,21 +290,21 @@ async function mapWithConcurrency<T, R>(
 }
 
 async function main(): Promise<void> {
-  const collegeList = await fetchHtml(CAC_114_COLLEGE_LIST_URL);
+  const collegeList = await fetchHtml(CAC_115_COLLEGE_LIST_URL);
   const schoolLinks = parseSchoolLinks(collegeList.html);
   const reportCharsets = new Set<string>();
 
   const sources = await mapWithConcurrency(
     schoolLinks,
     reportConcurrency,
-    async (school): Promise<SchoolSource114> => {
+    async (school): Promise<SchoolSource115> => {
       try {
         const report = await fetchHtml(school.reportHtmlUrl);
         reportCharsets.add(report.charset);
         return {
           ...school,
           reportImageUrl: parseReportImageUrl(report.html, school),
-          collegeListUrl: CAC_114_COLLEGE_LIST_URL,
+          collegeListUrl: CAC_115_COLLEGE_LIST_URL,
         };
       } catch (error) {
         throw new Error(

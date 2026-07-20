@@ -1,6 +1,6 @@
 import { DeficitBadge } from "./DeficitBadge";
 import { SourceLink } from "./SourceLink";
-import { GSAT_114_FIVE_STANDARDS } from "@/lib/subjects";
+import { GSAT_115_FIVE_STANDARDS } from "@/lib/subjects";
 import type {
   ApcsEvaluationResult,
   ApcsScorePart,
@@ -202,7 +202,7 @@ function requirementThresholdLabel(result: RequirementResult): string {
   }
 
   const grade =
-    GSAT_114_FIVE_STANDARDS[requirement.subject][requirement.standard];
+    GSAT_115_FIVE_STANDARDS[requirement.subject][requirement.standard];
   return `${requirement.standard}（${grade} 級分）`;
 }
 

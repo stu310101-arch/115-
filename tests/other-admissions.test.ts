@@ -90,7 +90,7 @@ describe("其他招生管道資料", () => {
       ]),
     );
     expect(OTHER_ADMISSION_SOURCES.military.url).toContain("mnd.gov.tw");
-    expect(OTHER_ADMISSION_SOURCES.cac.url).toContain("cac.edu.tw/apply114");
+    expect(OTHER_ADMISSION_SOURCES.cac.url).toContain("cac.edu.tw/apply115");
     expect(OTHER_ADMISSION_SOURCES.policeUniversity.url).toContain(
       "daa.cpu.edu.tw",
     );

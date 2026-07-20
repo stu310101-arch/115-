@@ -1,0 +1,450 @@
+[
+  {
+    "schoolId": "001",
+    "schoolName": "國立臺灣大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/001.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/001.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "002",
+    "schoolName": "國立臺灣師範大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/002.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/002.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "003",
+    "schoolName": "國立中興大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/003.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/003.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "004",
+    "schoolName": "國立成功大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/004.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/004.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "005",
+    "schoolName": "東吳大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/005.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/005.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "006",
+    "schoolName": "國立政治大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/006.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/006.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "007",
+    "schoolName": "高雄醫學大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/007.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/007.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "008",
+    "schoolName": "中原大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/008.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/008.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "009",
+    "schoolName": "東海大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/009.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/009.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "011",
+    "schoolName": "國立清華大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/011.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/011.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "012",
+    "schoolName": "中國醫藥大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/012.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/012.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "013",
+    "schoolName": "國立陽明交通大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/013.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/013.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "014",
+    "schoolName": "淡江大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/014.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/014.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "015",
+    "schoolName": "逢甲大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/015.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/015.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "016",
+    "schoolName": "國立中央大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/016.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/016.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "017",
+    "schoolName": "中國文化大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/017.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/017.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "018",
+    "schoolName": "靜宜大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/018.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/018.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "019",
+    "schoolName": "大同大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/019.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/019.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "020",
+    "schoolName": "輔仁大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/020.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/020.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "021",
+    "schoolName": "國立臺灣海洋大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/021.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/021.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "022",
+    "schoolName": "國立高雄師範大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/022.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/022.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "023",
+    "schoolName": "國立彰化師範大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/023.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/023.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "026",
+    "schoolName": "中山醫學大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/026.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/026.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "027",
+    "schoolName": "國立中山大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/027.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/027.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "028",
+    "schoolName": "國立臺北藝術大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/028.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/028.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "030",
+    "schoolName": "長庚大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/030.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/030.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "031",
+    "schoolName": "國立臺中教育大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/031.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/031.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "032",
+    "schoolName": "國立臺北教育大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/032.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/032.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "033",
+    "schoolName": "國立臺南大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/033.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/033.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "034",
+    "schoolName": "國立東華大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/034.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/034.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "035",
+    "schoolName": "臺北市立大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/035.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/035.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "036",
+    "schoolName": "國立屏東大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/036.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/036.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "038",
+    "schoolName": "國立臺東大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/038.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/038.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "039",
+    "schoolName": "國立體育大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/039.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/039.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "040",
+    "schoolName": "元智大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/040.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/040.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "041",
+    "schoolName": "國立中正大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/041.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/041.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "042",
+    "schoolName": "大葉大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/042.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/042.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "044",
+    "schoolName": "華梵大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/044.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/044.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "045",
+    "schoolName": "義守大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/045.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/045.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "046",
+    "schoolName": "銘傳大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/046.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/046.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "047",
+    "schoolName": "世新大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/047.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/047.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "050",
+    "schoolName": "實踐大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/050.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/050.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "051",
+    "schoolName": "長榮大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/051.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/051.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "056",
+    "schoolName": "國立臺灣藝術大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/056.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/056.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "058",
+    "schoolName": "國立暨南國際大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/058.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/058.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "059",
+    "schoolName": "南華大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/059.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/059.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "060",
+    "schoolName": "國立臺灣體育運動大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/060.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/060.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "063",
+    "schoolName": "國立臺南藝術大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/063.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/063.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "065",
+    "schoolName": "玄奘大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/065.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/065.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "079",
+    "schoolName": "真理大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/079.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/079.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "099",
+    "schoolName": "國立臺北大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/099.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/099.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "100",
+    "schoolName": "國立嘉義大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/100.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/100.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "101",
+    "schoolName": "國立高雄大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/101.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/101.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "108",
+    "schoolName": "慈濟大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/108.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/108.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "109",
+    "schoolName": "臺北醫學大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/109.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/109.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "110",
+    "schoolName": "開南大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/110.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/110.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "112",
+    "schoolName": "康寧大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/112.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/112.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "113",
+    "schoolName": "中信金融管理學院",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/113.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/113.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "130",
+    "schoolName": "佛光大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/130.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/130.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "134",
+    "schoolName": "亞洲大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/134.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/134.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "150",
+    "schoolName": "國立宜蘭大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/150.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/150.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "151",
+    "schoolName": "國立聯合大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/151.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/151.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "152",
+    "schoolName": "馬偕醫學大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/152.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/152.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  },
+  {
+    "schoolId": "153",
+    "schoolName": "國立金門大學",
+    "reportHtmlUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/153.htm",
+    "reportImageUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/report/pict/153.png",
+    "collegeListUrl": "https://www.cac.edu.tw/CacLink/apply115/115Apply_sievE_Result_querY_615JG8Wgh9d/html_sieve_result_115_Zx57f1dW/Standard/collegeList.htm"
+  }
+]

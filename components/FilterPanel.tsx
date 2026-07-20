@@ -616,7 +616,7 @@ export function FilterPanel({
           師範體系包含臺師大、高師大、彰師大、臺中教育與臺北教育。
         </p>
         <p className="microcopy separate-admission-note">
-          本站限甄選委員會 114 申請入學 66 校總表；國防醫學院（現名國防醫學大學）、中央警察大學與科技校院等採其他招生管道，不會混入本回測。
+          本站限甄選委員會 115 申請入學 64 校總表；國防醫學院（現名國防醫學大學）、中央警察大學與科技校院等採其他招生管道，不會混入本回測。
           <RouteLink route="other-admissions">查看其他招生管道與官方連結 →</RouteLink>
         </p>
 

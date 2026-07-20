@@ -209,7 +209,7 @@ export function validatePrograms(input: unknown): ProgramsValidationReport {
       return;
     }
 
-    if (candidate.year !== 114) addError("year", "year 必須是數字 114");
+    if (candidate.year !== 115) addError("year", "year 必須是數字 115");
 
     for (const field of [
       "schoolId",
@@ -604,7 +604,7 @@ export function validatePrograms(input: unknown): ProgramsValidationReport {
 }
 
 async function main(): Promise<void> {
-  const filePath = resolve(process.argv[2] ?? "data/programs_114.json");
+  const filePath = resolve(process.argv[2] ?? "data/programs_115.json");
   let input: unknown;
   try {
     input = JSON.parse(await readFile(filePath, "utf8")) as unknown;

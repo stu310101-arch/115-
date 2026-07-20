@@ -1,4 +1,4 @@
-import programLearningGroupIds from "../data/program_learning_group_ids_114.json";
+import programLearningGroupIds from "../data/program_learning_group_ids_115.json";
 import type { Program } from "./types";
 
 export {

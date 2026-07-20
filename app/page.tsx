@@ -1,6 +1,6 @@
 import { RouteLink } from "@/components/PageNavigation";
-import programsJson from "@/data/programs_114.json";
-import sourcesJson from "@/data/sources_114.json";
+import programsJson from "@/data/programs_115.json";
+import sourcesJson from "@/data/sources_115.json";
 import {
   supportsAcademicPartialEvaluation,
   supportsProgramEvaluation,
@@ -28,8 +28,8 @@ export default function Home() {
   return (
     <main className="home-page">
       <header className="home-header">
-        <div className="wordmark" aria-label="114 申請一階落點">
-          <span className="wordmark-seal">114</span>
+        <div className="wordmark" aria-label="115 申請一階落點">
+          <span className="wordmark-seal">115</span>
           <span>
             <b>申請一階落點</b>
             <small>倍率篩選回測工具</small>
@@ -41,7 +41,7 @@ export default function Home() {
         <div className="hero-copy">
           <div className="eyebrow">
             <span className="live-dot" aria-hidden="true" />
-            114 學年度・官方資料回測
+            115 學年度・官方資料回測
           </div>
           <h1 id="home-title">
             每一關都算清楚，

@@ -2,7 +2,7 @@ import {
   PageNavigation,
   SubpageHeader,
 } from "@/components/PageNavigation";
-import { GSAT_114_FIVE_STANDARDS } from "@/lib/subjects";
+import { GSAT_115_FIVE_STANDARDS } from "@/lib/subjects";
 
 const GSAT_SUBJECTS = ["國文", "英文", "數A", "數B", "社會", "自然"] as const;
 const FIVE_STANDARDS = ["頂標", "前標", "均標", "後標", "底標"] as const;
@@ -18,7 +18,7 @@ export default function HowItWorksPage() {
           <h1 id="method-title">不是算一個總分，而是逐關判斷。</h1>
         </div>
         <p className="method-lead">
-          系統依 114 學年度官方通過倍率篩選最低級分回測。若一個校系有多關篩選，
+          系統依 115 學年度官方通過倍率篩選最低級分回測。若一個校系有多關篩選，
           每一關都會使用自己的科目組合與門檻，所有關卡通過才列為可能通過。
         </p>
 
@@ -48,13 +48,13 @@ export default function HowItWorksPage() {
         <section className="five-standard-section" aria-labelledby="five-standard-title">
           <div className="five-standard-heading">
             <span>官方換算基準</span>
-            <h2 id="five-standard-title">114 學年度學測五標</h2>
+            <h2 id="five-standard-title">115 學年度學測五標</h2>
             <p>校系檢定條件若採頂標、前標、均標、後標或底標，系統會依下表換算為級分。</p>
           </div>
 
           <div className="five-standard-table-wrap">
             <table className="five-standard-table">
-              <caption>114 學年度學科能力測驗各科成績標準</caption>
+              <caption>115 學年度學科能力測驗各科成績標準</caption>
               <thead>
                 <tr>
                   <th scope="col">科目</th>
@@ -69,7 +69,7 @@ export default function HowItWorksPage() {
                     <th scope="row">{subject}</th>
                     {FIVE_STANDARDS.map((standard) => (
                       <td key={standard}>
-                        {GSAT_114_FIVE_STANDARDS[subject][standard]}
+                        {GSAT_115_FIVE_STANDARDS[subject][standard]}
                       </td>
                     ))}
                   </tr>
@@ -85,7 +85,7 @@ export default function HowItWorksPage() {
               rel="noreferrer"
               target="_blank"
             >
-              大學入學考試中心 114 學年度學測各科成績標準
+              大學入學考試中心 115 學年度學測各科成績標準
             </a>
           </p>
         </section>

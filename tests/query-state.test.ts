@@ -55,7 +55,7 @@ describe("school query state", () => {
   });
 
   it("v8 session 未保存 APCS 時會安全升級為留白", () => {
-    const restored = restoreFromSession("admission-114-query-v8", {
+    const restored = restoreFromSession("admission-115-query-v8", {
       ...DEFAULT_QUERY_STATE,
       apcsScores: undefined,
     });
@@ -93,7 +93,7 @@ describe("school query state", () => {
   });
 
   it("v7 的單一組別狀態會升級為複選陣列", () => {
-    const restored = restoreFromSession("admission-114-query-v7", {
+    const restored = restoreFromSession("admission-115-query-v7", {
       ...DEFAULT_QUERY_STATE,
       groupSelection: "社會組",
     });
@@ -241,7 +241,7 @@ describe("school query state", () => {
   });
 
   it("v3 session 的群組模式會忽略殘留自訂學校", () => {
-    const restored = restoreFromSession("admission-114-query-v3", {
+    const restored = restoreFromSession("admission-115-query-v3", {
       schoolSelection: "top",
       customSchoolIds: ["108"],
     });
@@ -251,7 +251,7 @@ describe("school query state", () => {
   });
 
   it("v3 session 的自訂模式會保留有效校碼", () => {
-    const restored = restoreFromSession("admission-114-query-v3", {
+    const restored = restoreFromSession("admission-115-query-v3", {
       schoolSelection: "custom",
       customSchoolIds: ["108", "bad"],
     });

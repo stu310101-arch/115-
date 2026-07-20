@@ -30,22 +30,22 @@ export const SUBJECT_LABELS: Readonly<Record<Subject, string>> = {
   英聽: "英聽",
 };
 
-export const GSAT_114_FIVE_STANDARDS: Readonly<
+export const GSAT_115_FIVE_STANDARDS: Readonly<
   Record<Exclude<Subject, "英聽">, Readonly<Record<RequirementStandard, number>>>
 > = {
   國文: { 頂標: 13, 前標: 12, 均標: 10, 後標: 9, 底標: 7 },
-  英文: { 頂標: 13, 前標: 11, 均標: 8, 後標: 4, 底標: 3 },
-  數A: { 頂標: 11, 前標: 9, 均標: 6, 後標: 4, 底標: 3 },
-  數B: { 頂標: 12, 前標: 10, 均標: 6, 後標: 4, 底標: 3 },
+  英文: { 頂標: 13, 前標: 11, 均標: 8, 後標: 5, 底標: 3 },
+  數A: { 頂標: 12, 前標: 10, 均標: 8, 後標: 5, 底標: 4 },
+  數B: { 頂標: 11, 前標: 9, 均標: 5, 後標: 3, 底標: 2 },
   社會: { 頂標: 13, 前標: 12, 均標: 10, 後標: 8, 底標: 7 },
   自然: { 頂標: 13, 前標: 12, 均標: 9, 後標: 7, 底標: 5 },
 };
 
-export function scoreFor114Standard(
+export function scoreFor115Standard(
   subject: Exclude<Subject, "英聽">,
   standard: RequirementStandard,
 ): number {
-  return GSAT_114_FIVE_STANDARDS[subject][standard];
+  return GSAT_115_FIVE_STANDARDS[subject][standard];
 }
 
 export const ENGLISH_LISTENING_LEVEL_SCORES: Readonly<

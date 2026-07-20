@@ -2,7 +2,7 @@ import https from "node:https";
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 
-type Source114 = {
+type Source115 = {
   schoolId: string;
 };
 
@@ -65,7 +65,7 @@ type ListedProgram = {
 };
 
 type Catalog = {
-  academicYear: 114;
+  academicYear: 115;
   sourceUrl: string;
   fetchedAt: string;
   declaredSchoolCount: number;
@@ -92,13 +92,13 @@ type HttpResult = {
 
 const officialOrigin = "https://www.cac.edu.tw";
 const queryBaseUrl =
-  `${officialOrigin}/apply114/system/ColQry_114applyXForStu_Fd87eO2q/`;
+  `${officialOrigin}/apply115/system/ColQry_115xappLyfOrStu_Azd5gP29/`;
 const totalUrl = new URL("TotalGsdShow.htm", queryBaseUrl).href;
-const expectedSchoolCount = 66;
-const expectedProgramCount = 2168;
+const expectedSchoolCount = 64;
+const expectedProgramCount = 2206;
 
-const sourceFileUrl = new URL("../data/sources_114.json", import.meta.url);
-const workDirectoryUrl = new URL("../work/official-114/", import.meta.url);
+const sourceFileUrl = new URL("../data/sources_115.json", import.meta.url);
+const workDirectoryUrl = new URL("../work/official-115/", import.meta.url);
 const schoolCacheDirectoryUrl = new URL("schools/", workDirectoryUrl);
 const detailCacheDirectoryUrl = new URL("details/", workDirectoryUrl);
 const totalCacheUrl = new URL("TotalGsdShow.htm", workDirectoryUrl);
@@ -116,7 +116,7 @@ const requestHeaders = {
   accept: "text/html,application/xhtml+xml",
   "accept-language": "zh-TW,zh;q=0.9,en;q=0.7",
   "user-agent":
-    "Mozilla/5.0 (compatible; CAC-114-official-catalog/1.0; +https://www.cac.edu.tw/)",
+    "Mozilla/5.0 (compatible; CAC-115-official-catalog/1.0; +https://www.cac.edu.tw/)",
 };
 
 let sessionCookie = "";
@@ -137,7 +137,7 @@ function assertOfficialUrl(value: string): void {
     url.protocol !== "https:" ||
     url.hostname !== "www.cac.edu.tw" ||
     !url.pathname.startsWith(
-      "/apply114/system/ColQry_114applyXForStu_Fd87eO2q/",
+      "/apply115/system/ColQry_115xappLyfOrStu_Azd5gP29/",
     )
   ) {
     throw new Error(`Refusing non-official or out-of-scope URL: ${value}`);
@@ -210,7 +210,7 @@ function cookiesFromSetCookie(
 }
 
 function decodeResponse(result: HttpResult): string {
-  // All pages in this official 114 query system declare and use UTF-8.
+  // All pages in this official 115 query system declare and use UTF-8.
   return new TextDecoder("utf-8", { fatal: true }).decode(result.body);
 }
 
@@ -399,7 +399,7 @@ function parseSchoolPage(html: string, school: OfficialSchool): ListedProgram[] 
     if (!nameCell) continue;
 
     const code = nameCell.text.match(/\((\d{6})\)\s*$/)?.[1];
-    const hrefCell = cells.find((cell) => /114_\d{6}\.htm/i.test(cell.html));
+    const hrefCell = cells.find((cell) => /115_\d{6}\.htm/i.test(cell.html));
     const hrefMatch = hrefCell?.html.match(/<a\b([^>]*)>/i);
     const href = hrefMatch ? attributeValue(hrefMatch[1], "href") : undefined;
     const quotaRaw = findTitledCell(cells, "招生名額")?.text ?? "";
@@ -423,7 +423,7 @@ function parseSchoolPage(html: string, school: OfficialSchool): ListedProgram[] 
 
     const detailUrl = new URL(href, school.listUrl).href;
     assertOfficialUrl(detailUrl);
-    if (!new URL(detailUrl).pathname.endsWith(`/114_${code}.htm`)) {
+    if (!new URL(detailUrl).pathname.endsWith(`/115_${code}.htm`)) {
       throw new Error(`Program code/detail URL mismatch for ${code}: ${detailUrl}`);
     }
     const quota = /^\d+$/.test(quotaRaw) ? Number(quotaRaw) : null;
@@ -579,10 +579,10 @@ async function main(): Promise<void> {
   await mkdir(schoolCacheDirectoryUrl, { recursive: true });
   await mkdir(detailCacheDirectoryUrl, { recursive: true });
 
-  const sources = JSON.parse(await readFile(sourceFileUrl, "utf8")) as Source114[];
+  const sources = JSON.parse(await readFile(sourceFileUrl, "utf8")) as Source115[];
   const inputIds = sources.map((source) => source.schoolId);
   if (new Set(inputIds).size !== inputIds.length) {
-    throw new Error("data/sources_114.json contains duplicate school ids");
+    throw new Error("data/sources_115.json contains duplicate school ids");
   }
 
   const totalHtml = await bootstrapSession();
@@ -593,7 +593,7 @@ async function main(): Promise<void> {
   ) {
     throw new Error(
       `Official totals changed: ${official.declaredSchoolCount} schools / ` +
-        `${official.declaredProgramCount} programs (expected 66 / 2168)`,
+        `${official.declaredProgramCount} programs (expected 64 / 2206)`,
     );
   }
   const officialIds = official.schools.map((school) => school.schoolId);
@@ -601,7 +601,7 @@ async function main(): Promise<void> {
   const extraInInput = inputIds.filter((id) => !officialIds.includes(id));
   if (missingInInput.length > 0 || extraInInput.length > 0) {
     throw new Error(
-      `data/sources_114.json school ids differ from official total page; ` +
+      `data/sources_115.json school ids differ from official total page; ` +
         `missing=${missingInInput.join(",") || "none"}, ` +
         `extra=${extraInInput.join(",") || "none"}`,
     );
@@ -712,7 +712,7 @@ async function main(): Promise<void> {
   }
 
   const catalog: Catalog = {
-    academicYear: 114,
+    academicYear: 115,
     sourceUrl: totalUrl,
     fetchedAt: new Date().toISOString(),
     declaredSchoolCount: official.declaredSchoolCount,

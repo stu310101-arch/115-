@@ -3,7 +3,7 @@ import { resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import sharp from "sharp";
 import {
-  scoreFor114Standard,
+  scoreFor115Standard,
   scoreForEnglishListening,
 } from "../lib/subjects.ts";
 import type {
@@ -153,10 +153,12 @@ type CropRequest = {
   height: number;
 };
 
-const EXPECTED_SCHOOL_COUNT = 66;
-const EXPECTED_PROGRAM_COUNT = 2168;
-const EXPECTED_APCS_PROGRAM_COUNT = 60;
-const EXPECTED_ART_EXAM_PROGRAM_COUNT = 70;
+const EXPECTED_SCHOOL_COUNT = 64;
+const EXPECTED_PROGRAM_COUNT = 2206;
+// 54 APCS-group programs plus 9 security-group programs whose detail pages
+// also publish APCS screening thresholds.
+const EXPECTED_APCS_PROGRAM_COUNT = 63;
+const EXPECTED_ART_EXAM_PROGRAM_COUNT = 65;
 const MAX_ORDER_COLUMNS = 12;
 const OFFICIAL_DASH_REASON =
   "官方「通過倍率篩選最低級分」欄為 --，沒有數值可供自動判定。";
@@ -189,54 +191,29 @@ const SUBJECT_ORDER: readonly Subject[] = [
  */
 const SPECIAL_SCREENING_DETAILS_BY_CODE: Readonly<
   Record<string, readonly string[]>
-> = {
-  "002282": [
-    "官方另列最低篩選分數：英文 8、數學A 10、APCS 觀念題＋實作題合計 7；這些特殊條件尚未納入自動判斷",
-  ],
-  "002452": [
-    "招生名額 64 名為鋼琴、聲樂、小提琴、中提琴等 19 種主修樂器名額加總；各主修樂器的名額與術科最低分不同，須依官方資料逐項確認",
-  ],
-  "002472": [
-    "官方最低分：國文＋英文 34、素描＋彩繪技法＋創意表現 213；術科條件尚未納入自動判斷",
-  ],
-  "002482": [
-    "官方最低分：國文＋英文 28、彩繪技法 72、素描 75；術科條件尚未納入自動判斷",
-  ],
-  "002492": [
-    "官方最低分：國文＋英文 26、彩繪技法 69、素描 69、水墨書畫 79.8；術科條件尚未納入自動判斷",
-  ],
-  "002502": [
-    "官方另列最低分：體育百分等級 75.36、國文＋英文＋社會＋自然 30；術科條件尚未納入自動判斷",
-  ],
-  "002512": [
-    "官方另列最低分：體育百分等級 75.3、國文＋英文＋社會＋自然 37；術科條件尚未納入自動判斷",
-  ],
-  "002522": [
-    "官方另列最低分：體育百分等級 82.7、國文＋英文＋社會＋自然 43；術科條件尚未納入自動判斷",
-  ],
-};
+> = {};
 
-const catalogUrl = new URL("../work/official-114/catalog.json", import.meta.url);
-const ocrDirectoryUrl = new URL("../work/official-114/ocr/", import.meta.url);
-const imageDirectoryUrl = new URL("../work/official-114/images/", import.meta.url);
-const detailDirectoryUrl = new URL("../work/official-114/details/", import.meta.url);
-const sourceIndexUrl = new URL("../data/sources_114.json", import.meta.url);
-const outputUrl = new URL("../data/programs_114.json", import.meta.url);
-const reviewUrl = new URL("../work/official-114/review.json", import.meta.url);
+const catalogUrl = new URL("../work/official-115/catalog.json", import.meta.url);
+const ocrDirectoryUrl = new URL("../work/official-115/ocr/", import.meta.url);
+const imageDirectoryUrl = new URL("../work/official-115/images/", import.meta.url);
+const detailDirectoryUrl = new URL("../work/official-115/details/", import.meta.url);
+const sourceIndexUrl = new URL("../data/sources_115.json", import.meta.url);
+const outputUrl = new URL("../data/programs_115.json", import.meta.url);
+const reviewUrl = new URL("../work/official-115/review.json", import.meta.url);
 const cellOcrUrl = new URL(
-  "../work/official-114/threshold-cell-ocr.json",
+  "../work/official-115/threshold-cell-ocr.json",
   import.meta.url,
 );
 const thresholdOverrideUrl = new URL(
-  "../data/official_threshold_overrides_114.json",
+  "../data/official_threshold_overrides_115.json",
   import.meta.url,
 );
 const programOverrideUrl = new URL(
-  "../data/official_program_overrides_114.json",
+  "../data/official_program_overrides_115.json",
   import.meta.url,
 );
 const cellDirectoryUrl = new URL(
-  "../work/official-114/threshold-cells/",
+  "../work/official-115/threshold-cells/",
   import.meta.url,
 );
 
@@ -328,7 +305,7 @@ function parseApcsCellValue(
 /** Parse the two official APCS individual requirements and screening multipliers. */
 export function parseApcsDetail(html: string): ApcsDetail {
   const match = html.match(
-    /<td[^>]*>\s*程式設計觀念題\s*<br\s*\/?\s*>\s*程式設計實作題\s*<\/td>\s*<td[^>]*>([^]*?)<\/td>\s*<td[^>]*>([^]*?)<\/td>/iu,
+    /<td[^>]*>\s*(?:程式設計觀念題|程式識讀)\s*<br\s*\/?\s*>\s*(?:程式設計實作題|程式實作)\s*<\/td>\s*<td[^>]*>([^]*?)<\/td>\s*<td[^>]*>([^]*?)<\/td>/iu,
   );
   if (!match) throw new Error("官方校系分則缺少 APCS 篩選表格");
   const minimums = htmlCellLines(match[1] ?? "");
@@ -471,7 +448,7 @@ function deriveRequirements(items: readonly CatalogItem[]): RequirementDerivatio
     requirements.push({
       subject,
       standard,
-      minScore: scoreFor114Standard(subject, standard),
+      minScore: scoreFor115Standard(subject, standard),
       rawText: `${item.label}${item.standard}`,
     });
   }
@@ -897,8 +874,8 @@ async function readProgramOverrides(): Promise<Map<string, ProgramOverride>> {
     academicYear?: number;
     programs?: Record<string, ProgramOverride>;
   }>(programOverrideUrl);
-  if (document.academicYear !== 114) {
-    throw new Error("官方校系人工覆核檔 academicYear 必須是 114");
+  if (document.academicYear !== 115) {
+    throw new Error("官方校系人工覆核檔 academicYear 必須是 115");
   }
   return new Map(Object.entries(document.programs ?? {}));
 }
@@ -914,10 +891,24 @@ async function readApcsDetails(
           new URL(`${program.programCode}.html`, detailDirectoryUrl),
           "utf8",
         );
-        return [program.programCode, parseApcsDetail(html)] as const;
+        try {
+          return [program.programCode, parseApcsDetail(html)] as const;
+        } catch (error) {
+          if (
+            error instanceof Error &&
+            error.message === "官方校系分則缺少 APCS 篩選表格"
+          ) {
+            return null;
+          }
+          throw error;
+        }
       }),
   );
-  return new Map(entries);
+  return new Map(
+    entries.filter(
+      (entry): entry is readonly [string, ApcsDetail] => entry !== null,
+    ),
+  );
 }
 
 async function writeJsonAtomically(url: URL, value: unknown): Promise<void> {
@@ -1031,7 +1022,7 @@ function assertCatalog(catalog: Catalog): void {
     (program) => typeof program.raw?.requiresApcs === "boolean",
   );
   if (
-    catalog.academicYear !== 114 ||
+    catalog.academicYear !== 115 ||
     catalog.declaredSchoolCount !== EXPECTED_SCHOOL_COUNT ||
     catalog.declaredProgramCount !== EXPECTED_PROGRAM_COUNT ||
     catalog.programs.length !== EXPECTED_PROGRAM_COUNT ||
@@ -1097,7 +1088,7 @@ async function main(): Promise<void> {
     ) {
       console.warn(
         `校碼 ${catalogProgram.schoolId} 校系頁現名為 ${catalogProgram.schoolName}；` +
-          `114 招生資料保留歷史名稱 ${sourceIndex.schoolName}`,
+          `115 招生資料保留歷史名稱 ${sourceIndex.schoolName}`,
       );
       renamedSchoolIds.add(catalogProgram.schoolId);
     }
@@ -1233,7 +1224,7 @@ async function main(): Promise<void> {
       programDetailUrl: catalogProgram.detailUrl,
     };
     const program: Program = {
-      year: 114,
+      year: 115,
       schoolId: catalogProgram.schoolId,
       schoolName: sourceIndex.schoolName,
       programCode: catalogProgram.programCode,
@@ -1299,7 +1290,7 @@ async function main(): Promise<void> {
   }
   await writeJsonAtomically(outputUrl, programs);
   await writeJsonAtomically(reviewUrl, {
-    academicYear: 114,
+    academicYear: 115,
     generatedAt: new Date().toISOString(),
     officialSchoolCount: validation.schoolCount,
     officialProgramCount: validation.programCount,

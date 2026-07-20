@@ -76,9 +76,9 @@ type CellOcr = {
 };
 
 const root = new URL("../", import.meta.url);
-const catalogUrl = new URL("work/official-114/catalog.json", root);
-const programsUrl = new URL("data/programs_114.json", root);
-const auditRoot = new URL("work/official-114-audit/", root);
+const catalogUrl = new URL("work/official-115/catalog.json", root);
+const programsUrl = new URL("data/programs_115.json", root);
+const auditRoot = new URL("work/official-115-audit/", root);
 const imageRoot = new URL("images/", auditRoot);
 const ocrRoot = new URL("ocr/", auditRoot);
 const cellRoot = new URL("threshold-cells/", auditRoot);
@@ -480,7 +480,7 @@ async function prepare(): Promise<void> {
   const manifest: CellManifest = {
     schemaVersion: 1,
     generatedAt: new Date().toISOString(),
-    source: "CAC 114 official PNG redownloaded independently for threshold audit",
+    source: "CAC 115 official PNG redownloaded independently for threshold audit",
     cells,
     structuralIssues,
   };
@@ -594,7 +594,7 @@ async function compare(): Promise<void> {
     ),
   );
   const report = {
-    academicYear: 114,
+    academicYear: 115,
     generatedAt: new Date().toISOString(),
     officialImageCount: 66,
     auditedRuleCellCount: manifest.cells.length,
@@ -894,7 +894,7 @@ async function pixelCompare(): Promise<void> {
     ),
   );
   const report = {
-    academicYear: 114,
+    academicYear: 115,
     generatedAt: new Date().toISOString(),
     method:
       "last-line glyph segmentation with two-pass OCR-seeded official-font prototypes",
@@ -1009,7 +1009,7 @@ async function mergeBatches(batchCount = 4): Promise<void> {
   const batches = await Promise.all(
     Array.from({ length: batchCount }, (_, index) =>
       readJson<{ cells?: CellOcr[] }>(
-        new URL(`../official-114-audit-batch-${index}/threshold-cell-ocr.json`, auditRoot),
+        new URL(`../official-115-audit-batch-${index}/threshold-cell-ocr.json`, auditRoot),
       ),
     ),
   );

@@ -21,8 +21,8 @@ export type OtherAdmissionEntry = {
 
 export const OTHER_ADMISSION_SOURCES = {
   cac: {
-    label: "甄選委員會 114 申請入學 66 校官方總表",
-    url: "https://www.cac.edu.tw/apply114/system/ColQry_114applyXForStu_Fd87eO2q/TotalGsdShow.htm",
+    label: "甄選委員會 115 申請入學 64 校官方總表",
+    url: "https://www.cac.edu.tw/apply115/system/ColQry_115xappLyfOrStu_Azd5gP29/TotalGsdShow.htm",
   },
   military: {
     label: "國防部 114 學年度軍事學校正期班甄選入學",

@@ -10,7 +10,7 @@ type ReviewProgram = {
 
 type ReviewDocument = { programs: ReviewProgram[] };
 
-const root = new URL("../work/official-114/", import.meta.url);
+const root = new URL("../work/official-115/", import.meta.url);
 const review = JSON.parse(
   await readFile(new URL("review.json", root), "utf8"),
 ) as ReviewDocument;

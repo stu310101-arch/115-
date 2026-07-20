@@ -31,12 +31,12 @@ test("server-renders the finished homepage and complete data status", async () =
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>114 申請入學一階落點查詢/);
+  assert.match(html, /<title>115 申請入學一階落點查詢/);
   assert.match(html, /每一關都算清楚/);
-  assert.match(html, />2168<\/strong><span>筆官方資料總數/);
-  assert.match(html, />2115<\/strong><span>筆可做學測試算/);
-  assert.match(html, />53<\/strong><span>筆無法獨立試算/);
-  assert.doesNotMatch(html, /這是 114 歷史資料回測/);
+  assert.match(html, />2206<\/strong><span>筆官方資料總數/);
+  assert.match(html, />2157<\/strong><span>筆可做學測試算/);
+  assert.match(html, />49<\/strong><span>筆無法獨立試算/);
+  assert.doesNotMatch(html, /這是 115 歷史資料回測/);
   assert.doesNotMatch(html, /不是 115／下一年度落點預測/);
   assert.match(html, /href="\/how-it-works"/);
   assert.match(html, /href="\/query"/);
@@ -71,8 +71,8 @@ test("renders the official five-standard reference and navigation loading UI", a
   const howHtml = await howResponse.text();
   const queryHtml = await queryResponse.text();
 
-  assert.match(howHtml, /114 學年度學測五標/);
-  assert.match(howHtml, /大學入學考試中心 114 學年度學測各科成績標準/);
+  assert.match(howHtml, /115 學年度學測五標/);
+  assert.match(howHtml, /大學入學考試中心 115 學年度學測各科成績標準/);
   assert.match(queryHtml, /資料讀取中，請稍後/);
   assert.doesNotMatch(
     howHtml,
@@ -140,13 +140,13 @@ test("keeps the homepage header static and removes starter preview files", async
   );
   assert.match(page, /route="how-it-works"/);
   assert.match(page, /route="query"/);
-  assert.match(layout, /title:\s*"114 申請入學一階落點查詢/);
+  assert.match(layout, /title:\s*"115 申請入學一階落點查詢/);
   assert.match(layout, /url: socialImageUrl/);
   assert.match(
     layout,
     /new URL\("og-share-text\.png", siteUrl\)\.toString\(\)/,
   );
-  assert.match(layout, /https:\/\/stu310101-arch\.github\.io\/114-\//);
+  assert.match(layout, /https:\/\/stu310101-arch\.github\.io\/115-\//);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 
   await access(new URL("../public/og-share-text.png", import.meta.url));

@@ -26,10 +26,10 @@ $script:Utf8WithoutBom = New-Object System.Text.UTF8Encoding($false)
 
 $scriptDirectory = Split-Path -Parent $MyInvocation.MyCommand.Path
 if ([string]::IsNullOrWhiteSpace($SourcesPath)) {
-  $SourcesPath = Join-Path $scriptDirectory "..\data\sources_114.json"
+  $SourcesPath = Join-Path $scriptDirectory "..\data\sources_115.json"
 }
 if ([string]::IsNullOrWhiteSpace($WorkRoot)) {
-  $WorkRoot = Join-Path $scriptDirectory "..\work\official-114"
+  $WorkRoot = Join-Path $scriptDirectory "..\work\official-115"
 }
 
 function Resolve-FullPath {
@@ -206,7 +206,7 @@ function Save-OfficialImageWithRetry {
         -TimeoutSec $RequestTimeoutSeconds `
         -Headers @{
           Accept = 'image/png,image/*;q=0.9,*/*;q=0.5'
-          'User-Agent' = 'CAC-114-official-report-ocr/1.0'
+          'User-Agent' = 'CAC-115-official-report-ocr/1.0'
         }
 
       if (-not (Test-PngSignature -Path $temporaryPath)) {
@@ -659,7 +659,7 @@ foreach ($source in $sources) {
     $success = [pscustomobject][ordered]@{
       schemaVersion = $script:SchemaVersion
       status = 'success'
-      year = 114
+      year = 115
       schoolId = $id
       source = [pscustomobject][ordered]@{
         reportImageUrl = $imageUrl
@@ -698,7 +698,7 @@ foreach ($source in $sources) {
     $failure = [pscustomobject][ordered]@{
       schemaVersion = $script:SchemaVersion
       status = 'error'
-      year = 114
+      year = 115
       schoolId = $id
       source = [pscustomobject][ordered]@{
         reportImageUrl = $imageUrl

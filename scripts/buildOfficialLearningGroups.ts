@@ -9,21 +9,21 @@ import {
 import type { Program } from "../lib/types.ts";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const PROGRAMS_PATH = path.join(ROOT, "data", "programs_114.json");
+const PROGRAMS_PATH = path.join(ROOT, "data", "programs_115.json");
 const OUTPUT_PATH = path.join(
   ROOT,
   "data",
-  "program_learning_groups_114.json",
+  "program_learning_groups_115.json",
 );
 const RUNTIME_OUTPUT_PATH = path.join(
   ROOT,
   "data",
-  "program_learning_group_ids_114.json",
+  "program_learning_group_ids_115.json",
 );
 const OVERRIDES_PATH = path.join(
   ROOT,
   "data",
-  "official_learning_group_overrides_114.json",
+  "official_learning_group_overrides_115.json",
 );
 const MAJOR_LIST_URL = "https://collego.edu.tw/Highschool/MajorList";
 const MAJOR_URL =
@@ -230,7 +230,7 @@ function matchProgram(
 
 async function fetchText(url: string): Promise<string> {
   const response = await fetch(url, {
-    headers: { "user-agent": "admission-114-official-data-review/1.0" },
+    headers: { "user-agent": "admission-115-official-data-review/1.0" },
   });
   if (!response.ok) throw new Error(`${response.status} ${url}`);
   return response.text();
@@ -468,7 +468,7 @@ async function main() {
   );
 
   const output = {
-    year: 114,
+    year: 115,
     source: {
       name: "ColleGo! 大學選才與高中育才輔助系統",
       url: MAJOR_LIST_URL,

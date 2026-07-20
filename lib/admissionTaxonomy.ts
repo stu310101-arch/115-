@@ -145,7 +145,7 @@ export type ProgramTaxonomy = Readonly<{
 /**
  * 十八學群與校系對應取自 ColleGo! 官方資料；四大類與自然／社會組由
  * 十八學群穩定映射。官方未歸入十八學群的不分系／跨領域校系，僅在
- * 類組篩選時沿用 114 招生資料的官方採計組別，不替它虛構十八學群。
+ * 類組篩選時沿用 115 招生資料的官方採計組別，不替它虛構十八學群。
  */
 export function programTaxonomyFor(
   program: Pick<Program, "programCode" | "groupTags">,

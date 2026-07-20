@@ -87,15 +87,15 @@ export const DEFAULT_QUERY_STATE: AdmissionQueryState = {
   learningGroupIds: [],
 };
 
-const SESSION_KEY = "admission-114-query-v10";
+const SESSION_KEY = "admission-115-query-v10";
 const LEGACY_SESSION_KEYS = [
-  { key: "admission-114-query-v9", usesLegacySchoolState: false },
-  { key: "admission-114-query-v8", usesLegacySchoolState: false },
-  { key: "admission-114-query-v7", usesLegacySchoolState: false },
-  { key: "admission-114-query-v6", usesLegacySchoolState: false },
-  { key: "admission-114-query-v5", usesLegacySchoolState: false },
-  { key: "admission-114-query-v4", usesLegacySchoolState: false },
-  { key: "admission-114-query-v3", usesLegacySchoolState: true },
+  { key: "admission-115-query-v9", usesLegacySchoolState: false },
+  { key: "admission-115-query-v8", usesLegacySchoolState: false },
+  { key: "admission-115-query-v7", usesLegacySchoolState: false },
+  { key: "admission-115-query-v6", usesLegacySchoolState: false },
+  { key: "admission-115-query-v5", usesLegacySchoolState: false },
+  { key: "admission-115-query-v4", usesLegacySchoolState: false },
+  { key: "admission-115-query-v3", usesLegacySchoolState: true },
 ] as const;
 const SCHOOL_MODE_PARAM = "schoolMode";
 const MULTI_SCHOOL_MODE = "multi";
