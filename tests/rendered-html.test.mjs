@@ -34,8 +34,8 @@ test("server-renders the finished homepage and complete data status", async () =
   assert.match(html, /<title>115 申請入學一階落點查詢/);
   assert.match(html, /每一關都算清楚/);
   assert.match(html, />2206<\/strong><span>筆官方資料總數/);
-  assert.match(html, />2157<\/strong><span>筆可做學測試算/);
-  assert.match(html, />49<\/strong><span>筆無法獨立試算/);
+  assert.match(html, />2152<\/strong><span>筆可做學測試算/);
+  assert.match(html, />54<\/strong><span>筆無法獨立試算/);
   assert.doesNotMatch(html, /這是 115 歷史資料回測/);
   assert.doesNotMatch(html, /不是 115／下一年度落點預測/);
   assert.match(html, /href="\/how-it-works"/);
@@ -46,6 +46,22 @@ test("server-renders the finished homepage and complete data status", async () =
     /每一個校系都以 rules\[\] 保存多關篩選條件，必須逐關達標。/,
   );
   assert.doesNotMatch(html, /codex-preview|Codex is working|react-loading-skeleton/);
+});
+
+test("server-renders all three year sites and marks 115 as current", async () => {
+  const response = await render();
+  const html = await response.text();
+
+  assert.match(
+    html,
+    /<nav aria-label="切換回測學年度" class="year-switcher year-switcher--home">/,
+  );
+  assert.match(html, /href="https:\/\/stu310101-arch\.github\.io\/113-\/"/);
+  assert.match(html, /href="https:\/\/stu310101-arch\.github\.io\/114-\/"/);
+  assert.match(
+    html,
+    /aria-current="page"[^>]*>115 年度・目前<\/span>/,
+  );
 });
 
 test("server-renders every requested site page", async () => {
@@ -144,12 +160,12 @@ test("keeps the homepage header static and removes starter preview files", async
   assert.match(layout, /url: socialImageUrl/);
   assert.match(
     layout,
-    /new URL\("og-share-text\.png", siteUrl\)\.toString\(\)/,
+    /new URL\("og-share-115\.png", siteUrl\)\.toString\(\)/,
   );
   assert.match(layout, /https:\/\/stu310101-arch\.github\.io\/115-\//);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 
-  await access(new URL("../public/og-share-text.png", import.meta.url));
+  await access(new URL("../public/og-share-115.png", import.meta.url));
   await assert.rejects(access(new URL("../public/og.png", import.meta.url)));
   await assert.rejects(access(new URL("app/_sites-preview", projectRoot)));
 });

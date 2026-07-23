@@ -23,6 +23,7 @@ import {
   type UnsupportedProgramItem,
 } from "./ProgramResultTable";
 import { SCORE_SUBJECTS } from "./ScoreForm";
+import { YearSwitcher } from "./YearSwitcher";
 import {
   queryStateToParams,
   restoreQueryState,
@@ -240,10 +241,15 @@ function HydratedResultsWorkspace({ programs }: ResultsWorkspaceProps) {
   }, [query]);
 
   const evaluation = useMemo(() => {
+    const hasProgramSelection =
+      query.programSelections.自然組.mode !== "none" ||
+      query.programSelections.社會組.mode !== "none";
     const criteria: ProgramFilterCriteria = {
       schoolGroupIds: query.schoolGroupIds,
       customSchoolIds: query.customSchoolIds,
-      groupedProgramSelections: query.programSelections,
+      groupedProgramSelections: hasProgramSelection
+        ? query.programSelections
+        : undefined,
       groupTags:
         query.filterMethod === "academic-categories"
           ? query.groupSelection
@@ -381,6 +387,11 @@ function HydratedResultsWorkspace({ programs }: ResultsWorkspaceProps) {
 
   return (
     <main className="subpage-main results-page">
+      <YearSwitcher
+        currentYear="115"
+        searchParams={querySearch}
+        variant="results"
+      />
       <SubpageHeader kicker="YOUR RESULTS" title="一階篩選回測結果" />
 
       <section className="results-section standalone-results" aria-live="polite">
