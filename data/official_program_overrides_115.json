@@ -1,5 +1,243 @@
 {
   "academicYear": 115,
   "source": "CAC 115 official program review overrides",
-  "programs": {}
+  "programs": {
+    "001082": {
+      "screeningVariants": [
+        {
+          "applicantGender": "male",
+          "label": "男生組",
+          "quota": 8,
+          "screeningRules": [
+            {
+              "order": 1,
+              "label": "社會",
+              "subjects": ["社會"],
+              "minScore": 10,
+              "rawText": "社會10"
+            },
+            {
+              "order": 2,
+              "label": "數B",
+              "subjects": ["數B"],
+              "minScore": 6,
+              "rawText": "數B6"
+            },
+            {
+              "order": 3,
+              "label": "國文＋英文＋數B＋社會",
+              "subjects": ["國文", "英文", "數B", "社會"],
+              "minScore": 43,
+              "rawText": "國文＋英文＋數B＋社會43"
+            },
+            {
+              "order": 4,
+              "label": "國文",
+              "subjects": ["國文"],
+              "minScore": 12,
+              "rawText": "國文12"
+            },
+            {
+              "order": 5,
+              "label": "英文",
+              "subjects": ["英文"],
+              "minScore": 13,
+              "rawText": "英文13"
+            }
+          ]
+        },
+        {
+          "applicantGender": "female",
+          "label": "女生組",
+          "quota": 9,
+          "screeningRules": [
+            {
+              "order": 1,
+              "label": "社會",
+              "subjects": ["社會"],
+              "minScore": 10,
+              "rawText": "社會10"
+            },
+            {
+              "order": 2,
+              "label": "數B",
+              "subjects": ["數B"],
+              "minScore": 6,
+              "rawText": "數B6"
+            },
+            {
+              "order": 3,
+              "label": "國文＋英文＋數B＋社會",
+              "subjects": ["國文", "英文", "數B", "社會"],
+              "minScore": 45,
+              "rawText": "國文＋英文＋數B＋社會45"
+            },
+            {
+              "order": 4,
+              "label": "國文",
+              "subjects": ["國文"],
+              "minScore": 13,
+              "rawText": "國文13"
+            },
+            {
+              "order": 5,
+              "label": "英文",
+              "subjects": ["英文"],
+              "minScore": 14,
+              "rawText": "英文14"
+            }
+          ]
+        }
+      ]
+    },
+    "027032": {
+      "screeningVariants": [
+        {
+          "applicantGender": "male",
+          "label": "男生組",
+          "quota": 10,
+          "screeningRules": [
+            {
+              "order": 1,
+              "label": "國文",
+              "subjects": ["國文"],
+              "minScore": 10,
+              "rawText": "國文10"
+            },
+            {
+              "order": 2,
+              "label": "英文",
+              "subjects": ["英文"],
+              "minScore": 5,
+              "rawText": "英文5"
+            }
+          ]
+        },
+        {
+          "applicantGender": "female",
+          "label": "女生組",
+          "quota": 20,
+          "screeningRules": [
+            {
+              "order": 1,
+              "label": "國文",
+              "subjects": ["國文"],
+              "minScore": 10,
+              "rawText": "國文10"
+            },
+            {
+              "order": 2,
+              "label": "英文",
+              "subjects": ["英文"],
+              "minScore": 7,
+              "rawText": "英文7"
+            }
+          ]
+        }
+      ]
+    },
+    "031252": {
+      "screeningVariants": [
+        {
+          "applicantGender": "male",
+          "label": "男生組",
+          "quota": 14,
+          "screeningRules": [
+            {
+              "order": 1,
+              "label": "國文",
+              "subjects": ["國文"],
+              "minScore": 2,
+              "rawText": "國文2"
+            }
+          ]
+        },
+        {
+          "applicantGender": "female",
+          "label": "女生組",
+          "quota": 14,
+          "screeningRules": [
+            {
+              "order": 1,
+              "label": "國文",
+              "subjects": ["國文"],
+              "minScore": 3,
+              "rawText": "國文3"
+            },
+            {
+              "order": 2,
+              "label": "數B",
+              "subjects": ["數B"],
+              "minScore": 1,
+              "rawText": "數B1"
+            }
+          ]
+        }
+      ]
+    },
+    "033222": {
+      "screeningVariants": [
+        {
+          "applicantGender": "male",
+          "label": "男生組",
+          "quota": 5,
+          "screeningRules": [
+            {
+              "order": 1,
+              "label": "國文＋英文",
+              "subjects": ["國文", "英文"],
+              "minScore": 15,
+              "rawText": "國文＋英文15"
+            }
+          ]
+        },
+        {
+          "applicantGender": "female",
+          "label": "女生組",
+          "quota": 17,
+          "screeningRules": [
+            {
+              "order": 1,
+              "label": "國文＋英文",
+              "subjects": ["國文", "英文"],
+              "minScore": 16,
+              "rawText": "國文＋英文16"
+            }
+          ]
+        }
+      ]
+    },
+    "056042": {
+      "screeningVariants": [
+        {
+          "applicantGender": "male",
+          "label": "男生組",
+          "quota": 10,
+          "screeningRules": [
+            {
+              "order": 1,
+              "label": "國文＋英文＋社會",
+              "subjects": ["國文", "英文", "社會"],
+              "minScore": 23,
+              "rawText": "國文＋英文＋社會23"
+            }
+          ]
+        },
+        {
+          "applicantGender": "female",
+          "label": "女生組",
+          "quota": 10,
+          "screeningRules": [
+            {
+              "order": 1,
+              "label": "國文＋英文＋社會",
+              "subjects": ["國文", "英文", "社會"],
+              "minScore": 30,
+              "rawText": "國文＋英文＋社會30"
+            }
+          ]
+        }
+      ]
+    }
+  }
 }
