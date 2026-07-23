@@ -8,7 +8,7 @@ const siteUrl = new URL(
     "https://stu310101-arch.github.io/115-/").replace(/\/?$/, "/"),
 );
 // Use a new, absolute filename so social crawlers do not reuse the old card.
-const socialImageUrl = new URL("og-share-text.png", siteUrl).toString();
+const socialImageUrl = new URL("og-share-115.png", siteUrl).toString();
 const faviconPath = `${basePath}/favicon.svg`;
 
 export const metadata: Metadata = {
